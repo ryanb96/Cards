@@ -340,9 +340,6 @@ namespace Cards_Against_Humanity
 
         public bool NextRound()
         {
-            // Do Voting...
-
-
             if (Round + 1 > Rounds)
             {
                 Stage = 'E';
@@ -351,8 +348,12 @@ namespace Cards_Against_Humanity
             else
             {
                 if (Stage != 'W')
-                {
+                { 
                     Stage = 'P';
+                }
+                if (Round == 0)
+                {
+                    Winners = new List<Answer>();
                 }
                 Round++;
                 if (CurrentBlackCard + 1 > GameSet.BlackCards.Count)

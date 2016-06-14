@@ -53,6 +53,10 @@ namespace Cards_Against_Humanity
             newGame.Dispose();
             if (CurrentGame != null)
             {
+                KeyboardHook hook = new KeyboardHook();
+                hook.KeyPressed += Hook_KeyPressed;
+                hook.RegisterHotKey(ModifierKeys.Control | ModifierKeys.Shift, Keys.F1);
+
                 LeaderBoard = new frmLeaderboard();
                 while (CurrentGame.Playable)
                 {
@@ -151,6 +155,13 @@ namespace Cards_Against_Humanity
                 CurrentGame.Stop();
             }
             Application.Exit();
+        }
+
+        private static void Hook_KeyPressed(object sender, KeyPressedEventArgs e)
+        {
+            frmDebug debug = new frmDebug();
+            debug.ShowDialog();
+            debug.Dispose();
         }
     }
 }

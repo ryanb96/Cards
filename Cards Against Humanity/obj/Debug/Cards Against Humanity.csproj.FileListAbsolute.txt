@@ -23,3 +23,30 @@ C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\Cards Against Humanity
 C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\Cards Against Humanity\obj\Debug\Cards_Against_Humanity.frmGameplay.resources
 C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\Cards Against Humanity\obj\Debug\Cards Against Humanity.csprojResolveAssemblyReference.cache
 C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\Cards Against Humanity\bin\Debug\Resources\CardSets\UK_1.6_dd12fa05-a7a7-4f6c-8467-4711abbcb16b.cahc
+C:\Users\JCPitt\Source\Repos\Cards\Cards Against Humanity\bin\Debug\Cards Against Humanity.exe.config
+C:\Users\JCPitt\Source\Repos\Cards\Cards Against Humanity\obj\Debug\Interop.NATUPNPLib.dll
+C:\Users\JCPitt\Source\Repos\Cards\Cards Against Humanity\obj\Debug\Cards Against Humanity.csproj.ResolveComReference.cache
+C:\Users\JCPitt\Source\Repos\Cards\Cards Against Humanity\obj\Debug\Cards Against Humanity.exe
+C:\Users\JCPitt\Source\Repos\Cards\Cards Against Humanity\obj\Debug\Cards Against Humanity.pdb
+C:\Users\JCPitt\Source\Repos\Cards\Cards Against Humanity\bin\Debug\Resources\CardSets\UK_1.6_dd12fa05-a7a7-4f6c-8467-4711abbcb16b.cahc
+C:\Users\JCPitt\Source\Repos\Cards\Cards Against Humanity\bin\Debug\Resources\CardSets\US_1.0_e9983525-0cb7-4ee6-a4f1-befffa583e9c.cahc
+C:\Users\JCPitt\Source\Repos\Cards\Cards Against Humanity\bin\Debug\Resources\CardSets\FullStrengthIT_1.1_f4af220d-ab63-4e64-a8b3-1bbae1454a66.cahc
+C:\Users\JCPitt\Source\Repos\Cards\Cards Against Humanity\bin\Debug\Resources\CardSets\SuperSecureInfoSec_1.0_9ee1f4a7-3fa6-4fe6-9ff3-517b50a39638.cahc
+C:\Users\JCPitt\Source\Repos\Cards\Cards Against Humanity\bin\Debug\Cards Against Humanity.exe.manifest
+C:\Users\JCPitt\Source\Repos\Cards\Cards Against Humanity\bin\Debug\Cards Against Humanity.application
+C:\Users\JCPitt\Source\Repos\Cards\Cards Against Humanity\bin\Debug\Cards Against Humanity.exe
+C:\Users\JCPitt\Source\Repos\Cards\Cards Against Humanity\bin\Debug\Cards Against Humanity.pdb
+C:\Users\JCPitt\Source\Repos\Cards\Cards Against Humanity\obj\Debug\Cards Against Humanity.csprojResolveAssemblyReference.cache
+C:\Users\JCPitt\Source\Repos\Cards\Cards Against Humanity\obj\Debug\Cards_Against_Humanity.frmDebug.resources
+C:\Users\JCPitt\Source\Repos\Cards\Cards Against Humanity\obj\Debug\Cards_Against_Humanity.frmGameplay.resources
+C:\Users\JCPitt\Source\Repos\Cards\Cards Against Humanity\obj\Debug\Cards_Against_Humanity.frmLeaderboard.resources
+C:\Users\JCPitt\Source\Repos\Cards\Cards Against Humanity\obj\Debug\Cards_Against_Humanity.frmLicense.resources
+C:\Users\JCPitt\Source\Repos\Cards\Cards Against Humanity\obj\Debug\Cards_Against_Humanity.frmNew.resources
+C:\Users\JCPitt\Source\Repos\Cards\Cards Against Humanity\obj\Debug\Cards_Against_Humanity.frmRules.resources
+C:\Users\JCPitt\Source\Repos\Cards\Cards Against Humanity\obj\Debug\Cards_Against_Humanity.frmVote.resources
+C:\Users\JCPitt\Source\Repos\Cards\Cards Against Humanity\obj\Debug\Cards_Against_Humanity.frmWaiting.resources
+C:\Users\JCPitt\Source\Repos\Cards\Cards Against Humanity\obj\Debug\Cards_Against_Humanity.Properties.Resources.resources
+C:\Users\JCPitt\Source\Repos\Cards\Cards Against Humanity\obj\Debug\Cards Against Humanity.csproj.GenerateResource.Cache
+C:\Users\JCPitt\Source\Repos\Cards\Cards Against Humanity\obj\Debug\Cards Against Humanity.TrustInfo.xml
+C:\Users\JCPitt\Source\Repos\Cards\Cards Against Humanity\obj\Debug\Cards Against Humanity.exe.manifest
+C:\Users\JCPitt\Source\Repos\Cards\Cards Against Humanity\obj\Debug\Cards Against Humanity.application
