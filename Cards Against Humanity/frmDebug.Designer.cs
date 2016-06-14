@@ -44,7 +44,7 @@
             System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Stage:");
             System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Black Cards");
             System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("White Cards");
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Game Set:", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Game Set", new System.Windows.Forms.TreeNode[] {
             treeNode15,
             treeNode16});
             System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Current Black Card:");
@@ -82,6 +82,7 @@
             // treDebug
             // 
             this.treDebug.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treDebug.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treDebug.Location = new System.Drawing.Point(0, 0);
             this.treDebug.Name = "treDebug";
             treeNode1.Name = "Playable";
@@ -117,7 +118,7 @@
             treeNode16.Name = "GameWhiteCards";
             treeNode16.Text = "White Cards";
             treeNode17.Name = "GameSet";
-            treeNode17.Text = "Game Set:";
+            treeNode17.Text = "Game Set";
             treeNode18.Name = "CurrentBlackCard";
             treeNode18.Text = "Current Black Card:";
             treeNode19.Name = "CurrentWhiteCard";
@@ -134,15 +135,16 @@
             treeNode24.Text = "Game";
             this.treDebug.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode24});
-            this.treDebug.Size = new System.Drawing.Size(284, 261);
+            this.treDebug.Size = new System.Drawing.Size(984, 561);
             this.treDebug.TabIndex = 0;
             // 
             // frmDebug
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(984, 561);
             this.Controls.Add(this.treDebug);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmDebug";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

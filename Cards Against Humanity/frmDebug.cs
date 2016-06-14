@@ -141,6 +141,9 @@ namespace Cards_Against_Humanity
             }
 
             treDebug.ExpandAll();
+            treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameBlackCards"].Collapse();
+            treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameWhiteCards"].Collapse();
+            treDebug.SelectedNode = treDebug.Nodes[0];
         }
 
         private bool Export()
