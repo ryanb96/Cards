@@ -1,0 +1,68 @@
+<CardSet GUID="f4af220d-ab63-4e64-a8b3-1bbae1454a66" Name="FullStrengthIT" Version="1.1" Hash="qo2A4YZ2bd+JfnPjTc/UfuIdjwDqIU6rj9vLwu9lKXI=">
+  <BlackCards>
+    <Card ID="B1" Needs="1">The new IT Director has a sick tattoo of ____________</Card>
+    <Card ID="B2" Needs="1">The last consultant was fired over ____________</Card>
+    <Card ID="B3" Needs="1">in a pinch, ____________ can be used to remote reboot a server</Card>
+    <Card ID="B4" Needs="1">____________ is Layer 8 of the OSI networking model</Card>
+    <Card ID="B5" Needs="1">Forgetting ____________ in the datacenter is a firing offense</Card>
+    <Card ID="B6" Needs="1">We're going to use ____________ instead of updating to IPv6</Card>
+    <Card ID="B7" Needs="1">That red plunger switch on the wall launches ____________</Card>
+    <Card ID="B8" Needs="1">I got this coffee mug from a conference about ____________ back in 1997</Card>
+    <Card ID="B9" Needs="1">Had a user fall prey to a sophisticated ____________ phishing attack</Card>
+    <Card ID="B10" Needs="1">Forgot my badge this morning and had to use ____________ to get in</Card>
+    <Card ID="B11" Needs="1">____________ is now included for free with every OS Update</Card>
+    <Card ID="B12" Needs="1">The hot new videogame this year is ____________ Simulator!</Card>
+    <Card ID="B13" Needs="1">I just got a new certification in ____________</Card>
+    <Card ID="B14" Needs="2">____________ is the last stage of our ____________ rollout</Card>
+    <Card ID="B15" Needs="2">Two factor auth with ____________ and ____________</Card>
+    <Card ID="B16" Needs="2">____________ is now required every time you restart ____________</Card>
+    <Card ID="B17" Needs="2">A helpdesk call to fix ____________ with ____________</Card>
+  </BlackCards>
+  <WhiteCards>
+    <Card ID="W1">Rotating the Backup Tapes</Card>
+    <Card ID="W2">a PEBCAK</Card>
+    <Card ID="W3">rm -rf /*.*</Card>
+    <Card ID="W4">a faulty crossover cable</Card>
+    <Card ID="W5">a KVM with a broken M</Card>
+    <Card ID="W6">a one button mouse</Card>
+    <Card ID="W7">a laser pointer</Card>
+    <Card ID="W8">scanning a little too much with nmap</Card>
+    <Card ID="W9">a coffee stained mousepad</Card>
+    <Card ID="W10">a webcam pointed at the coffee maker </Card>
+    <Card ID="W11">a bastion host</Card>
+    <Card ID="W12">a salvaged motherboard with a parallel port</Card>
+    <Card ID="W13">a razorsharp punchdown tool</Card>
+    <Card ID="W14">my rooted phone</Card>
+    <Card ID="W15">a mouse connected serial -&gt; ps/2 -&gt; usb</Card>
+    <Card ID="W16">0118 999 881 999 119 725...3</Card>
+    <Card ID="W17">my password</Card>
+    <Card ID="W18">a fingerprint scanner</Card>
+    <Card ID="W19">a scanning electron microscope</Card>
+    <Card ID="W20">a helpdesk ticket to "fix the cpu"</Card>
+    <Card ID="W21">a hard drive degaussing machine</Card>
+    <Card ID="W22">a multitool with a bottle opener</Card>
+    <Card ID="W23">a larger database connection pool</Card>
+    <Card ID="W24">a rainbow pack of 3.5" floppy disks</Card>
+    <Card ID="W25">a usb stick found in the parking lot</Card>
+    <Card ID="W26">an Arduino running NetBSD</Card>
+    <Card ID="W27">a shell script written in OCaml</Card>
+    <Card ID="W28">Edward Snowden</Card>
+    <Card ID="W29">CryptoLocker</Card>
+    <Card ID="W30">Stuxnet</Card>
+    <Card ID="W31">a serial port mouse</Card>
+    <Card ID="W32">5000 free AOL CDs</Card>
+    <Card ID="W33">Angelina Jolie in Hackers</Card>
+    <Card ID="W34">an RJ-45 crimping tool</Card>
+    <Card ID="W35">Clippy</Card>
+    <Card ID="W36">Two Factor Auth</Card>
+    <Card ID="W37">Have you tried turning it off and on again</Card>
+    <Card ID="W38">a flaky VPN connection</Card>
+    <Card ID="W39">script kiddies</Card>
+    <Card ID="W40">an IP Webcam with a default password</Card>
+    <Card ID="W41">rebuilding a RAID array</Card>
+    <Card ID="W42">manually fixing 10/100/10000 'auto' negotiation</Card>
+    <Card ID="W43">viewing web filter block logs</Card>
+    <Card ID="W44">the server is down</Card>
+    <Card ID="W45">pinging 127.0.0.1</Card>
+  </WhiteCards>
+</CardSet>

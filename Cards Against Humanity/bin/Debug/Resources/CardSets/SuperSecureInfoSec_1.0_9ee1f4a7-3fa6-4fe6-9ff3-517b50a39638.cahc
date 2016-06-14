@@ -1,0 +1,81 @@
+<CardSet GUID="9ee1f4a7-3fa6-4fe6-9ff3-517b50a39638" Name="SuperSecureInfoSec" Version="1.0" Hash="PPQKxnBtWxsJD8STAxYYPBmXxWsvScNgEJhTmi3YV5I=">
+  <BlackCards>
+    <Card ID="B1" Needs="1">Pentesting found a ____________ process running on the printer</Card>
+    <Card ID="B2" Needs="1">SANS has announced that ____________ is an imminent threat</Card>
+    <Card ID="B3" Needs="1">CVE-0000-1234 has been given the marketing name of ____________</Card>
+    <Card ID="B4" Needs="1">The Honeypot was designed to catch ____________ attacks</Card>
+    <Card ID="B5" Needs="1">Wireless networking would be much more secure if people would just use a ____________</Card>
+    <Card ID="B6" Needs="1">A botnet made of computers compromised by ____________ vulns</Card>
+    <Card ID="B7" Needs="1">My email server was spamming people because I forgot to setup a ____________ config</Card>
+    <Card ID="B8" Needs="1">____________ attacks are such a hot exploit right now</Card>
+    <Card ID="B9" Needs="1">Apparently it is a bad policy to post our ____________ on the marketing website</Card>
+    <Card ID="B10" Needs="1">My new laptop came pre-installed with a ____________ feature</Card>
+    <Card ID="B11" Needs="1">Even running in a VM won't protect you from ____________ exploits</Card>
+    <Card ID="B12" Needs="1">It's 2078 and people are still failing to adequately secure their ____________ infrastructure</Card>
+    <Card ID="B13" Needs="1">Once you've been around long enough you can do ____________ calculations in your head</Card>
+    <Card ID="B14" Needs="1">The AIs have taken over their only weakness is their love of ____________ based vulnerabilities</Card>
+    <Card ID="B15" Needs="1">The toaster appears to have been compromised by a ____________ exploit</Card>
+    <Card ID="B16" Needs="1">I found my ____________ on HaveIBeenPwned.com</Card>
+    <Card ID="B17" Needs="1">My last password Manager was a ____________</Card>
+    <Card ID="B18" Needs="2">We're just one good ____________ attack away from the ____________ catching on fire</Card>
+    <Card ID="B19" Needs="2">Turns out that Apache is vulnerable to a ____________ exploit when attacked with ____________</Card>
+    <Card ID="B20" Needs="2">Two factor auth with ____________ and ____________</Card>
+    <Card ID="B21" Needs="2">The ____________ we were using failed to catch a ____________ attack</Card>
+    <Card ID="B22" Needs="2">You would never think that a ____________ would be a vector for ____________ attacks</Card>
+    <Card ID="B23" Needs="2">My first born is named ____________ of the clan ____________</Card>
+    <Card ID="B24" Needs="2">My other ____________ is a ____________!</Card>
+    <Card ID="B25" Needs="2">My ____________ just asked me to reset my ____________</Card>
+    <Card ID="B26" Needs="2">My CISO thought ____________ was a ____________</Card>
+  </BlackCards>
+  <WhiteCards>
+    <Card ID="W1">Best Two out of Three Factor Auth</Card>
+    <Card ID="W2">Self Loathing Browser History</Card>
+    <Card ID="W3">Password Manager's Password</Card>
+    <Card ID="W4">Symmetricish Cryptography</Card>
+    <Card ID="W5">Less Than Zero Day</Card>
+    <Card ID="W6">Principle of Beast Privilege</Card>
+    <Card ID="W7">My Dongle</Card>
+    <Card ID="W8">A shell script with root access</Card>
+    <Card ID="W9">Unpatched WindowsXP box</Card>
+    <Card ID="W10">Another Brick in the Firewall</Card>
+    <Card ID="W11">Timing Attack from the Year 9930</Card>
+    <Card ID="W12">User Behavioral Analytics</Card>
+    <Card ID="W13">Chrome Emoji Extension with built in keylogger</Card>
+    <Card ID="W14">Email asking to verify my username and password</Card>
+    <Card ID="W15">Privilege Escalation</Card>
+    <Card ID="W16">Brute Force</Card>
+    <Card ID="W17">Wildly Irresponsible Disclosure</Card>
+    <Card ID="W18">Biometric Foot Scanner</Card>
+    <Card ID="W19">Internet of Unpatched Things</Card>
+    <Card ID="W20">Botnet of Smartwatches</Card>
+    <Card ID="W21">Buffer Overflow</Card>
+    <Card ID="W22">PKI Certificate of Participation</Card>
+    <Card ID="W23">Checksum and Mate</Card>
+    <Card ID="W24">SHA1 Shank Redemption</Card>
+    <Card ID="W25">Little Bobby Table</Card>
+    <Card ID="W26">Router with a default password</Card>
+    <Card ID="W27">Poopface Emoji</Card>
+    <Card ID="W28">Hash Collision</Card>
+    <Card ID="W29">Self Inflicted DDOS Diffie-Hellman Mayonnaise</Card>
+    <Card ID="W30">Data breech birth</Card>
+    <Card ID="W31">Authentication with something you hope to be someday</Card>
+    <Card ID="W32">Password Cracking</Card>
+    <Card ID="W33">Pentesting</Card>
+    <Card ID="W34">Pretty Good Piracy</Card>
+    <Card ID="W35">Publicity Key Encryption</Card>
+    <Card ID="W36">the password "password"</Card>
+    <Card ID="W37">C-3DES-P0</Card>
+    <Card ID="W38">Taylor Swift aka @swiftonsecurity</Card>
+    <Card ID="W39">Troy Hunt aka @troyhunt</Card>
+    <Card ID="W40">Bruce Schneier aka @schneierblog</Card>
+    <Card ID="W41">Netcat</Card>
+    <Card ID="W42">Nmap</Card>
+    <Card ID="W43">Private Key</Card>
+    <Card ID="W44">Public Key</Card>
+    <Card ID="W45">Spiceworks</Card>
+    <Card ID="W46">r/netsec</Card>
+    <Card ID="W47">Brian Krebs aka @briankrebs</Card>
+    <Card ID="W48">heartbleed</Card>
+    <Card ID="W49">The NSA (No Secrecy Afforded) Certificate Extension. IETF. RFC 7169.</Card>
+  </WhiteCards>
+</CardSet>

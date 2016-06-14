@@ -1,0 +1,12 @@
+C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\UnitTests\bin\Debug\Resources\CardSets\UK_1.4_dd12fa05-a7a7-4f6c-8467-4711abbcb16b.cahc
+C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\UnitTests\bin\Debug\UnitTests.dll
+C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\UnitTests\bin\Debug\UnitTests.pdb
+C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\UnitTests\bin\Debug\Card Set Builder.exe
+C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\UnitTests\bin\Debug\Cards Against Humanity.exe
+C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\UnitTests\bin\Debug\Card Set Builder.pdb
+C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\UnitTests\bin\Debug\Cards Against Humanity.pdb
+C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\UnitTests\obj\Debug\UnitTests.csprojResolveAssemblyReference.cache
+C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\UnitTests\obj\Debug\UnitTests.dll
+C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\UnitTests\obj\Debug\UnitTests.pdb
+C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\UnitTests\bin\Debug\Resources\CardSets\FullStrengthIT_1.1_f4af220d-ab63-4e64-a8b3-1bbae1454a66.cahc
+C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\UnitTests\bin\Debug\Resources\CardSets\SuperSecureInfoSec_1.0_9ee1f4a7-3fa6-4fe6-9ff3-517b50a39638.cahc

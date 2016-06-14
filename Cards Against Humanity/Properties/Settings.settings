@@ -1,0 +1,58 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Cards_Against_Humanity.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="CardSets" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;UK (1.6)_dd12fa05-a7a7-4f6c-8467-4711abbcb16b&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Rounds" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="Cards" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="RandoCanlrissian" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="NeverHaveI" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Rebooting" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Cheats" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Names" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Player 01&lt;/string&gt;
+  &lt;string&gt;Player 02&lt;/string&gt;
+  &lt;string&gt;Player 03&lt;/string&gt;
+  &lt;string&gt;Player 04&lt;/string&gt;
+  &lt;string&gt;Player 05&lt;/string&gt;
+  &lt;string&gt;Player 06&lt;/string&gt;
+  &lt;string&gt;Player 07&lt;/string&gt;
+  &lt;string&gt;Player 08&lt;/string&gt;
+  &lt;string&gt;Player 09&lt;/string&gt;
+  &lt;string&gt;Player 10&lt;/string&gt;
+  &lt;string&gt;Player 11&lt;/string&gt;
+  &lt;string&gt;Player 12&lt;/string&gt;
+  &lt;string&gt;Player 13&lt;/string&gt;
+  &lt;string&gt;Player 14&lt;/string&gt;
+  &lt;string&gt;Player 15&lt;/string&gt;
+  &lt;string&gt;Player 16&lt;/string&gt;
+  &lt;string&gt;Player 17&lt;/string&gt;
+  &lt;string&gt;Player 18&lt;/string&gt;
+  &lt;string&gt;Player 19&lt;/string&gt;
+  &lt;string&gt;Player 20&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="LocalPlayers" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

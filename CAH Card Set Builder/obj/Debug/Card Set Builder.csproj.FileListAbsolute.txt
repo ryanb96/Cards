@@ -1,0 +1,14 @@
+C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\CAH Card Set Builder\bin\Debug\Card Set Builder.exe.config
+C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\CAH Card Set Builder\bin\Debug\Card Set Builder.exe.manifest
+C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\CAH Card Set Builder\bin\Debug\Card Set Builder.application
+C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\CAH Card Set Builder\bin\Debug\Card Set Builder.exe
+C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\CAH Card Set Builder\bin\Debug\Card Set Builder.pdb
+C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\CAH Card Set Builder\obj\Debug\Card Set Builder.csprojResolveAssemblyReference.cache
+C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\CAH Card Set Builder\obj\Debug\Card_Set_Builder.frmCAHCSB.resources
+C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\CAH Card Set Builder\obj\Debug\Card_Set_Builder.Properties.Resources.resources
+C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\CAH Card Set Builder\obj\Debug\Card Set Builder.csproj.GenerateResource.Cache
+C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\CAH Card Set Builder\obj\Debug\Card Set Builder.TrustInfo.xml
+C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\CAH Card Set Builder\obj\Debug\Card Set Builder.exe.manifest
+C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\CAH Card Set Builder\obj\Debug\Card Set Builder.application
+C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\CAH Card Set Builder\obj\Debug\Card Set Builder.exe
+C:\Users\JCPitt\VisualStudioOnline\Cards Against Humanity\CAH Card Set Builder\obj\Debug\Card Set Builder.pdb
