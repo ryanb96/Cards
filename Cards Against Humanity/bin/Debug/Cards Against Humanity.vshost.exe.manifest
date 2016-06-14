@@ -4,7 +4,7 @@
   <description asmv2:iconFile="Logo-v2.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Cards Against Humanity" version="1.0.5994.2304" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="Cards Against Humanity" version="1.0.6009.41072" language="neutral" processorArchitecture="msil" />
     <commandLine file="Cards Against Humanity.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cards Against Humanity.exe" size="3147064">
-      <assemblyIdentity name="Cards Against Humanity" version="1.0.5994.2304" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Cards Against Humanity.exe" size="3672888">
+      <assemblyIdentity name="Cards Against Humanity" version="1.0.6009.41072" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>SAKNh8qq3zTZxvrpvqN/SXizLET12iP3ocpuOf0tPKY=</dsig:DigestValue>
+        <dsig:DigestValue>MWWOwOaFboY/Kz+5NaK5G2DQ0ceQscOL5heq0sSV+BY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
