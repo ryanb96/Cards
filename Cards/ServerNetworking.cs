@@ -560,6 +560,50 @@ namespace JoePitt.Cards
                             }
                             break;
 
+                        /* Find out if an action is required
+                         * EXPECTS
+                         * [0]Command
+                         * 
+                         * RESPONSE
+                         * YES
+                         * NO
+                         */
+                        case "NEED":
+                            if (ClientTexts.Length != 2)
+                            {
+                                serverText = "Usage: NEED [ANSWER|VOTE]";
+                            }
+                            else
+                            {
+                                switch (ClientTexts[1])
+                                {
+                                    case "ANSWER":
+                                        serverText = "YES";
+                                        foreach (Answer answer in Game.Answers)
+                                        {
+                                            if (answer.Submitter.Name == thisPlayer.Name)
+                                            {
+                                                serverText = "NO";
+                                            }
+                                        }
+                                        break;
+                                    case "VOTE":
+                                        serverText = "YES";
+                                        foreach (Vote vote in Game.Votes)
+                                        {
+                                            if (vote.Voter.Name == thisPlayer.Name)
+                                            {
+                                                serverText = "NO";
+                                            }
+                                        }
+                                        break;
+                                    default:
+                                        serverText = "Usage: NEED [ANSWER|VOTE]";
+                                        break;
+                                }
+                            }
+                            break;
+
                         /*
                          * Submits the players answer
                          * EXPECTS:
@@ -569,7 +613,6 @@ namespace JoePitt.Cards
                          * RESPONSE:
                          * SUBMITTED
                          * ERROR 
-                         * 
                          */
                         case "SUBMIT":
                             if (ClientTexts.Length != 2)

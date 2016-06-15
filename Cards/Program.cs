@@ -60,6 +60,8 @@ namespace JoePitt.Cards
                 LeaderBoard = new frmLeaderboard();
                 while (CurrentGame.Playable)
                 {
+                    LeaderBoard.update();
+
                     CurrentPlayer = CurrentGame.LocalPlayers[0];
                     CurrentPlayer.NextCommand = "GAMEUPDATE";
                     CurrentPlayer.NewCommand = true;
@@ -90,52 +92,89 @@ namespace JoePitt.Cards
                             Application.Exit();
                             break;
                     }
-
+                    frmWaiting waiting = new frmWaiting();
                     switch (CurrentGame.Stage)
                     {
                         case 'W':
-                            MessageBox.Show("WAITING...");
+                            waiting.Update("Waiting for other players to join the game...");
+                            waiting.ShowDialog();
                             break;
                         case 'P':
+                            int submitted = 0;
                             foreach (ClientNetworking player in CurrentGame.LocalPlayers)
                             {
                                 CurrentPlayer = player;
-                                int i = 0;
-                                if (CurrentPlayer.Owner.Submitted != CurrentGame.Round)
+                                CurrentPlayer.NextCommand = "NEED ANSWER";
+                                CurrentPlayer.NewCommand = true;
+                                while (!CurrentPlayer.NewResponse)
                                 {
-                                    frmGameplay game = new frmGameplay();
-                                    if (game.ShowDialog() == DialogResult.Abort)
-                                    {
+                                    Application.DoEvents();
+                                }
+                                string[] responseP = CurrentPlayer.LastResponse.Split(' ');
+                                CurrentPlayer.NewResponse = false;
+                                switch (responseP[0])
+                                {
+                                    case "YES":
+                                        frmGameplay game = new frmGameplay();
+                                        if (game.ShowDialog() == DialogResult.Abort)
+                                        {
+                                            break;
+                                        }
+                                        CurrentPlayer.Owner.Submitted = CurrentGame.Round;
+                                        submitted++;
                                         break;
-                                    }
-                                    CurrentPlayer.Owner.Submitted = CurrentGame.Round;
-                                    i++;
+                                    case "NO":
+                                        break;
+                                    default:
+                                        MessageBox.Show("Unexpected Error! Unknown NEED ANSWER Response, Application will exit!", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                        CurrentGame.Stop();
+                                        Application.Exit();
+                                        break;
                                 }
-                                if (i == 0)
-                                {
-                                    MessageBox.Show("Waiting on remote players answers...");
-                                }
+                            }
+                            if (CurrentGame.Stage == 'P' && submitted < 1)
+                            {
+                                waiting.Update("Waiting for other players to submit their answers...");
+                                waiting.ShowDialog();
                             }
                             break;
                         case 'V':
+                            int voted = 0;
                             foreach (ClientNetworking player in CurrentGame.LocalPlayers)
                             {
                                 CurrentPlayer = player;
-                                int i = 0;
-                                if (CurrentPlayer.Owner.Voted != CurrentGame.Round)
+                                CurrentPlayer.NextCommand = "NEED VOTE";
+                                CurrentPlayer.NewCommand = true;
+                                while (!CurrentPlayer.NewResponse)
                                 {
-                                    frmVote vote = new frmVote();
-                                    if (vote.ShowDialog() == DialogResult.Abort)
-                                    {
+                                    Application.DoEvents();
+                                }
+                                string[] responseP = CurrentPlayer.LastResponse.Split(' ');
+                                CurrentPlayer.NewResponse = false;
+                                switch (responseP[0])
+                                {
+                                    case "YES":
+                                        frmVote vote = new frmVote();
+                                        if (vote.ShowDialog() == DialogResult.Abort)
+                                        {
+                                            break;
+                                        }
+                                        CurrentPlayer.Owner.Voted = CurrentGame.Round;
+                                        voted++;
                                         break;
-                                    }
-                                    CurrentPlayer.Owner.Voted = CurrentGame.Round;
-                                    i++;
+                                    case "NO":
+                                        break;
+                                    default:
+                                        MessageBox.Show("Unexpected Error! Unknown NEED VOTE Response, Application will exit!", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                        CurrentGame.Stop();
+                                        Application.Exit();
+                                        break;
                                 }
-                                if (i == 0)
-                                {
-                                    MessageBox.Show("Waiting on remote players votes...");
-                                }
+                            }
+                            if (CurrentGame.Stage == 'V' && voted < 1)
+                            {
+                                waiting.Update("Waiting for other players to submit their votes...");
+                                waiting.ShowDialog();
                             }
                             break;
                         case 'E':

@@ -15,9 +15,21 @@ namespace JoePitt.Cards
             InitializeComponent();
             picLogo.ContextMenuStrip = mnuLogo;
             tabsType.SelectedIndexChanged += TabsType_SelectedIndexChanged;
+            txtAddPlayerLocal.GotFocus += TxtAddPlayerLocal_GotFocus;
+            txtAddPlayerLocal.LostFocus += TxtAddPlayerLocal_LostFocus;
             lstPlayersLocal.Items.Add(Dealer.IDPlayer());
             txtPlayerNameHost.Text = Dealer.IDPlayer();
             txtPlayerNameJoin.Text = Dealer.IDPlayer();
+        }
+
+        private void TxtAddPlayerLocal_GotFocus(object sender, EventArgs e)
+        {
+            AcceptButton = btnAddPlayerLocal;
+        }
+
+        private void TxtAddPlayerLocal_LostFocus(object sender, EventArgs e)
+        {
+            AcceptButton = btnStartLocal;
         }
 
         private void TabsType_SelectedIndexChanged(object sender, EventArgs e)

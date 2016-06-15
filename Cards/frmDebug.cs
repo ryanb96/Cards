@@ -129,8 +129,8 @@ namespace JoePitt.Cards
             i = 0;
             foreach (Vote vote in game.Votes)
             {
-                treDebug.Nodes[0].Nodes["Vote"].Nodes.Add("Vote_" + i, vote.Voter.Name);
-                treDebug.Nodes[0].Nodes["Vote"].Nodes[i].Nodes.Add("Text", vote.Choice.Text);
+                treDebug.Nodes[0].Nodes["Votes"].Nodes.Add("Vote_" + i, vote.Voter.Name);
+                treDebug.Nodes[0].Nodes["Votes"].Nodes[i].Nodes.Add("Text", vote.Choice.Text);
                 i++;
             }
             
