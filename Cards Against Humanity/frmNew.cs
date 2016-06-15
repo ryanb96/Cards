@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace Cards_Against_Humanity
+namespace JoePitt.Cards
 {
     public partial class frmNew : Form
     {

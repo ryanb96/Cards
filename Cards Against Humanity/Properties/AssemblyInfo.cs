@@ -6,11 +6,11 @@ using System.Resources;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Cards Against Humanity")]
+[assembly: AssemblyTitle("Cards")]
 [assembly: AssemblyDescription("A Party Game for Horrible People")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Joe Pitt")]
-[assembly: AssemblyProduct("Cards Against Humanity")]
+[assembly: AssemblyProduct("Cards")]
 [assembly: AssemblyCopyright("This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.")]
 [assembly: AssemblyTrademark("Cards Against Humanity is a trademark of Cards Against Humanity LLC.")]
 [assembly: AssemblyCulture("")]
@@ -35,7 +35,7 @@ using System.Resources;
 // [assembly: AssemblyVersion("1.0.*")]
 //[assembly: AssemblyVersion("1.3.0.0")]
 //[assembly: AssemblyFileVersion("1.3.0.0")]
-[assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyVersion("2.0.*")]
 [assembly: NeutralResourcesLanguage("en-GB")]
 [assembly: AssemblyFileVersion("2.0.0.0")]
 

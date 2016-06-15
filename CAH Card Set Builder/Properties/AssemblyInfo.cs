@@ -6,13 +6,13 @@ using System.Resources;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Card Set Builder")]
+[assembly: AssemblyTitle("Cards - Editor")]
 [assembly: AssemblyDescription("An Editor to allow you to make your own, socially unacceptable card sets.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Joe Pitt")]
-[assembly: AssemblyProduct("Cards Against Humanity")]
-[assembly: AssemblyCopyright("Cards Against Humanity is available under a Creative Commons BY-NC-SA 2.0 license. That means you can use and remix the game for free, but you can’t sell it.")]
-[assembly: AssemblyTrademark("Cards Against Humanity is a trademark of Cards Against Humanity LLC. Designed in-house.")]
+[assembly: AssemblyProduct("Cards")]
+[assembly: AssemblyCopyright("This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.")]
+[assembly: AssemblyTrademark("Cards Against Humanity is a trademark of Cards Against Humanity LLC.")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -35,5 +35,7 @@ using System.Resources;
 // [assembly: AssemblyVersion("1.0.*")]
 //[assembly: AssemblyVersion("1.2.1.2")]
 //[assembly: AssemblyFileVersion("1.2.1.2")]
-[assembly: AssemblyVersion("1.2.*")]
+[assembly: AssemblyVersion("2.0.*")]
 [assembly: NeutralResourcesLanguageAttribute("en-GB")]
+[assembly: AssemblyFileVersion("2.0.0.0")]
+

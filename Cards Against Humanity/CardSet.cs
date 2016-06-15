@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace Cards_Against_Humanity
+namespace JoePitt.Cards
 {
     [Serializable]
     public class CardSet

@@ -1,4 +1,4 @@
-﻿namespace Cards_Against_Humanity
+﻿namespace JoePitt.Cards
 {
     partial class frmDebug
     {
@@ -82,7 +82,7 @@
             // treDebug
             // 
             this.treDebug.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treDebug.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treDebug.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treDebug.Location = new System.Drawing.Point(0, 0);
             this.treDebug.Name = "treDebug";
             treeNode1.Name = "Playable";
@@ -135,20 +135,20 @@
             treeNode24.Text = "Game";
             this.treDebug.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode24});
-            this.treDebug.Size = new System.Drawing.Size(984, 561);
+            this.treDebug.Size = new System.Drawing.Size(984, 604);
             this.treDebug.TabIndex = 0;
             // 
             // frmDebug
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 561);
+            this.ClientSize = new System.Drawing.Size(984, 604);
             this.Controls.Add(this.treDebug);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmDebug";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Debug";
+            this.Text = "Debug - Cards";
             this.Load += new System.EventHandler(this.frmDebug_Load);
             this.ResumeLayout(false);
 

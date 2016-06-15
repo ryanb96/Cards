@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Cards_Against_Humanity
+namespace JoePitt.Cards
 {
     public partial class frmLicense : Form
     {
@@ -19,7 +19,7 @@ namespace Cards_Against_Humanity
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            Dispose();
         }
 
         private void frmLicense_Load(object sender, EventArgs e)

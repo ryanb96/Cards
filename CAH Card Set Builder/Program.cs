@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Card_Set_Builder
+namespace JoePitt.Cards.Editor
 {
     static class Program
     {
@@ -16,7 +13,7 @@ namespace Card_Set_Builder
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmCAHCSB());
+            Application.Run(new frmMain());
         }
     }
 }

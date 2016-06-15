@@ -1,4 +1,4 @@
-﻿namespace Cards_Against_Humanity
+﻿namespace JoePitt.Cards
 {
     partial class frmLeaderboard
     {
@@ -38,9 +38,9 @@
             // 
             this.lstPosition.FormattingEnabled = true;
             this.lstPosition.ItemHeight = 14;
-            this.lstPosition.Location = new System.Drawing.Point(12, 12);
+            this.lstPosition.Location = new System.Drawing.Point(14, 12);
             this.lstPosition.Name = "lstPosition";
-            this.lstPosition.Size = new System.Drawing.Size(27, 298);
+            this.lstPosition.Size = new System.Drawing.Size(31, 298);
             this.lstPosition.TabIndex = 0;
             this.lstPosition.SelectedIndexChanged += new System.EventHandler(this.lstPosition_SelectedIndexChanged);
             // 
@@ -48,9 +48,9 @@
             // 
             this.lstName.FormattingEnabled = true;
             this.lstName.ItemHeight = 14;
-            this.lstName.Location = new System.Drawing.Point(45, 12);
+            this.lstName.Location = new System.Drawing.Point(52, 12);
             this.lstName.Name = "lstName";
-            this.lstName.Size = new System.Drawing.Size(144, 298);
+            this.lstName.Size = new System.Drawing.Size(167, 298);
             this.lstName.TabIndex = 1;
             this.lstName.SelectedIndexChanged += new System.EventHandler(this.lstName_SelectedIndexChanged);
             // 
@@ -58,21 +58,21 @@
             // 
             this.lstPts.FormattingEnabled = true;
             this.lstPts.ItemHeight = 14;
-            this.lstPts.Location = new System.Drawing.Point(195, 12);
+            this.lstPts.Location = new System.Drawing.Point(227, 12);
             this.lstPts.Name = "lstPts";
-            this.lstPts.Size = new System.Drawing.Size(27, 298);
+            this.lstPts.Size = new System.Drawing.Size(31, 298);
             this.lstPts.TabIndex = 2;
             this.lstPts.SelectedIndexChanged += new System.EventHandler(this.lstPts_SelectedIndexChanged);
             // 
             // frmLeaderboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(234, 316);
+            this.ClientSize = new System.Drawing.Size(273, 316);
             this.Controls.Add(this.lstPts);
             this.Controls.Add(this.lstName);
             this.Controls.Add(this.lstPosition);
-            this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmLeaderboard";

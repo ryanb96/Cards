@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
-namespace Cards_Against_Humanity
+namespace JoePitt.Cards
 {
     public partial class frmGameplay : Form
     {
@@ -41,7 +41,7 @@ namespace Cards_Against_Humanity
 
         private void frmGameplay_Load(object sender, EventArgs e)
         {
-            Text = Program.CurrentPlayer.Owner.Name + " - Cards Against Humanity";
+            Text = Program.CurrentPlayer.Owner.Name + " - Cards";
             Program.CurrentPlayer.NextCommand = "GAMEUPDATE";
             Program.CurrentPlayer.NewCommand = true;
             while (!Program.CurrentPlayer.NewResponse)

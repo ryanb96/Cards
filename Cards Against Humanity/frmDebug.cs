@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
-namespace Cards_Against_Humanity
+namespace JoePitt.Cards
 {
     public partial class frmDebug : Form
     {

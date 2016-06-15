@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Sockets;
 
-namespace Cards_Against_Humanity
+namespace JoePitt.Cards
 {
     [Serializable]
     /// <summary>

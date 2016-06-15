@@ -11,7 +11,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Linq;
 
-namespace Cards_Against_Humanity
+namespace JoePitt.Cards
 {
     /// <summary>
     /// Provides Server Networking for a new game.

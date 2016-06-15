@@ -3,7 +3,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
 
-namespace Cards_Against_Humanity
+namespace JoePitt.Cards
 {
     [Serializable]
     public class Answer

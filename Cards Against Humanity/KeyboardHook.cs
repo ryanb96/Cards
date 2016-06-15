@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Cards_Against_Humanity
+namespace JoePitt.Cards
 {
     public sealed class KeyboardHook : IDisposable
     {
@@ -27,7 +27,7 @@ namespace Cards_Against_Humanity
             public Window()
             {
                 // create the handle for the window.
-                this.CreateHandle(new CreateParams());
+                CreateHandle(new CreateParams());
             }
 
             /// <summary>

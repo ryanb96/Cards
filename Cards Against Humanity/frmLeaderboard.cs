@@ -8,14 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Cards_Against_Humanity
+namespace JoePitt.Cards
 {
     public partial class frmLeaderboard : Form
     {
         public frmLeaderboard()
         {
             InitializeComponent();
-            this.FormClosing += FrmLeaderboard_FormClosing;
+            FormClosing += FrmLeaderboard_FormClosing;
         }
 
         private void FrmLeaderboard_FormClosing(object sender, FormClosingEventArgs e)

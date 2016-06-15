@@ -8,7 +8,7 @@ using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
-namespace Cards_Against_Humanity
+namespace JoePitt.Cards
 {
     /// <summary>
     /// Provies Client Networking to join and play a game over a network.

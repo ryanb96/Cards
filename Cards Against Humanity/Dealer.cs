@@ -12,7 +12,7 @@ using System.Security.Principal;
 using System.Management;
 using System.Linq;
 
-namespace Cards_Against_Humanity
+namespace JoePitt.Cards
 {
     /// <summary>
     /// Carries out Card Set Management and Dealer Functions.

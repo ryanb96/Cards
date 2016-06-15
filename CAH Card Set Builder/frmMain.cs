@@ -6,13 +6,20 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace Card_Set_Builder
+namespace JoePitt.Cards.Editor
 {
-    public partial class frmCAHCSB : Form
+    public partial class frmMain : Form
     {
-        public frmCAHCSB()
+        public frmMain()
         {
             InitializeComponent();
+            FormClosing += FrmMain_FormClosing;
+        }
+
+        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Are you sure?", "Quit Cards - Editor?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            { e.Cancel = true; }
         }
 
         private void btnNewGUID_Click(object sender, EventArgs e)
@@ -24,7 +31,7 @@ namespace Card_Set_Builder
             }
         }
 
-        private void frmCAHCSB_Load(object sender, EventArgs e)
+        private void frmMain_Load(object sender, EventArgs e)
         {
             Guid newGUID = Guid.NewGuid();
             txtGUID.Text = newGUID.ToString();
@@ -95,8 +102,8 @@ namespace Card_Set_Builder
                         }
                     }
 
-                    System.Security.Cryptography.SHA256CryptoServiceProvider hasher = new System.Security.Cryptography.SHA256CryptoServiceProvider();
-                    byte[] toHash = ASCIIEncoding.Default.GetBytes(xmlBlackCards.InnerXml + xmlWhiteCards.InnerXml);
+                    SHA256CryptoServiceProvider hasher = new SHA256CryptoServiceProvider();
+                    byte[] toHash = Encoding.Default.GetBytes(xmlBlackCards.InnerXml + xmlWhiteCards.InnerXml);
                     byte[] hash = hasher.ComputeHash(toHash);
                     xmlCardSet.SetAttribute("Hash", Convert.ToBase64String(hash));
 
@@ -164,8 +171,7 @@ namespace Card_Set_Builder
 
         private void btnQuit_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure?", "Quit CAH Card Set Builder?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
-            { Application.Exit(); }
+            Close();
         }
     }
 }

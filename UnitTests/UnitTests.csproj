@@ -68,13 +68,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CAH Card Set Builder\Card Set Builder.csproj">
+    <ProjectReference Include="..\CAH Card Set Builder\Cards - Editor.csproj">
       <Project>{80a0fa47-7c8c-4064-b9b2-47e768013f3d}</Project>
-      <Name>Card Set Builder</Name>
+      <Name>Cards - Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Cards Against Humanity\Cards Against Humanity.csproj">
+    <ProjectReference Include="..\Cards Against Humanity\Cards.csproj">
       <Project>{d6726993-ae36-4f8d-92a0-1a041b2e5420}</Project>
-      <Name>Cards Against Humanity</Name>
+      <Name>Cards</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

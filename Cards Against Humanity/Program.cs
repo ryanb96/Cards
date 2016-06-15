@@ -3,7 +3,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Windows.Forms;
 
-namespace Cards_Against_Humanity
+namespace JoePitt.Cards
 {
     static class Program
     {

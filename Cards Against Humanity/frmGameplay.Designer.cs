@@ -1,4 +1,4 @@
-﻿namespace Cards_Against_Humanity
+﻿namespace JoePitt.Cards
 {
     partial class frmGameplay
     {
@@ -58,21 +58,22 @@
             this.txtBlackCard.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtBlackCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBlackCard.ForeColor = System.Drawing.Color.White;
-            this.txtBlackCard.Location = new System.Drawing.Point(14, 12);
+            this.txtBlackCard.Location = new System.Drawing.Point(14, 13);
             this.txtBlackCard.Multiline = true;
             this.txtBlackCard.Name = "txtBlackCard";
             this.txtBlackCard.ReadOnly = true;
-            this.txtBlackCard.Size = new System.Drawing.Size(280, 336);
+            this.txtBlackCard.Size = new System.Drawing.Size(280, 362);
             this.txtBlackCard.TabIndex = 0;
+            this.txtBlackCard.Text = "How did I lose my virginity?";
             this.txtBlackCard.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // picBlackCard
             // 
             this.picBlackCard.BackColor = System.Drawing.Color.Black;
-            this.picBlackCard.Image = global::Cards_Against_Humanity.Properties.Resources.Stamp_White;
-            this.picBlackCard.Location = new System.Drawing.Point(15, 297);
+            this.picBlackCard.Image = ((System.Drawing.Image)(resources.GetObject("picBlackCard.Image")));
+            this.picBlackCard.Location = new System.Drawing.Point(15, 320);
             this.picBlackCard.Name = "picBlackCard";
-            this.picBlackCard.Size = new System.Drawing.Size(278, 50);
+            this.picBlackCard.Size = new System.Drawing.Size(278, 54);
             this.picBlackCard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picBlackCard.TabIndex = 4;
             this.picBlackCard.TabStop = false;
@@ -81,9 +82,9 @@
             // 
             this.picWhiteCard.BackColor = System.Drawing.Color.White;
             this.picWhiteCard.Image = ((System.Drawing.Image)(resources.GetObject("picWhiteCard.Image")));
-            this.picWhiteCard.Location = new System.Drawing.Point(322, 297);
+            this.picWhiteCard.Location = new System.Drawing.Point(322, 320);
             this.picWhiteCard.Name = "picWhiteCard";
-            this.picWhiteCard.Size = new System.Drawing.Size(278, 50);
+            this.picWhiteCard.Size = new System.Drawing.Size(278, 54);
             this.picWhiteCard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picWhiteCard.TabIndex = 9;
             this.picWhiteCard.TabStop = false;
@@ -96,12 +97,13 @@
             this.txtWhiteCard.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtWhiteCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtWhiteCard.ForeColor = System.Drawing.Color.Black;
-            this.txtWhiteCard.Location = new System.Drawing.Point(321, 12);
+            this.txtWhiteCard.Location = new System.Drawing.Point(321, 13);
             this.txtWhiteCard.Multiline = true;
             this.txtWhiteCard.Name = "txtWhiteCard";
             this.txtWhiteCard.ReadOnly = true;
-            this.txtWhiteCard.Size = new System.Drawing.Size(280, 336);
+            this.txtWhiteCard.Size = new System.Drawing.Size(280, 362);
             this.txtWhiteCard.TabIndex = 2;
+            this.txtWhiteCard.Text = "Dogging";
             this.txtWhiteCard.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // cmbWhiteCard
@@ -109,9 +111,9 @@
             this.cmbWhiteCard.AccessibleName = "Select White Card";
             this.cmbWhiteCard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbWhiteCard.FormattingEnabled = true;
-            this.cmbWhiteCard.Location = new System.Drawing.Point(322, 12);
+            this.cmbWhiteCard.Location = new System.Drawing.Point(322, 13);
             this.cmbWhiteCard.Name = "cmbWhiteCard";
-            this.cmbWhiteCard.Size = new System.Drawing.Size(298, 21);
+            this.cmbWhiteCard.Size = new System.Drawing.Size(298, 22);
             this.cmbWhiteCard.TabIndex = 1;
             this.cmbWhiteCard.SelectedIndexChanged += new System.EventHandler(this.cmbWhiteCard_SelectedIndexChanged);
             // 
@@ -119,9 +121,9 @@
             // 
             this.picWhiteCard2.BackColor = System.Drawing.Color.White;
             this.picWhiteCard2.Image = ((System.Drawing.Image)(resources.GetObject("picWhiteCard2.Image")));
-            this.picWhiteCard2.Location = new System.Drawing.Point(629, 297);
+            this.picWhiteCard2.Location = new System.Drawing.Point(629, 320);
             this.picWhiteCard2.Name = "picWhiteCard2";
-            this.picWhiteCard2.Size = new System.Drawing.Size(278, 50);
+            this.picWhiteCard2.Size = new System.Drawing.Size(278, 54);
             this.picWhiteCard2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picWhiteCard2.TabIndex = 12;
             this.picWhiteCard2.TabStop = false;
@@ -134,12 +136,13 @@
             this.txtWhiteCard2.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtWhiteCard2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtWhiteCard2.ForeColor = System.Drawing.Color.Black;
-            this.txtWhiteCard2.Location = new System.Drawing.Point(628, 12);
+            this.txtWhiteCard2.Location = new System.Drawing.Point(628, 13);
             this.txtWhiteCard2.Multiline = true;
             this.txtWhiteCard2.Name = "txtWhiteCard2";
             this.txtWhiteCard2.ReadOnly = true;
-            this.txtWhiteCard2.Size = new System.Drawing.Size(280, 336);
+            this.txtWhiteCard2.Size = new System.Drawing.Size(280, 362);
             this.txtWhiteCard2.TabIndex = 4;
+            this.txtWhiteCard2.Text = "African Children";
             this.txtWhiteCard2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // cmbWhiteCard2
@@ -148,7 +151,7 @@
             this.cmbWhiteCard2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbWhiteCard2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbWhiteCard2.FormattingEnabled = true;
-            this.cmbWhiteCard2.Location = new System.Drawing.Point(629, 12);
+            this.cmbWhiteCard2.Location = new System.Drawing.Point(629, 13);
             this.cmbWhiteCard2.Name = "cmbWhiteCard2";
             this.cmbWhiteCard2.Size = new System.Drawing.Size(298, 21);
             this.cmbWhiteCard2.TabIndex = 3;
@@ -157,9 +160,9 @@
             // btnLeaderboard
             // 
             this.btnLeaderboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLeaderboard.Location = new System.Drawing.Point(955, 12);
+            this.btnLeaderboard.Location = new System.Drawing.Point(955, 13);
             this.btnLeaderboard.Name = "btnLeaderboard";
-            this.btnLeaderboard.Size = new System.Drawing.Size(178, 23);
+            this.btnLeaderboard.Size = new System.Drawing.Size(178, 25);
             this.btnLeaderboard.TabIndex = 6;
             this.btnLeaderboard.Text = "Show/Hide &Leaderboard";
             this.btnLeaderboard.UseVisualStyleBackColor = true;
@@ -167,19 +170,19 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Cards_Against_Humanity.Properties.Resources.PlaceholderCard;
-            this.pictureBox1.Location = new System.Drawing.Point(628, 12);
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(628, 13);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(280, 337);
+            this.pictureBox1.Size = new System.Drawing.Size(280, 363);
             this.pictureBox1.TabIndex = 15;
             this.pictureBox1.TabStop = false;
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.Location = new System.Drawing.Point(955, 297);
+            this.btnSubmit.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmit.Location = new System.Drawing.Point(955, 320);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(178, 52);
+            this.btnSubmit.Size = new System.Drawing.Size(178, 56);
             this.btnSubmit.TabIndex = 5;
             this.btnSubmit.Text = "&Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
@@ -188,9 +191,9 @@
             // btnRules
             // 
             this.btnRules.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRules.Location = new System.Drawing.Point(955, 41);
+            this.btnRules.Location = new System.Drawing.Point(955, 44);
             this.btnRules.Name = "btnRules";
-            this.btnRules.Size = new System.Drawing.Size(178, 23);
+            this.btnRules.Size = new System.Drawing.Size(178, 25);
             this.btnRules.TabIndex = 7;
             this.btnRules.Text = "Show &Rules";
             this.btnRules.UseVisualStyleBackColor = true;
@@ -199,9 +202,9 @@
             // btnLicense
             // 
             this.btnLicense.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLicense.Location = new System.Drawing.Point(955, 70);
+            this.btnLicense.Location = new System.Drawing.Point(955, 75);
             this.btnLicense.Name = "btnLicense";
-            this.btnLicense.Size = new System.Drawing.Size(178, 23);
+            this.btnLicense.Size = new System.Drawing.Size(178, 25);
             this.btnLicense.TabIndex = 8;
             this.btnLicense.Text = "Show Li&cense";
             this.btnLicense.UseVisualStyleBackColor = true;
@@ -210,17 +213,17 @@
             // lblRound
             // 
             this.lblRound.AutoSize = true;
-            this.lblRound.Location = new System.Drawing.Point(952, 96);
+            this.lblRound.Location = new System.Drawing.Point(952, 103);
             this.lblRound.Name = "lblRound";
-            this.lblRound.Size = new System.Drawing.Size(44, 13);
+            this.lblRound.Size = new System.Drawing.Size(42, 14);
             this.lblRound.TabIndex = 9;
             this.lblRound.Text = "Round";
             // 
             // txtRound
             // 
             this.txtRound.AccessibleName = "Round";
-            this.txtRound.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRound.Location = new System.Drawing.Point(955, 112);
+            this.txtRound.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRound.Location = new System.Drawing.Point(955, 121);
             this.txtRound.Name = "txtRound";
             this.txtRound.ReadOnly = true;
             this.txtRound.Size = new System.Drawing.Size(178, 29);
@@ -231,9 +234,9 @@
             // frmGameplay
             // 
             this.AcceptButton = this.btnSubmit;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1148, 361);
+            this.ClientSize = new System.Drawing.Size(1148, 389);
             this.Controls.Add(this.txtRound);
             this.Controls.Add(this.lblRound);
             this.Controls.Add(this.btnLicense);
@@ -249,13 +252,13 @@
             this.Controls.Add(this.picBlackCard);
             this.Controls.Add(this.txtBlackCard);
             this.Controls.Add(this.pictureBox1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmGameplay";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cards Against Humanity";
+            this.Text = "Cards";
             this.Load += new System.EventHandler(this.frmGameplay_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBlackCard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picWhiteCard)).EndInit();

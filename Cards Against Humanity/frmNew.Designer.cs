@@ -1,4 +1,4 @@
-﻿namespace Cards_Against_Humanity
+﻿namespace JoePitt.Cards
 {
     partial class frmNew
     {
@@ -100,11 +100,11 @@
             this.tabsType.Controls.Add(this.tabHost);
             this.tabsType.Controls.Add(this.tabJoin);
             this.tabsType.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tabsType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabsType.Location = new System.Drawing.Point(0, 296);
+            this.tabsType.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabsType.Location = new System.Drawing.Point(0, 319);
             this.tabsType.Name = "tabsType";
             this.tabsType.SelectedIndex = 0;
-            this.tabsType.Size = new System.Drawing.Size(331, 465);
+            this.tabsType.Size = new System.Drawing.Size(331, 501);
             this.tabsType.TabIndex = 0;
             // 
             // tabLocal
@@ -125,10 +125,10 @@
             this.tabLocal.Controls.Add(this.chkCardSetsLocal);
             this.tabLocal.Controls.Add(this.lblCardSetsLocal);
             this.tabLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabLocal.Location = new System.Drawing.Point(4, 22);
+            this.tabLocal.Location = new System.Drawing.Point(4, 23);
             this.tabLocal.Name = "tabLocal";
             this.tabLocal.Padding = new System.Windows.Forms.Padding(3);
-            this.tabLocal.Size = new System.Drawing.Size(323, 439);
+            this.tabLocal.Size = new System.Drawing.Size(323, 474);
             this.tabLocal.TabIndex = 0;
             this.tabLocal.Text = "Local";
             this.tabLocal.UseVisualStyleBackColor = true;
@@ -136,9 +136,9 @@
             // btnStartLocal
             // 
             this.btnStartLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStartLocal.Location = new System.Drawing.Point(9, 404);
+            this.btnStartLocal.Location = new System.Drawing.Point(9, 435);
             this.btnStartLocal.Name = "btnStartLocal";
-            this.btnStartLocal.Size = new System.Drawing.Size(303, 23);
+            this.btnStartLocal.Size = new System.Drawing.Size(303, 25);
             this.btnStartLocal.TabIndex = 14;
             this.btnStartLocal.Text = "Start Local Game";
             this.btnStartLocal.UseVisualStyleBackColor = true;
@@ -148,7 +148,7 @@
             // 
             this.lblBotsHintLocal.AutoSize = true;
             this.lblBotsHintLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBotsHintLocal.Location = new System.Drawing.Point(9, 369);
+            this.lblBotsHintLocal.Location = new System.Drawing.Point(9, 397);
             this.lblBotsHintLocal.Name = "lblBotsHintLocal";
             this.lblBotsHintLocal.Size = new System.Drawing.Size(170, 13);
             this.lblBotsHintLocal.TabIndex = 13;
@@ -157,9 +157,9 @@
             // btnRemovePlayerLocal
             // 
             this.btnRemovePlayerLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemovePlayerLocal.Location = new System.Drawing.Point(250, 344);
+            this.btnRemovePlayerLocal.Location = new System.Drawing.Point(250, 370);
             this.btnRemovePlayerLocal.Name = "btnRemovePlayerLocal";
-            this.btnRemovePlayerLocal.Size = new System.Drawing.Size(63, 23);
+            this.btnRemovePlayerLocal.Size = new System.Drawing.Size(63, 25);
             this.btnRemovePlayerLocal.TabIndex = 12;
             this.btnRemovePlayerLocal.Text = "Remove";
             this.btnRemovePlayerLocal.UseVisualStyleBackColor = true;
@@ -168,9 +168,9 @@
             // btnAddPlayerLocal
             // 
             this.btnAddPlayerLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddPlayerLocal.Location = new System.Drawing.Point(180, 344);
+            this.btnAddPlayerLocal.Location = new System.Drawing.Point(180, 370);
             this.btnAddPlayerLocal.Name = "btnAddPlayerLocal";
-            this.btnAddPlayerLocal.Size = new System.Drawing.Size(63, 23);
+            this.btnAddPlayerLocal.Size = new System.Drawing.Size(63, 25);
             this.btnAddPlayerLocal.TabIndex = 11;
             this.btnAddPlayerLocal.Text = "Add";
             this.btnAddPlayerLocal.UseVisualStyleBackColor = true;
@@ -181,7 +181,7 @@
             this.txtAddPlayerLocal.AccessibleDescription = "Prefix with [Bot] to add a bot.";
             this.txtAddPlayerLocal.AccessibleName = "Player Name";
             this.txtAddPlayerLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddPlayerLocal.Location = new System.Drawing.Point(9, 346);
+            this.txtAddPlayerLocal.Location = new System.Drawing.Point(9, 373);
             this.txtAddPlayerLocal.Name = "txtAddPlayerLocal";
             this.txtAddPlayerLocal.Size = new System.Drawing.Size(163, 20);
             this.txtAddPlayerLocal.TabIndex = 10;
@@ -190,7 +190,7 @@
             // 
             this.lstPlayersLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstPlayersLocal.FormattingEnabled = true;
-            this.lstPlayersLocal.Location = new System.Drawing.Point(9, 243);
+            this.lstPlayersLocal.Location = new System.Drawing.Point(9, 262);
             this.lstPlayersLocal.Name = "lstPlayersLocal";
             this.lstPlayersLocal.Size = new System.Drawing.Size(303, 95);
             this.lstPlayersLocal.TabIndex = 9;
@@ -199,7 +199,7 @@
             // 
             this.lblPlayersLocal.AutoSize = true;
             this.lblPlayersLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlayersLocal.Location = new System.Drawing.Point(9, 227);
+            this.lblPlayersLocal.Location = new System.Drawing.Point(9, 244);
             this.lblPlayersLocal.Name = "lblPlayersLocal";
             this.lblPlayersLocal.Size = new System.Drawing.Size(48, 13);
             this.lblPlayersLocal.TabIndex = 8;
@@ -209,7 +209,7 @@
             // 
             this.chkRebootingTheUniverseLocal.AutoSize = true;
             this.chkRebootingTheUniverseLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkRebootingTheUniverseLocal.Location = new System.Drawing.Point(9, 203);
+            this.chkRebootingTheUniverseLocal.Location = new System.Drawing.Point(9, 219);
             this.chkRebootingTheUniverseLocal.Name = "chkRebootingTheUniverseLocal";
             this.chkRebootingTheUniverseLocal.Size = new System.Drawing.Size(215, 17);
             this.chkRebootingTheUniverseLocal.TabIndex = 7;
@@ -220,7 +220,7 @@
             // 
             this.chkNeverHaveILocal.AutoSize = true;
             this.chkNeverHaveILocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkNeverHaveILocal.Location = new System.Drawing.Point(9, 180);
+            this.chkNeverHaveILocal.Location = new System.Drawing.Point(9, 194);
             this.chkNeverHaveILocal.Name = "chkNeverHaveILocal";
             this.chkNeverHaveILocal.Size = new System.Drawing.Size(155, 17);
             this.chkNeverHaveILocal.TabIndex = 6;
@@ -230,7 +230,7 @@
             // numCardsLocal
             // 
             this.numCardsLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numCardsLocal.Location = new System.Drawing.Point(173, 145);
+            this.numCardsLocal.Location = new System.Drawing.Point(173, 156);
             this.numCardsLocal.Maximum = new decimal(new int[] {
             20,
             0,
@@ -254,7 +254,7 @@
             // 
             this.lblCardsLocal.AutoSize = true;
             this.lblCardsLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCardsLocal.Location = new System.Drawing.Point(9, 147);
+            this.lblCardsLocal.Location = new System.Drawing.Point(9, 158);
             this.lblCardsLocal.Name = "lblCardsLocal";
             this.lblCardsLocal.Size = new System.Drawing.Size(101, 13);
             this.lblCardsLocal.TabIndex = 4;
@@ -263,7 +263,7 @@
             // numRoundsLocal
             // 
             this.numRoundsLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numRoundsLocal.Location = new System.Drawing.Point(173, 119);
+            this.numRoundsLocal.Location = new System.Drawing.Point(173, 128);
             this.numRoundsLocal.Minimum = new decimal(new int[] {
             1,
             0,
@@ -282,7 +282,7 @@
             // 
             this.lblRoundsLocal.AutoSize = true;
             this.lblRoundsLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRoundsLocal.Location = new System.Drawing.Point(9, 121);
+            this.lblRoundsLocal.Location = new System.Drawing.Point(9, 130);
             this.lblRoundsLocal.Name = "lblRoundsLocal";
             this.lblRoundsLocal.Size = new System.Drawing.Size(50, 13);
             this.lblRoundsLocal.TabIndex = 2;
@@ -293,7 +293,7 @@
             this.chkCardSetsLocal.AccessibleName = "Card Sets";
             this.chkCardSetsLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkCardSetsLocal.FormattingEnabled = true;
-            this.chkCardSetsLocal.Location = new System.Drawing.Point(9, 19);
+            this.chkCardSetsLocal.Location = new System.Drawing.Point(9, 20);
             this.chkCardSetsLocal.Name = "chkCardSetsLocal";
             this.chkCardSetsLocal.Size = new System.Drawing.Size(303, 94);
             this.chkCardSetsLocal.TabIndex = 1;
@@ -321,10 +321,10 @@
             this.tabHost.Controls.Add(this.lblCardSetsHost);
             this.tabHost.Controls.Add(this.grpPlayersHost);
             this.tabHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabHost.Location = new System.Drawing.Point(4, 22);
+            this.tabHost.Location = new System.Drawing.Point(4, 23);
             this.tabHost.Name = "tabHost";
             this.tabHost.Padding = new System.Windows.Forms.Padding(3);
-            this.tabHost.Size = new System.Drawing.Size(323, 439);
+            this.tabHost.Size = new System.Drawing.Size(323, 474);
             this.tabHost.TabIndex = 1;
             this.tabHost.Text = "Host";
             this.tabHost.UseVisualStyleBackColor = true;
@@ -332,9 +332,9 @@
             // btnStartHost
             // 
             this.btnStartHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStartHost.Location = new System.Drawing.Point(9, 404);
+            this.btnStartHost.Location = new System.Drawing.Point(9, 435);
             this.btnStartHost.Name = "btnStartHost";
-            this.btnStartHost.Size = new System.Drawing.Size(303, 23);
+            this.btnStartHost.Size = new System.Drawing.Size(303, 25);
             this.btnStartHost.TabIndex = 9;
             this.btnStartHost.Text = "Start Hosting Game";
             this.btnStartHost.UseVisualStyleBackColor = true;
@@ -344,7 +344,7 @@
             // 
             this.chkRebootingTheUniverseHost.AutoSize = true;
             this.chkRebootingTheUniverseHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkRebootingTheUniverseHost.Location = new System.Drawing.Point(9, 203);
+            this.chkRebootingTheUniverseHost.Location = new System.Drawing.Point(9, 219);
             this.chkRebootingTheUniverseHost.Name = "chkRebootingTheUniverseHost";
             this.chkRebootingTheUniverseHost.Size = new System.Drawing.Size(215, 17);
             this.chkRebootingTheUniverseHost.TabIndex = 7;
@@ -355,7 +355,7 @@
             // 
             this.chkNeverHaveIHost.AutoSize = true;
             this.chkNeverHaveIHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkNeverHaveIHost.Location = new System.Drawing.Point(9, 180);
+            this.chkNeverHaveIHost.Location = new System.Drawing.Point(9, 194);
             this.chkNeverHaveIHost.Name = "chkNeverHaveIHost";
             this.chkNeverHaveIHost.Size = new System.Drawing.Size(155, 17);
             this.chkNeverHaveIHost.TabIndex = 6;
@@ -365,7 +365,7 @@
             // numCardsHost
             // 
             this.numCardsHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numCardsHost.Location = new System.Drawing.Point(173, 145);
+            this.numCardsHost.Location = new System.Drawing.Point(173, 156);
             this.numCardsHost.Maximum = new decimal(new int[] {
             20,
             0,
@@ -389,7 +389,7 @@
             // 
             this.lblCardsHost.AutoSize = true;
             this.lblCardsHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCardsHost.Location = new System.Drawing.Point(9, 147);
+            this.lblCardsHost.Location = new System.Drawing.Point(9, 158);
             this.lblCardsHost.Name = "lblCardsHost";
             this.lblCardsHost.Size = new System.Drawing.Size(101, 13);
             this.lblCardsHost.TabIndex = 4;
@@ -398,7 +398,7 @@
             // numRoundsHost
             // 
             this.numRoundsHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numRoundsHost.Location = new System.Drawing.Point(173, 119);
+            this.numRoundsHost.Location = new System.Drawing.Point(173, 128);
             this.numRoundsHost.Minimum = new decimal(new int[] {
             1,
             0,
@@ -417,7 +417,7 @@
             // 
             this.lblRoundsHost.AutoSize = true;
             this.lblRoundsHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRoundsHost.Location = new System.Drawing.Point(9, 121);
+            this.lblRoundsHost.Location = new System.Drawing.Point(9, 130);
             this.lblRoundsHost.Name = "lblRoundsHost";
             this.lblRoundsHost.Size = new System.Drawing.Size(50, 13);
             this.lblRoundsHost.TabIndex = 2;
@@ -428,7 +428,7 @@
             this.chkCardSetsHost.AccessibleName = "Card Sets";
             this.chkCardSetsHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkCardSetsHost.FormattingEnabled = true;
-            this.chkCardSetsHost.Location = new System.Drawing.Point(9, 19);
+            this.chkCardSetsHost.Location = new System.Drawing.Point(9, 20);
             this.chkCardSetsHost.Name = "chkCardSetsHost";
             this.chkCardSetsHost.Size = new System.Drawing.Size(303, 94);
             this.chkCardSetsHost.TabIndex = 1;
@@ -452,9 +452,9 @@
             this.grpPlayersHost.Controls.Add(this.txtPlayerNameHost);
             this.grpPlayersHost.Controls.Add(this.numPlayersHost);
             this.grpPlayersHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpPlayersHost.Location = new System.Drawing.Point(9, 226);
+            this.grpPlayersHost.Location = new System.Drawing.Point(9, 243);
             this.grpPlayersHost.Name = "grpPlayersHost";
-            this.grpPlayersHost.Size = new System.Drawing.Size(303, 172);
+            this.grpPlayersHost.Size = new System.Drawing.Size(303, 185);
             this.grpPlayersHost.TabIndex = 8;
             this.grpPlayersHost.TabStop = false;
             this.grpPlayersHost.Text = "Players";
@@ -463,7 +463,7 @@
             // 
             this.lblBotsHost.AutoSize = true;
             this.lblBotsHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBotsHost.Location = new System.Drawing.Point(7, 73);
+            this.lblBotsHost.Location = new System.Drawing.Point(7, 79);
             this.lblBotsHost.Name = "lblBotsHost";
             this.lblBotsHost.Size = new System.Drawing.Size(32, 13);
             this.lblBotsHost.TabIndex = 4;
@@ -472,7 +472,7 @@
             // numBotsHost
             // 
             this.numBotsHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numBotsHost.Location = new System.Drawing.Point(133, 71);
+            this.numBotsHost.Location = new System.Drawing.Point(133, 76);
             this.numBotsHost.Name = "numBotsHost";
             this.numBotsHost.Size = new System.Drawing.Size(163, 20);
             this.numBotsHost.TabIndex = 5;
@@ -481,7 +481,7 @@
             // 
             this.lblPlayerCountHost.AutoSize = true;
             this.lblPlayerCountHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlayerCountHost.Location = new System.Drawing.Point(7, 47);
+            this.lblPlayerCountHost.Location = new System.Drawing.Point(7, 51);
             this.lblPlayerCountHost.Name = "lblPlayerCountHost";
             this.lblPlayerCountHost.Size = new System.Drawing.Size(48, 13);
             this.lblPlayerCountHost.TabIndex = 2;
@@ -491,7 +491,7 @@
             // 
             this.lblYourNameHost.AutoSize = true;
             this.lblYourNameHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblYourNameHost.Location = new System.Drawing.Point(7, 22);
+            this.lblYourNameHost.Location = new System.Drawing.Point(7, 24);
             this.lblYourNameHost.Name = "lblYourNameHost";
             this.lblYourNameHost.Size = new System.Drawing.Size(69, 13);
             this.lblYourNameHost.TabIndex = 0;
@@ -502,7 +502,7 @@
             this.txtPlayerNameHost.AccessibleDescription = "";
             this.txtPlayerNameHost.AccessibleName = "Player Name";
             this.txtPlayerNameHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPlayerNameHost.Location = new System.Drawing.Point(133, 19);
+            this.txtPlayerNameHost.Location = new System.Drawing.Point(133, 20);
             this.txtPlayerNameHost.Name = "txtPlayerNameHost";
             this.txtPlayerNameHost.Size = new System.Drawing.Size(163, 20);
             this.txtPlayerNameHost.TabIndex = 1;
@@ -510,7 +510,7 @@
             // numPlayersHost
             // 
             this.numPlayersHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numPlayersHost.Location = new System.Drawing.Point(133, 45);
+            this.numPlayersHost.Location = new System.Drawing.Point(133, 48);
             this.numPlayersHost.Minimum = new decimal(new int[] {
             1,
             0,
@@ -537,7 +537,7 @@
             this.tabJoin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabJoin.Location = new System.Drawing.Point(4, 22);
             this.tabJoin.Name = "tabJoin";
-            this.tabJoin.Size = new System.Drawing.Size(323, 439);
+            this.tabJoin.Size = new System.Drawing.Size(323, 475);
             this.tabJoin.TabIndex = 2;
             this.tabJoin.Text = "Join";
             this.tabJoin.UseVisualStyleBackColor = true;
@@ -545,9 +545,9 @@
             // btnStartJoin
             // 
             this.btnStartJoin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStartJoin.Location = new System.Drawing.Point(9, 404);
+            this.btnStartJoin.Location = new System.Drawing.Point(9, 435);
             this.btnStartJoin.Name = "btnStartJoin";
-            this.btnStartJoin.Size = new System.Drawing.Size(303, 23);
+            this.btnStartJoin.Size = new System.Drawing.Size(303, 25);
             this.btnStartJoin.TabIndex = 31;
             this.btnStartJoin.Text = "Join Game";
             this.btnStartJoin.UseVisualStyleBackColor = true;
@@ -557,7 +557,7 @@
             // 
             this.numPortJoin.AccessibleName = "Game Port";
             this.numPortJoin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numPortJoin.Location = new System.Drawing.Point(149, 55);
+            this.numPortJoin.Location = new System.Drawing.Point(149, 59);
             this.numPortJoin.Maximum = new decimal(new int[] {
             60077,
             0,
@@ -581,7 +581,7 @@
             // 
             this.lblPortJoin.AutoSize = true;
             this.lblPortJoin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPortJoin.Location = new System.Drawing.Point(9, 57);
+            this.lblPortJoin.Location = new System.Drawing.Point(9, 61);
             this.lblPortJoin.Name = "lblPortJoin";
             this.lblPortJoin.Size = new System.Drawing.Size(30, 13);
             this.lblPortJoin.TabIndex = 29;
@@ -592,7 +592,7 @@
             this.txtIPJoin.AccessibleDescription = "";
             this.txtIPJoin.AccessibleName = "Game IP Address";
             this.txtIPJoin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIPJoin.Location = new System.Drawing.Point(149, 29);
+            this.txtIPJoin.Location = new System.Drawing.Point(149, 31);
             this.txtIPJoin.Name = "txtIPJoin";
             this.txtIPJoin.Size = new System.Drawing.Size(163, 20);
             this.txtIPJoin.TabIndex = 28;
@@ -601,7 +601,7 @@
             // 
             this.lblIPJoin.AutoSize = true;
             this.lblIPJoin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIPJoin.Location = new System.Drawing.Point(9, 32);
+            this.lblIPJoin.Location = new System.Drawing.Point(9, 34);
             this.lblIPJoin.Name = "lblIPJoin";
             this.lblIPJoin.Size = new System.Drawing.Size(114, 13);
             this.lblIPJoin.TabIndex = 27;
@@ -632,22 +632,22 @@
             this.picLogo.AccessibleDescription = "Right Click for Rules and License";
             this.picLogo.AccessibleName = "Cards Against Humanity Logo";
             this.picLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.picLogo.Image = global::Cards_Against_Humanity.Properties.Resources.Logo_v2;
+            this.picLogo.Image = global::JoePitt.Cards.Properties.Resources.Logo;
             this.picLogo.Location = new System.Drawing.Point(0, 0);
             this.picLogo.Name = "picLogo";
-            this.picLogo.Size = new System.Drawing.Size(331, 250);
+            this.picLogo.Size = new System.Drawing.Size(331, 269);
             this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picLogo.TabIndex = 1;
             this.picLogo.TabStop = false;
             // 
             // lblTitle
             // 
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(0, 253);
+            this.lblTitle.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(0, 272);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(331, 40);
+            this.lblTitle.Size = new System.Drawing.Size(331, 43);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Cards Against Humanity";
+            this.lblTitle.Text = "Cards";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // mnuLogo
@@ -680,20 +680,20 @@
             // frmNew
             // 
             this.AcceptButton = this.btnStartLocal;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(331, 761);
+            this.ClientSize = new System.Drawing.Size(331, 820);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.picLogo);
             this.Controls.Add(this.tabsType);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmNew";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "New Game";
+            this.Text = "New Game - Cards";
             this.Load += new System.EventHandler(this.frmNew_Load);
             this.tabsType.ResumeLayout(false);
             this.tabLocal.ResumeLayout(false);

@@ -7,8 +7,8 @@
     <ProjectGuid>{80A0FA47-7C8C-4064-B9B2-47E768013F3D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Card_Set_Builder</RootNamespace>
-    <AssemblyName>Card Set Builder</AssemblyName>
+    <RootNamespace>JoePitt.Cards.Editor</RootNamespace>
+    <AssemblyName>Cards - Editor</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>true</IsWebBootstrapper>
@@ -29,16 +29,16 @@
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>https://www.joepitt.co.uk/Project/Cards/Editor/</InstallUrl>
     <UpdateUrl>https://www.joepitt.co.uk/Project/Cards/Editor/</UpdateUrl>
-    <SupportUrl>https://www.joepitt.co.uk/Project/Cards/Editor/</SupportUrl>
-    <ErrorReportUrl>https://www.joepitt.co.uk/Project/Cards/Editor/Error</ErrorReportUrl>
+    <SupportUrl>https://www.joepitt.co.uk/Project/Cards/</SupportUrl>
+    <ErrorReportUrl>https://bugs.joepitt.co.uk/cards/</ErrorReportUrl>
     <TargetCulture>en-GB</TargetCulture>
-    <ProductName>Card Set Builder</ProductName>
+    <ProductName>Cards - Editor</ProductName>
     <PublisherName>Joe Pitt</PublisherName>
-    <SuiteName>Cards Against Humanity</SuiteName>
+    <SuiteName>Cards</SuiteName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>8</ApplicationRevision>
-    <ApplicationVersion>1.2.1.%2a</ApplicationVersion>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -84,11 +84,13 @@
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
-    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Logo-Editor-V2.ico</ApplicationIcon>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -156,10 +158,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Logo-Editor-V2.ico" />
-    <None Include="Resources\Logo-v2.png" />
-    <None Include="Resources\Logo-Editor-V2.png" />
-    <None Include="Resources\96.png" />
+    <None Include="Resources\Logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

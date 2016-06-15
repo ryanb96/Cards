@@ -118,20 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="txtTerms.Text" xml:space="preserve">
-    <value>This port of Cards Against Humanity is created by Joe C. Pitt
-
-Cards Against Humanity is free to use under the Creative Commons BY-NC-SA 2.0 License. You can read more about the license at http://creativecommons.org/licenses/by-nc-sa/2.0/.
-
-These are the terms of the copyright
-
-Attribution: If you distribute our game, give us credit for the content.
-Noncommercial: You can't sell our game or any derivative of our game for money or sexual favors.
-Share Alike: If you modify and/or distribute our game, you must use the Creative Commons BY-NC-SA 2.0 License.
-
-You must also comply with the Laws of Man and Nature. Don't use any form of this game for nefarious purposes like libel, slander, diarrhea, copyright infringement, harassment, or death. If you break the law and get in trouble for it, Cards Against Humanity, and Joe C. Pitt, is free of all liability.
-
-Cards Against Humanity is a trademark of Cards Against Humanity LLC. Designed in-house. Photos by Brent Knepper. Illustrations by Jana Kinsman.
-</value>
+    <value>Cards by Joe Pitt is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
+Based on a work at https://cardsagainsthumanity.com/.</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

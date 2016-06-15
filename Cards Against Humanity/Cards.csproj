@@ -7,8 +7,8 @@
     <ProjectGuid>{D6726993-AE36-4F8D-92A0-1A041B2E5420}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cards_Against_Humanity</RootNamespace>
-    <AssemblyName>Cards Against Humanity</AssemblyName>
+    <RootNamespace>JoePitt.Cards</RootNamespace>
+    <AssemblyName>Cards</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -30,11 +30,11 @@
     <InstallUrl>https://www.joepitt.co.uk/Project/Cards/</InstallUrl>
     <UpdateUrl>https://www.joepitt.co.uk/Project/Cards/</UpdateUrl>
     <SupportUrl>https://www.joepitt.co.uk/Project/Cards/</SupportUrl>
-    <ErrorReportUrl>https://www.joepitt.co.uk/Project/Cards/Error</ErrorReportUrl>
+    <ErrorReportUrl>https://bugs.joepitt.co.uk/cards/</ErrorReportUrl>
     <TargetCulture>en-GB</TargetCulture>
-    <ProductName>Cards Against Humanity</ProductName>
+    <ProductName>Cards</ProductName>
     <PublisherName>Joe Pitt</PublisherName>
-    <SuiteName>Cards Against Humanity</SuiteName>
+    <SuiteName>Cards</SuiteName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <TrustUrlParameters>true</TrustUrlParameters>
     <ApplicationRevision>3</ApplicationRevision>
@@ -64,7 +64,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Logo-v2.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>true</SignManifests>
@@ -162,15 +163,25 @@
     </Compile>
     <Compile Include="Game.cs" />
     <Compile Include="KeyboardHook.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="ServerNetworking.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vote.cs" />
+    <None Include="Resources\Logo.ico" />
+    <None Include="Resources\Placeholder.png" />
+    <None Include="Resources\Logo.png" />
+    <None Include="Resources\Banner-Black.png" />
+    <None Include="Resources\Banner-White.png" />
+    <Content Include="Logo.ico" />
     <Content Include="Resources\CardSets\UK_1.6_dd12fa05-a7a7-4f6c-8467-4711abbcb16b.cahc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\PlaceholderCard.png" />
     <EmbeddedResource Include="frmDebug.resx">
       <DependentUpon>frmDebug.cs</DependentUpon>
     </EmbeddedResource>
@@ -205,11 +216,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -223,17 +229,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Logo-v2.ico" />
     <Content Include="Resources\CardSets\FullStrengthIT_1.1_f4af220d-ab63-4e64-a8b3-1bbae1454a66.cahc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\CardSets\SuperSecureInfoSec_1.0_9ee1f4a7-3fa6-4fe6-9ff3-517b50a39638.cahc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\Logo-v2.png" />
-    <None Include="Resources\Logo-v2.ico" />
-    <None Include="Resources\Stamp-White.png" />
-    <None Include="Resources\Stamp-Black.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.1">
@@ -259,15 +260,9 @@
   <ItemGroup>
     <FileAssociation Include=".cahc">
       <Visible>False</Visible>
-      <Description>Cards Against Humanity Card Set</Description>
-      <Progid>CAH.CS</Progid>
+      <Description>Card Set</Description>
+      <Progid>Cards.CS</Progid>
       <DefaultIcon>cardpack.ico</DefaultIcon>
-    </FileAssociation>
-    <FileAssociation Include=".cahg">
-      <Visible>False</Visible>
-      <Description>Cards Against Humanity Game</Description>
-      <Progid>CAH.G</Progid>
-      <DefaultIcon>game.ico</DefaultIcon>
     </FileAssociation>
   </ItemGroup>
   <ItemGroup>

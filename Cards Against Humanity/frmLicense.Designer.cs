@@ -1,4 +1,4 @@
-﻿namespace Cards_Against_Humanity
+﻿namespace JoePitt.Cards
 {
     partial class frmLicense
     {
@@ -36,9 +36,9 @@
             // btnClose
             // 
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(12, 415);
+            this.btnClose.Location = new System.Drawing.Point(14, 447);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(276, 23);
+            this.btnClose.Size = new System.Drawing.Size(322, 25);
             this.btnClose.TabIndex = 1;
             this.btnClose.Text = "&Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -50,29 +50,30 @@
             this.txtTerms.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTerms.Cursor = System.Windows.Forms.Cursors.Default;
             this.txtTerms.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtTerms.Location = new System.Drawing.Point(12, 9);
+            this.txtTerms.Location = new System.Drawing.Point(14, 10);
             this.txtTerms.Multiline = true;
             this.txtTerms.Name = "txtTerms";
             this.txtTerms.ReadOnly = true;
-            this.txtTerms.Size = new System.Drawing.Size(276, 400);
+            this.txtTerms.Size = new System.Drawing.Size(322, 431);
             this.txtTerms.TabIndex = 0;
             this.txtTerms.Text = resources.GetString("txtTerms.Text");
             // 
             // frmLicense
             // 
             this.AcceptButton = this.btnClose;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(300, 450);
+            this.ClientSize = new System.Drawing.Size(350, 485);
             this.Controls.Add(this.txtTerms);
             this.Controls.Add(this.btnClose);
+            this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmLicense";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "License";
+            this.Text = "License - Cards";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.frmLicense_Load);
             this.ResumeLayout(false);

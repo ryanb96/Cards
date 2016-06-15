@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Cards_Against_Humanity
+namespace JoePitt.Cards
 {
     public partial class frmWaiting : Form
     {

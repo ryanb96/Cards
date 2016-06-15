@@ -1,4 +1,4 @@
-﻿namespace Cards_Against_Humanity
+﻿namespace JoePitt.Cards
 {
     partial class frmVote
     {
@@ -38,10 +38,10 @@
             // 
             // btnVote
             // 
-            this.btnVote.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVote.Location = new System.Drawing.Point(12, 354);
+            this.btnVote.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVote.Location = new System.Drawing.Point(12, 381);
             this.btnVote.Name = "btnVote";
-            this.btnVote.Size = new System.Drawing.Size(326, 41);
+            this.btnVote.Size = new System.Drawing.Size(326, 44);
             this.btnVote.TabIndex = 2;
             this.btnVote.Text = "&Vote";
             this.btnVote.UseVisualStyleBackColor = true;
@@ -50,10 +50,10 @@
             // picBlackCard
             // 
             this.picBlackCard.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.picBlackCard.Image = global::Cards_Against_Humanity.Properties.Resources.Stamp_Black;
-            this.picBlackCard.Location = new System.Drawing.Point(13, 297);
+            this.picBlackCard.Image = ((System.Drawing.Image)(resources.GetObject("picBlackCard.Image")));
+            this.picBlackCard.Location = new System.Drawing.Point(13, 320);
             this.picBlackCard.Name = "picBlackCard";
-            this.picBlackCard.Size = new System.Drawing.Size(324, 50);
+            this.picBlackCard.Size = new System.Drawing.Size(324, 54);
             this.picBlackCard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picBlackCard.TabIndex = 7;
             this.picBlackCard.TabStop = false;
@@ -64,13 +64,13 @@
             this.txtAnswer.BackColor = System.Drawing.Color.AntiqueWhite;
             this.txtAnswer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAnswer.Cursor = System.Windows.Forms.Cursors.Default;
-            this.txtAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAnswer.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAnswer.ForeColor = System.Drawing.Color.Black;
-            this.txtAnswer.Location = new System.Drawing.Point(12, 12);
+            this.txtAnswer.Location = new System.Drawing.Point(12, 13);
             this.txtAnswer.Multiline = true;
             this.txtAnswer.Name = "txtAnswer";
             this.txtAnswer.ReadOnly = true;
-            this.txtAnswer.Size = new System.Drawing.Size(326, 336);
+            this.txtAnswer.Size = new System.Drawing.Size(326, 362);
             this.txtAnswer.TabIndex = 1;
             this.txtAnswer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -79,31 +79,31 @@
             this.cmbAnswers.AccessibleName = "Select Best Answer";
             this.cmbAnswers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAnswers.FormattingEnabled = true;
-            this.cmbAnswers.Location = new System.Drawing.Point(12, 12);
+            this.cmbAnswers.Location = new System.Drawing.Point(12, 13);
             this.cmbAnswers.Name = "cmbAnswers";
-            this.cmbAnswers.Size = new System.Drawing.Size(343, 21);
+            this.cmbAnswers.Size = new System.Drawing.Size(343, 22);
             this.cmbAnswers.TabIndex = 0;
             this.cmbAnswers.SelectedIndexChanged += new System.EventHandler(this.cmbAnswers_SelectedIndexChanged);
             // 
             // frmVote
             // 
             this.AcceptButton = this.btnVote;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(366, 407);
+            this.ClientSize = new System.Drawing.Size(366, 438);
             this.Controls.Add(this.picBlackCard);
             this.Controls.Add(this.txtAnswer);
             this.Controls.Add(this.btnVote);
             this.Controls.Add(this.cmbAnswers);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmVote";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = " - Vote - Cards Against Humanity";
+            this.Text = " - Vote - Cards";
             this.Load += new System.EventHandler(this.frmVote_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBlackCard)).EndInit();
             this.ResumeLayout(false);

@@ -1,4 +1,4 @@
-﻿namespace Cards_Against_Humanity
+﻿namespace JoePitt.Cards
 {
     partial class frmWaiting
     {
@@ -38,10 +38,10 @@
             // 
             this.picBlackCard.BackColor = System.Drawing.Color.Black;
             this.picBlackCard.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.picBlackCard.Image = global::Cards_Against_Humanity.Properties.Resources.Stamp_White;
-            this.picBlackCard.Location = new System.Drawing.Point(0, 286);
+            this.picBlackCard.Image = ((System.Drawing.Image)(resources.GetObject("picBlackCard.Image")));
+            this.picBlackCard.Location = new System.Drawing.Point(0, 308);
             this.picBlackCard.Name = "picBlackCard";
-            this.picBlackCard.Size = new System.Drawing.Size(327, 50);
+            this.picBlackCard.Size = new System.Drawing.Size(327, 54);
             this.picBlackCard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picBlackCard.TabIndex = 5;
             this.picBlackCard.TabStop = false;
@@ -53,27 +53,28 @@
             this.txtMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtMessage.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.txtMessage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMessage.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMessage.ForeColor = System.Drawing.Color.White;
             this.txtMessage.Location = new System.Drawing.Point(0, 0);
             this.txtMessage.Multiline = true;
             this.txtMessage.Name = "txtMessage";
             this.txtMessage.ReadOnly = true;
-            this.txtMessage.Size = new System.Drawing.Size(327, 336);
+            this.txtMessage.Size = new System.Drawing.Size(327, 362);
             this.txtMessage.TabIndex = 6;
             this.txtMessage.Text = "Waiting for [something]...";
             this.txtMessage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtMessage.UseWaitCursor = true;
             // 
             // frmWaiting
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(327, 336);
+            this.ClientSize = new System.Drawing.Size(327, 362);
             this.Controls.Add(this.picBlackCard);
             this.Controls.Add(this.txtMessage);
             this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -81,7 +82,7 @@
             this.MinimizeBox = false;
             this.Name = "frmWaiting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Waiting - Cards Against Humanity";
+            this.Text = "Waiting - Cards";
             this.UseWaitCursor = true;
             ((System.ComponentModel.ISupportInitialize)(this.picBlackCard)).EndInit();
             this.ResumeLayout(false);

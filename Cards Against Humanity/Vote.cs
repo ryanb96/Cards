@@ -2,7 +2,7 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace Cards_Against_Humanity
+namespace JoePitt.Cards
 {
     [Serializable]
     public class Vote
