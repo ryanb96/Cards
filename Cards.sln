@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cards", "Cards Against Humanity\Cards.csproj", "{D6726993-AE36-4F8D-92A0-1A041B2E5420}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cards", "Cards\Cards.csproj", "{D6726993-AE36-4F8D-92A0-1A041B2E5420}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cards - Editor", "CAH Card Set Builder\Cards - Editor.csproj", "{80A0FA47-7C8C-4064-B9B2-47E768013F3D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cards - Editor", "Cards - Editor\Cards - Editor.csproj", "{80A0FA47-7C8C-4064-B9B2-47E768013F3D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{4DA013E3-F830-43F4-94D4-74EF7FFB6FE9}"
 EndProject
