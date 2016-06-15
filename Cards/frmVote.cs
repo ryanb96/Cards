@@ -91,8 +91,8 @@ namespace JoePitt.Cards
                 {
                     MessageBox.Show("Unexpected Error! Unable to submit vote. Application will exit!", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     Application.Exit();
+                    Close();
                 }
-                Close();
             }
             else
             {

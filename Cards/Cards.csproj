@@ -161,7 +161,7 @@
       <DependentUpon>frmWaiting.cs</DependentUpon>
     </Compile>
     <Compile Include="Game.cs" />
-    <Compile Include="KeyboardHook.cs" />
+    <Compile Include="NativeMethods.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

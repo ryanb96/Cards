@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace JoePitt.Cards
 {
-    public sealed class KeyboardHook : IDisposable
+    public sealed class NativeMethods : IDisposable
     {
         // Registers a hot key with Windows.
         [DllImport("user32.dll")]
@@ -20,7 +20,7 @@ namespace JoePitt.Cards
         /// <summary>
         /// Represents the window that is used internally to get the messages.
         /// </summary>
-        private class Window : NativeWindow, IDisposable
+        private sealed class Window : NativeWindow, IDisposable
         {
             private static int WM_HOTKEY = 0x0312;
 
@@ -65,7 +65,7 @@ namespace JoePitt.Cards
         private Window _window = new Window();
         private int _currentId;
 
-        public KeyboardHook()
+        public void KeyboardHook()
         {
             // register the event of the inner native window.
             _window.KeyPressed += delegate (object sender, KeyPressedEventArgs args)

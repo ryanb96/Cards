@@ -53,7 +53,8 @@ namespace JoePitt.Cards
             newGame.Dispose();
             if (CurrentGame != null)
             {
-                KeyboardHook hook = new KeyboardHook();
+                NativeMethods hook = new NativeMethods();
+                hook.KeyboardHook();
                 hook.KeyPressed += Hook_KeyPressed;
                 hook.RegisterHotKey(ModifierKeys.Control | ModifierKeys.Shift, Keys.F1);
 
