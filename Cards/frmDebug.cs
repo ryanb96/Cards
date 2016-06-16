@@ -35,9 +35,16 @@ namespace JoePitt.Cards
             treDebug.Nodes[0].Nodes["Playable"].Text = "Playable: " + game.Playable;
             treDebug.Nodes[0].Nodes["GameType"].Text = "Game Type: " + game.GameType;
 
-            treDebug.Nodes[0].Nodes["ServerNetworking"].Nodes.Add("UPnP_IPv4", "UPnP (IPv4): " + game.HostNetwork.IPv4UPnP);
-            treDebug.Nodes[0].Nodes["ServerNetworking"].Nodes.Add("UPnP_IPv6", "UPnP (IPv6): " + game.HostNetwork.IPv6UPnP);
-            treDebug.Nodes[0].Nodes["ServerNetworking"].Nodes.Add("Port", "Port: " + game.HostNetwork.Port);
+            if (game.GameType != 'J')
+            {
+                treDebug.Nodes[0].Nodes["ServerNetworking"].Nodes.Add("UPnP_IPv4", "UPnP (IPv4): " + game.HostNetwork.IPv4UPnP);
+                treDebug.Nodes[0].Nodes["ServerNetworking"].Nodes.Add("UPnP_IPv6", "UPnP (IPv6): " + game.HostNetwork.IPv6UPnP);
+                treDebug.Nodes[0].Nodes["ServerNetworking"].Nodes.Add("Port", "Port: " + game.HostNetwork.Port);
+            }
+            else
+            {
+                treDebug.Nodes[0].Nodes["ServerNetworking"].Text = "Server Networking: N/A";
+            }
             // Client Networking
             int i = 0;
             foreach (ClientNetworking client in game.LocalPlayers)
