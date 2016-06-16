@@ -84,6 +84,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Waiting - Cards";
             this.UseWaitCursor = true;
+            this.Load += new System.EventHandler(this.frmWaiting_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBlackCard)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

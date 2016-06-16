@@ -53,10 +53,14 @@ namespace JoePitt.Cards
             newGame.Dispose();
             if (CurrentGame != null)
             {
-                NativeMethods hook = new NativeMethods();
-                hook.KeyboardHook();
-                hook.KeyPressed += Hook_KeyPressed;
-                hook.RegisterHotKey(ModifierKeys.Control | ModifierKeys.Shift, Keys.F1);
+                try
+                {
+                    NativeMethods hook = new NativeMethods();
+                    hook.KeyboardHook();
+                    hook.KeyPressed += Hook_KeyPressed;
+                    hook.RegisterHotKey(ModifierKeys.Control | ModifierKeys.Shift, Keys.F1);
+                }
+                catch { }
 
                 LeaderBoard = new frmLeaderboard();
                 while (CurrentGame.Playable)

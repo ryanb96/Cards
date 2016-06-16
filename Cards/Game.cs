@@ -133,7 +133,10 @@ namespace JoePitt.Cards
         public bool Stop()
         {
             Playable = false;
-            HostNetwork.Stop();
+            if (HostNetwork != null)
+            {
+                HostNetwork.Stop();
+            }
             foreach (ClientNetworking playerNetwork in LocalPlayers)
             {
                 playerNetwork.NextCommand = "EXIT";
