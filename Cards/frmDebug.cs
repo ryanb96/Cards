@@ -12,6 +12,12 @@ namespace JoePitt.Cards
             InitializeComponent();
             KeyDown += FrmDebug_KeyDown;
             treDebug.KeyDown += FrmDebug_KeyDown;
+            treDebug.AfterCheck += TreDebug_AfterCheck;
+        }
+
+        private void TreDebug_AfterCheck(object sender, TreeViewEventArgs e)
+        {
+            CheckChildren(e.Node, e.Node.Checked);
         }
 
         private void FrmDebug_KeyDown(object sender, KeyEventArgs e)
@@ -26,7 +32,7 @@ namespace JoePitt.Cards
         {
             Game game = Program.CurrentGame;
 
-            treDebug.Nodes[0].Nodes["Playable"].Text = "Playable: " +  game.Playable;
+            treDebug.Nodes[0].Nodes["Playable"].Text = "Playable: " + game.Playable;
             treDebug.Nodes[0].Nodes["GameType"].Text = "Game Type: " + game.GameType;
 
             treDebug.Nodes[0].Nodes["ServerNetworking"].Nodes.Add("UPnP_IPv4", "UPnP (IPv4): " + game.HostNetwork.IPv4UPnP);
@@ -60,7 +66,7 @@ namespace JoePitt.Cards
                 treDebug.Nodes[0].Nodes["ClientNetworking"].Nodes[i].Nodes.Add("Response", response);
                 i++;
             }
-            
+
             treDebug.Nodes[0].Nodes["NetworkUp"].Text = "Network Up: " + game.NetworkUp;
             treDebug.Nodes[0].Nodes["CardsPerUser"].Text = "Cards Per User: " + game.CardsPerUser;
             treDebug.Nodes[0].Nodes["Rounds"].Text = "Rounds: " + game.Rounds;
@@ -84,7 +90,7 @@ namespace JoePitt.Cards
                 }
                 i++;
             }
-            
+
             i = 0;
             foreach (CardSet cardSet in game.CardSets)
             {
@@ -97,7 +103,7 @@ namespace JoePitt.Cards
             }
 
             treDebug.Nodes[0].Nodes["Stage"].Text = "Stage: " + game.Stage;
-            
+
             i = 0;
             foreach (Card card in game.GameSet.BlackCards.Values)
             {
@@ -117,7 +123,7 @@ namespace JoePitt.Cards
             treDebug.Nodes[0].Nodes["CurrentBlackCard"].Text = "Current Black Card: " + game.CurrentBlackCard;
             treDebug.Nodes[0].Nodes["CurrentWhiteCard"].Text = "Current White Card: " + game.CurrentWhiteCard;
             treDebug.Nodes[0].Nodes["Round"].Text = "Round: " + game.Round;
-            
+
             i = 0;
             foreach (Answer answer in game.Answers)
             {
@@ -125,7 +131,7 @@ namespace JoePitt.Cards
                 treDebug.Nodes[0].Nodes["Answers"].Nodes[i].Nodes.Add("Text", answer.Text);
                 i++;
             }
-            
+
             i = 0;
             foreach (Vote vote in game.Votes)
             {
@@ -133,7 +139,7 @@ namespace JoePitt.Cards
                 treDebug.Nodes[0].Nodes["Votes"].Nodes[i].Nodes.Add("Text", vote.Choice.Text);
                 i++;
             }
-            
+
             i = 0;
             foreach (Answer winner in game.Winners)
             {
@@ -144,6 +150,25 @@ namespace JoePitt.Cards
             treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameBlackCards"].Collapse();
             treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameWhiteCards"].Collapse();
             treDebug.SelectedNode = treDebug.Nodes[0];
+            CheckAllNodes(treDebug.Nodes, true);
+        }
+
+        public void CheckAllNodes(TreeNodeCollection nodes, bool Check)
+        {
+            foreach (TreeNode node in nodes)
+            {
+                node.Checked = Check;
+                CheckChildren(node, Check);
+            }
+        }
+
+        private void CheckChildren(TreeNode rootNode, bool Check)
+        {
+            foreach (TreeNode node in rootNode.Nodes)
+            {
+                CheckChildren(node, Check);
+                node.Checked = Check;
+            }
         }
 
         private bool Export()
@@ -170,20 +195,29 @@ namespace JoePitt.Cards
             List<XElement> elements = new List<XElement>();
             foreach (TreeNode treeViewNode in treeViewNodes)
             {
-                XElement element = new XElement(treeViewNode.Name.Replace('/', '_'));
-                if (treeViewNode.GetNodeCount(true) == 0)
+                if (treeViewNode.Checked)
                 {
-                    element.Value = treeViewNode.Text;
-                    if (element.Value.Contains(": "))
+                    XElement element = new XElement(treeViewNode.Name.Replace('/', '_'));
+                    if (treeViewNode.GetNodeCount(true) == 0)
                     {
-                        element.Value = element.Value.Substring(element.Value.IndexOf(":") + 2);
+                        element.Value = treeViewNode.Text;
+                        if (element.Value.Contains(": "))
+                        {
+                            element.Value = element.Value.Substring(element.Value.IndexOf(":") + 2);
+                        }
                     }
+                    else
+                    {
+                        element.Add(CreateXmlElement(treeViewNode.Nodes));
+                    }
+                    elements.Add(element);
                 }
                 else
                 {
-                    element.Add(CreateXmlElement(treeViewNode.Nodes));
+                    XElement element = new XElement(treeViewNode.Name.Replace('/', '_'));
+                    element.Value = "REMOVED";
+                    elements.Add(element);
                 }
-                elements.Add(element);
             }
             return elements;
         }

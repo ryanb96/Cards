@@ -81,6 +81,7 @@
             // 
             // treDebug
             // 
+            this.treDebug.CheckBoxes = true;
             this.treDebug.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treDebug.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treDebug.Location = new System.Drawing.Point(0, 0);
