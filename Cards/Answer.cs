@@ -20,9 +20,11 @@ namespace JoePitt.Cards
             BlackCard = blackCard;
             WhiteCard = whiteCard;
             Text = BlackCard.Text;
-            if (Text.Contains("____________"))
+            string blankRegEx = "_{3,}";
+            Regex regexr = new Regex(blankRegEx);
+            if (regexr.IsMatch(Text))
             {
-                Text = Text.Replace("____________", WhiteCard.Text);
+                Text = regexr.Replace(Text, WhiteCard.Text, 1);
             }
             else
             {
@@ -37,22 +39,23 @@ namespace JoePitt.Cards
             WhiteCard = whiteCard;
             WhiteCard2 = whiteCard2;
             Text = BlackCard.Text;
-            if (blackCard.Text.Contains("____________"))
+            string blankRegEx = "_{3,}";
+            Regex regexr = new Regex(blankRegEx);
+            if (regexr.IsMatch(Text))
             {
-                Regex regex = new Regex(Regex.Escape("____________"));
-                Text = regex.Replace(Text, WhiteCard.Text, 1);
+                Text = regexr.Replace(Text, whiteCard.Text, 1);
+                if (regexr.IsMatch(Text))
+                {
+                    Text = regexr.Replace(Text, whiteCard2.Text, 1);
+                }
+                else
+                {
+                    Text = Text + " " + WhiteCard2.Text;
+                }
             }
             else
             {
-                Text = Text + " " + WhiteCard.Text;
-            }
-            if (Text.Contains("____________"))
-            {
-                Text = Text.Replace("____________", WhiteCard2.Text);
-            }
-            else
-            {
-                Text = Text + " -- " + WhiteCard2.Text;
+                Text = Text + " " + WhiteCard.Text + " -- " + WhiteCard2.Text;
             }
         }
 
