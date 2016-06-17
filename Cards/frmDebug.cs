@@ -49,11 +49,12 @@ namespace JoePitt.Cards
             int i = 0;
             foreach (ClientNetworking client in game.LocalPlayers)
             {
-                treDebug.Nodes[0].Nodes["ClientNetworking"].Nodes.Add("Client_" + i, client.Owner.Name);
+                treDebug.Nodes[0].Nodes["ClientNetworking"].Nodes.Add("Client_" + i, "Client_" + i);
+                treDebug.Nodes[0].Nodes["ClientNetworking"].Nodes[i].Nodes.Add("Owner", "Owner: " + client.Owner.Name);
                 string command = client.NextCommand;
                 if (client.NewCommand)
                 {
-                    command = "(PENDING)" + command;
+                    command = "(PENDING) " + command;
                 }
                 else
                 {
@@ -64,7 +65,7 @@ namespace JoePitt.Cards
                 string response = client.LastResponse;
                 if (client.NewResponse)
                 {
-                    response = "(New)" + response;
+                    response = "(New) " + response;
                 }
                 else
                 {
@@ -85,15 +86,20 @@ namespace JoePitt.Cards
             i = 0;
             foreach (Player player in game.Players)
             {
-                treDebug.Nodes[0].Nodes["Players"].Nodes.Add("Player_" + i, player.Name);
+                treDebug.Nodes[0].Nodes["Players"].Nodes.Add("Player_" + i, "Player_" + i);
+                treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes.Add("Name", "Name: " + player.Name);
                 treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes.Add("IsBot", "Is Bot: " + player.IsBot);
                 treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes.Add("Score", "Score: " + player.Score);
                 treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes.Add("Submitted", "Submitted: " + player.Submitted);
                 treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes.Add("Voted", "Voted: " + player.Voted);
                 treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes.Add("WhiteCards", "White Cards");
+                int j = 0;
                 foreach (Card card in player.WhiteCards)
                 {
-                    treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes[4].Nodes.Add(card.ID, card.Text);
+                    treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes[5].Nodes.Add("Cards_" + j, "Cards_" + j);
+                    treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes[5].Nodes[j].Nodes.Add("ID", "ID: " + card.ID);
+                    treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes[5].Nodes[j].Nodes.Add("Text", "Text: " + card.Text);
+                    j++;
                 }
                 i++;
             }
@@ -101,8 +107,9 @@ namespace JoePitt.Cards
             i = 0;
             foreach (CardSet cardSet in game.CardSets)
             {
-                treDebug.Nodes[0].Nodes["CardSets"].Nodes.Add("CardSet_" + i, cardSet.Name);
+                treDebug.Nodes[0].Nodes["CardSets"].Nodes.Add("CardSet_" + i, "CardSet_" + i);
                 treDebug.Nodes[0].Nodes["CardSets"].Nodes[i].Nodes.Add("GUID", "GUID: " + cardSet.GUID);
+                treDebug.Nodes[0].Nodes["CardSets"].Nodes[i].Nodes.Add("Name", "Name: " + cardSet.Name);
                 treDebug.Nodes[0].Nodes["CardSets"].Nodes[i].Nodes.Add("Version", "Version " + cardSet.Version);
                 treDebug.Nodes[0].Nodes["CardSets"].Nodes[i].Nodes.Add("BlackCardCount", "Black Card Count: " + cardSet.BlackCardCount);
                 treDebug.Nodes[0].Nodes["CardSets"].Nodes[i].Nodes.Add("WhiteCardCount", "White Card Count: " + cardSet.WhiteCardCount);
@@ -114,16 +121,18 @@ namespace JoePitt.Cards
             i = 0;
             foreach (Card card in game.GameSet.BlackCards.Values)
             {
-                treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameBlackCards"].Nodes.Add("Card_" + i, card.Text);
+                treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameBlackCards"].Nodes.Add("Card_" + i, "Card_" + i);
                 treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameBlackCards"].Nodes[i].Nodes.Add("ID", "ID: " + card.ID);
+                treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameBlackCards"].Nodes[i].Nodes.Add("Text", "Text: " + card.Text); 
                 treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameBlackCards"].Nodes[i].Nodes.Add("Needs", "Needs: " + card.Needs);
                 i++;
             }
             i = 0;
             foreach (Card card in game.GameSet.WhiteCards.Values)
             {
-                treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameWhiteCards"].Nodes.Add("Card_" + i, card.Text);
+                treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameWhiteCards"].Nodes.Add("Card_" + i, "Card_" + i);
                 treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameWhiteCards"].Nodes[i].Nodes.Add("ID", "ID: " + card.ID);
+                treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameWhiteCards"].Nodes[i].Nodes.Add("Text", "Text: " + card.Text);
                 i++;
             }
 
@@ -134,8 +143,9 @@ namespace JoePitt.Cards
             i = 0;
             foreach (Answer answer in game.Answers)
             {
-                treDebug.Nodes[0].Nodes["Answers"].Nodes.Add("Answer_" + i, answer.Submitter.Name);
-                treDebug.Nodes[0].Nodes["Answers"].Nodes[i].Nodes.Add("Text", answer.Text);
+                treDebug.Nodes[0].Nodes["Answers"].Nodes.Add("Answer_" + i, "Answer_" + i);
+                treDebug.Nodes[0].Nodes["Answers"].Nodes[i].Nodes.Add("Submitter", "Submitter: " + answer.Submitter.Name);
+                treDebug.Nodes[0].Nodes["Answers"].Nodes[i].Nodes.Add("Text", "Text: " + answer.Text);
                 i++;
             }
 
@@ -143,7 +153,8 @@ namespace JoePitt.Cards
             foreach (Vote vote in game.Votes)
             {
                 treDebug.Nodes[0].Nodes["Votes"].Nodes.Add("Vote_" + i, vote.Voter.Name);
-                treDebug.Nodes[0].Nodes["Votes"].Nodes[i].Nodes.Add("Text", vote.Choice.Text);
+                treDebug.Nodes[0].Nodes["Votes"].Nodes[i].Nodes.Add("Voter", "Voter: " + vote.Voter.Name);
+                treDebug.Nodes[0].Nodes["Votes"].Nodes[i].Nodes.Add("Text", "Text: " + vote.Choice.Text);
                 i++;
             }
 
