@@ -13,7 +13,7 @@ namespace JoePitt.Cards
         static public ClientNetworking CurrentPlayer;
         static public frmLeaderboard LeaderBoard;
         static internal string SessionKey;
-        static private bool ShowWinners;
+        static private int ShowWinners = 0;
 
         /// <summary>
         /// The main entry point for the application.
@@ -80,7 +80,7 @@ namespace JoePitt.Cards
                         case "PLAYING":
                             CurrentGame.Stage = 'P';
                             CurrentGame.Round = Convert.ToInt32(response[2]);
-                            if (CurrentGame.Round > 1 && !ShowWinners)
+                            if (CurrentGame.Round > 1 && ShowWinners < CurrentGame.Round)
                             {
                                 CurrentPlayer = CurrentGame.LocalPlayers[0];
                                 CurrentPlayer.NextCommand = "GETWINNER";
@@ -113,6 +113,7 @@ namespace JoePitt.Cards
                                         message = "The winning answer is: " + CurrentGame.Winners[0].Text + " (by " + CurrentGame.Winners[0].Submitter.Name + ")";
                                     }
                                     MessageBox.Show(message, "Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    ShowWinners = CurrentGame.Round - 1;
                                 }
                                 catch
                                 {
