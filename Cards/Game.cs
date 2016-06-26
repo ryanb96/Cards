@@ -341,6 +341,10 @@ namespace JoePitt.Cards
             }
         }
 
+        /// <summary>
+        /// Setups up the next round.
+        /// </summary>
+        /// <returns>if the next round is ready.</returns>
         public bool NextRound()
         {
             if (Round + 1 > Rounds)
@@ -448,6 +452,9 @@ namespace JoePitt.Cards
             }
         }
 
+        /// <summary>
+        /// Finds the next available White Card.
+        /// </summary>
         private void NextWhiteCard()
         {
             // Prevent Double Dealing.
@@ -480,6 +487,10 @@ namespace JoePitt.Cards
             }
         }
 
+        /// <summary>
+        /// Converts the GameSet to a byte array.
+        /// </summary>
+        /// <returns>The Binary Representation of the Game Set.</returns>
         public byte[] ExportGameSet()
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -490,16 +501,10 @@ namespace JoePitt.Cards
             }
         }
 
-        public byte[] ExportAnswers()
-        {
-            BinaryFormatter formatter = new BinaryFormatter();
-            using (MemoryStream stream = new MemoryStream())
-            {
-                formatter.Serialize(stream, Answers);
-                return stream.ToArray();
-            }
-        }
-
+        /// <summary>
+        /// Converts the Game's Players List into a byte array.
+        /// </summary>
+        /// <returns>The Binary Representation of the Players List.</returns>
         public byte[] ExportPlayers()
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -510,5 +515,32 @@ namespace JoePitt.Cards
             }
         }
 
+        /// <summary>
+        /// Converts the Submitted Answers to a byte array.
+        /// </summary>
+        /// <returns>The Binary Representation of the Submitted Answers.</returns>
+        public byte[] ExportAnswers()
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (MemoryStream stream = new MemoryStream())
+            {
+                formatter.Serialize(stream, Answers);
+                return stream.ToArray();
+            }
+        }
+
+        /// <summary>
+        /// Converts the Winners list to a byte array.
+        /// </summary>
+        /// <returns>The Binary Representation of the Winners List.</returns>
+        public byte[] ExportWinners()
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (MemoryStream stream = new MemoryStream())
+            {
+                formatter.Serialize(stream, Winners);
+                return stream.ToArray();
+            }
+        }
     }
 }

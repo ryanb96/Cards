@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Windows.Forms;
 
@@ -7,22 +9,16 @@ namespace JoePitt.Cards
 {
     static class Program
     {
-        //static public frmMain iFace;
         static public Game CurrentGame;
         static public ClientNetworking CurrentPlayer;
         static public frmLeaderboard LeaderBoard;
         static internal string SessionKey;
+        static private bool ShowWinners;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        /*static void Main()
-        {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
-        }*/
-
         static void Main()
         {
             try
@@ -84,6 +80,48 @@ namespace JoePitt.Cards
                         case "PLAYING":
                             CurrentGame.Stage = 'P';
                             CurrentGame.Round = Convert.ToInt32(response[2]);
+                            if (CurrentGame.Round > 1 && !ShowWinners)
+                            {
+                                CurrentPlayer = CurrentGame.LocalPlayers[0];
+                                CurrentPlayer.NextCommand = "GETWINNER";
+                                CurrentPlayer.NewCommand = true;
+                                while (!CurrentPlayer.NewResponse)
+                                {
+                                    Application.DoEvents();
+                                }
+                                response = CurrentPlayer.LastResponse.Split(' ');
+                                CurrentPlayer.NewResponse = false;
+                                try
+                                {
+                                    BinaryFormatter formatter = new BinaryFormatter();
+                                    byte[] test = Convert.FromBase64String(response[0]);
+                                    using (MemoryStream stream = new MemoryStream(test))
+                                    {
+                                        CurrentGame.Winners = (List<Answer>)formatter.Deserialize(stream);
+                                    }
+                                    string message = "";
+                                    if (CurrentGame.Winners.Count > 1)
+                                    {
+                                        message = "The winning answers are:" + Environment.NewLine;
+                                        foreach (Answer winner in CurrentGame.Winners)
+                                        {
+                                            message = message + Environment.NewLine + winner.Text + " (by " + winner.Submitter.Name + ")";
+                                        }
+                                    }
+                                    else
+                                    {
+                                        message = "The winning answer is: " + CurrentGame.Winners[0].Text + " (by " + CurrentGame.Winners[0].Submitter.Name + ")";
+                                    }
+                                    MessageBox.Show(message, "Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                catch
+                                {
+                                    MessageBox.Show("Unexpected Error! Bad response to GETWINNER, Application will exit!", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                    CurrentGame.Stop();
+                                    Application.Exit();
+                                    break;
+                                }
+                            }
                             break;
                         case "VOTING":
                             CurrentGame.Stage = 'V';

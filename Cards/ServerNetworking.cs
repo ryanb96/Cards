@@ -550,7 +550,7 @@ namespace JoePitt.Cards
                             }
                             else
                             {
-                                
+
                                 using (MemoryStream stream = new MemoryStream())
                                 {
                                     formatter.Serialize(stream, thisPlayer.WhiteCards);
@@ -714,14 +714,15 @@ namespace JoePitt.Cards
                             }
                             else
                             {
-                                if (Game.Votes.Count == (Game.PlayerCount))
+                                if (Game.Votes.Count == Game.PlayerCount)
                                 {
+                                    Game.Winners = new List<Answer>();
                                     Dictionary<string, int> results = new Dictionary<string, int>();
-                                    foreach(Answer answer in Game.Answers)
+                                    foreach (Answer answer in Game.Answers)
                                     {
                                         results.Add(answer.Submitter.Name + "/" + answer.Text, 0);
                                     }
-                                    foreach(Vote vote in Game.Votes)
+                                    foreach (Vote vote in Game.Votes)
                                     {
                                         results[vote.Choice.Submitter.Name + "/" + vote.Choice.Text]++;
                                     }
@@ -762,6 +763,19 @@ namespace JoePitt.Cards
                                     Game.NextRound();
                                 }
                             }
+                            break;
+
+                        /*
+                         * Updates the winners of the last round.
+                         * 
+                         * EXPECTS:
+                         * [0]Command
+                         * 
+                         * RETURNS:
+                         * [Binary Representation of Game.Winners]
+                         */
+                        case "GETWINNER":
+                            serverText = Convert.ToBase64String(Game.ExportWinners());
                             break;
 
                         /*
@@ -837,6 +851,6 @@ namespace JoePitt.Cards
             tcpClient.Close();
             Log.Add(ThreadName + ": > Connection Lost!");
         }
-        
+
     }
 }
