@@ -19,6 +19,11 @@ namespace JoePitt.Cards
             FormClosing += FrmLeaderboard_FormClosing;
         }
 
+        /// <summary>
+        /// Hodes the UI rather than closing it.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmLeaderboard_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason != CloseReason.ApplicationExitCall)

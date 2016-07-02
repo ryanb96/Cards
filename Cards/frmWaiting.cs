@@ -21,12 +21,22 @@ namespace JoePitt.Cards
             FormClosing += FrmWaiting_FormClosing;
         }
 
+        /// <summary>
+        /// Starts the updater thread to keep UI Up to date.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmWaiting_Load(object sender, System.EventArgs e)
         {
             Thread updater = new Thread(KeepUpdated);
             updater.Start();
         }
 
+        /// <summary>
+        /// Prevents accidental closing and ends the game if close.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmWaiting_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing && waiting)
@@ -38,6 +48,9 @@ namespace JoePitt.Cards
             }
         }
 
+        /// <summary>
+        /// Updates the UI every second.
+        /// </summary>
         private void KeepUpdated()
         {
             while (waiting)
@@ -145,7 +158,7 @@ namespace JoePitt.Cards
         }
 
         /// <summary>
-        /// Update the Waiting UI.
+        /// Replaces the text of the UI.
         /// </summary>
         /// <param name="Message">The new message to show.</param>
         public void Update(string Message)

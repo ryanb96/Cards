@@ -21,11 +21,21 @@ namespace JoePitt.Cards
             treDebug.AfterCheck += TreDebug_AfterCheck;
         }
 
+        /// <summary>
+        /// Cascade (un)check to child nodes.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TreDebug_AfterCheck(object sender, TreeViewEventArgs e)
         {
             CheckChildren(e.Node, e.Node.Checked);
         }
 
+        /// <summary>
+        /// Handles saving of BugReports, when CTRL+S is pressed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmDebug_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control & e.KeyCode == Keys.S)
@@ -175,6 +185,11 @@ namespace JoePitt.Cards
             CheckAllNodes(treDebug.Nodes, true);
         }
 
+        /// <summary>
+        /// (Un)checks all nodes under the specified node.
+        /// </summary>
+        /// <param name="nodes">The Nodes to be (un)checked.</param>
+        /// <param name="Check">Whether to Check or Uncheck.</param>
         private void CheckAllNodes(TreeNodeCollection nodes, bool Check)
         {
             foreach (TreeNode node in nodes)
@@ -184,6 +199,11 @@ namespace JoePitt.Cards
             }
         }
 
+        /// <summary>
+        /// Iterates through the tiers to (un)check all child nodes.
+        /// </summary>
+        /// <param name="rootNode">The Topmost Node.</param>
+        /// <param name="Check">Whether to Check or Uncheck.</param>
         private void CheckChildren(TreeNode rootNode, bool Check)
         {
             foreach (TreeNode node in rootNode.Nodes)
@@ -193,6 +213,10 @@ namespace JoePitt.Cards
             }
         }
 
+        /// <summary>
+        /// Save the BugReport.
+        /// </summary>
+        /// <returns>If the bug report was saved.</returns>
         private bool Export()
         {
             XElement rootElement = new XElement("Game", CreateXmlElement(treDebug.Nodes[0].Nodes));
@@ -212,6 +236,11 @@ namespace JoePitt.Cards
             return false;
         }
 
+        /// <summary>
+        /// Generate the BugReport XML.
+        /// </summary>
+        /// <param name="treeViewNodes">The Nodes to put into the BugReport XML.</param>
+        /// <returns>The XML Elements to put in the BugReport XML.</returns>
         private static List<XElement> CreateXmlElement(TreeNodeCollection treeViewNodes)
         {
             List<XElement> elements = new List<XElement>();

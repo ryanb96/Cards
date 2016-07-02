@@ -14,7 +14,7 @@ namespace JoePitt.Cards
         private bool Submitted = false;
 
         /// <summary>
-        /// Initalise the Rules UI.
+        /// Initalise the Voting UI.
         /// </summary>
         public frmVote()
         {
@@ -22,6 +22,11 @@ namespace JoePitt.Cards
             FormClosing += FrmVote_FormClosing;
         }
 
+        /// <summary>
+        /// Prevents accidental closing and ends the game if closed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmVote_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing && !Submitted)
@@ -66,6 +71,11 @@ namespace JoePitt.Cards
             cmbAnswers.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Keeps the choice card up to date with the selected answer.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmbAnswers_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtAnswer.Text = Program.CurrentGame.Answers[cmbAnswers.SelectedIndex].Text;

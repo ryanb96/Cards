@@ -99,6 +99,11 @@ namespace JoePitt.Cards
             chkRebootingTheUniverseHost.Checked = Properties.Settings.Default.Rebooting;
         }
 
+        /// <summary>
+        /// Start a local game.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnStartLocal_Click(object sender, EventArgs e)
         {
             if (lstPlayersLocal.Items.Count > 0)
@@ -188,6 +193,11 @@ namespace JoePitt.Cards
             }
         }
 
+        /// <summary>
+        /// Start hosting a game.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnStartHost_Click(object sender, EventArgs e)
         {
             // Prevent Changes
@@ -306,6 +316,11 @@ namespace JoePitt.Cards
             }
         }
 
+        /// <summary>
+        /// Join a hosted game.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnStartJoin_Click(object sender, EventArgs e)
         {
             tabsType.Enabled = false;
