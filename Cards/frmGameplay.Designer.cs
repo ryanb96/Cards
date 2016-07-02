@@ -38,7 +38,7 @@
             this.txtWhiteCard2 = new System.Windows.Forms.TextBox();
             this.cmbWhiteCard2 = new System.Windows.Forms.ComboBox();
             this.btnLeaderboard = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picBlankCard = new System.Windows.Forms.PictureBox();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnRules = new System.Windows.Forms.Button();
             this.btnLicense = new System.Windows.Forms.Button();
@@ -47,7 +47,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picBlackCard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picWhiteCard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picWhiteCard2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBlankCard)).BeginInit();
             this.SuspendLayout();
             // 
             // txtBlackCard
@@ -168,14 +168,15 @@
             this.btnLeaderboard.UseVisualStyleBackColor = true;
             this.btnLeaderboard.Click += new System.EventHandler(this.btnLeaderboard_Click);
             // 
-            // pictureBox1
+            // picBlankCard
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(628, 13);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(280, 363);
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
+            this.picBlankCard.Image = ((System.Drawing.Image)(resources.GetObject("picBlankCard.Image")));
+            this.picBlankCard.Location = new System.Drawing.Point(628, 13);
+            this.picBlankCard.Name = "picBlankCard";
+            this.picBlankCard.Size = new System.Drawing.Size(280, 363);
+            this.picBlankCard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picBlankCard.TabIndex = 15;
+            this.picBlankCard.TabStop = false;
             // 
             // btnSubmit
             // 
@@ -244,14 +245,14 @@
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.btnLeaderboard);
             this.Controls.Add(this.picWhiteCard2);
-            this.Controls.Add(this.txtWhiteCard2);
-            this.Controls.Add(this.cmbWhiteCard2);
             this.Controls.Add(this.picWhiteCard);
             this.Controls.Add(this.txtWhiteCard);
             this.Controls.Add(this.cmbWhiteCard);
             this.Controls.Add(this.picBlackCard);
             this.Controls.Add(this.txtBlackCard);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.txtWhiteCard2);
+            this.Controls.Add(this.picBlankCard);
+            this.Controls.Add(this.cmbWhiteCard2);
             this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -263,7 +264,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picBlackCard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picWhiteCard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picWhiteCard2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBlankCard)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -280,7 +281,7 @@
         private System.Windows.Forms.TextBox txtWhiteCard2;
         private System.Windows.Forms.ComboBox cmbWhiteCard2;
         private System.Windows.Forms.Button btnLeaderboard;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picBlankCard;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Button btnRules;
         private System.Windows.Forms.Button btnLicense;
