@@ -27,8 +27,9 @@ namespace UnitTests
             GUIDs.Add(new Guid("dd12fa05-a7a7-4f6c-8467-4711abbcb16b"));
             GUIDs.Add(new Guid("f4af220d-ab63-4e64-a8b3-1bbae1454a66"));
             GUIDs.Add(new Guid("9ee1f4a7-3fa6-4fe6-9ff3-517b50a39638"));
-            Dealer.ShuffleCards(GUIDs, 'W');
-            Dealer.ShuffleCards(GUIDs, 'B');
+            CardSet testCS = new CardSet(GUIDs[0]);
+            GUIDs.RemoveAt(0);
+            testCS.Merge(GUIDs);
         }
 
         [TestMethod]
@@ -38,8 +39,10 @@ namespace UnitTests
             GUIDs.Add(new Guid("dd12fa05-a7a7-4f6c-8467-4711abbcb16b"));
             GUIDs.Add(new Guid("f4af220d-ab63-4e64-a8b3-1bbae1454a66"));
             GUIDs.Add(new Guid("9ee1f4a7-3fa6-4fe6-9ff3-517b50a39638"));
-            List<string> W = Dealer.ShuffleCards(GUIDs, 'W');
-            Dealer.Deal(W, 5, 10);
+            CardSet testCS = new CardSet(GUIDs[0]);
+            GUIDs.RemoveAt(0);
+            testCS.Merge(GUIDs);
+            Dealer.Deal(testCS, 10, 10);
         }
     }
 }
