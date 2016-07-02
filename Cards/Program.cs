@@ -7,13 +7,31 @@ using System.Windows.Forms;
 
 namespace JoePitt.Cards
 {
+    /// <summary>
+    /// The central class of Cards.
+    /// </summary>
     static class Program
     {
-        static public Game CurrentGame;
-        static public ClientNetworking CurrentPlayer;
-        static public frmLeaderboard LeaderBoard;
-        static internal string SessionKey;
-        static private int ShowWinners = 0;
+        /// <summary>
+        /// The game that is currently being played.
+        /// </summary>
+        static public Game CurrentGame { get; set; }
+        /// <summary>
+        /// The Client Communications Handler of the current player.
+        /// </summary>
+        static public ClientNetworking CurrentPlayer { get; set; }
+        /// <summary>
+        /// The Leaderboard window.
+        /// </summary>
+        static public frmLeaderboard LeaderBoard { get; set; }
+        /// <summary>
+        /// The Session Key of this instance of Cards.
+        /// </summary>
+        static internal string SessionKey { get; set; }
+        /// <summary>
+        /// The Last round that the winners prompt was shown for.
+        /// </summary>
+        static private int ShownWinners { get; set; } = 0;
 
         /// <summary>
         /// The main entry point for the application.
@@ -80,7 +98,7 @@ namespace JoePitt.Cards
                         case "PLAYING":
                             CurrentGame.Stage = 'P';
                             CurrentGame.Round = Convert.ToInt32(response[2]);
-                            if (CurrentGame.Round > 1 && ShowWinners < CurrentGame.Round)
+                            if (CurrentGame.Round > 1 && ShownWinners < CurrentGame.Round)
                             {
                                 CurrentPlayer = CurrentGame.LocalPlayers[0];
                                 CurrentPlayer.NextCommand = "GETWINNER";
@@ -113,7 +131,7 @@ namespace JoePitt.Cards
                                         message = "The winning answer is: " + CurrentGame.Winners[0].Text + " (by " + CurrentGame.Winners[0].Submitter.Name + ")";
                                     }
                                     MessageBox.Show(message, "Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    ShowWinners = CurrentGame.Round - 1;
+                                    ShownWinners = CurrentGame.Round - 1;
                                 }
                                 catch
                                 {
@@ -164,7 +182,6 @@ namespace JoePitt.Cards
                                         {
                                             break;
                                         }
-                                        CurrentPlayer.Owner.Submitted = CurrentGame.Round;
                                         submitted++;
                                         break;
                                     case "NO":
@@ -203,7 +220,6 @@ namespace JoePitt.Cards
                                         {
                                             break;
                                         }
-                                        CurrentPlayer.Owner.Voted = CurrentGame.Round;
                                         voted++;
                                         break;
                                     case "NO":
@@ -240,6 +256,11 @@ namespace JoePitt.Cards
             Application.Exit();
         }
 
+        /// <summary>
+        /// Opens the Debug UI when CTRL+SHIFT+F1 is pressed during a game.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private static void Hook_KeyPressed(object sender, KeyPressedEventArgs e)
         {
             frmDebug debug = new frmDebug();

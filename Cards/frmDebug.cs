@@ -90,8 +90,6 @@ namespace JoePitt.Cards
                 treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes.Add("Name", "Name: " + player.Name);
                 treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes.Add("IsBot", "Is Bot: " + player.IsBot);
                 treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes.Add("Score", "Score: " + player.Score);
-                treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes.Add("Submitted", "Submitted: " + player.Submitted);
-                treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes.Add("Voted", "Voted: " + player.Voted);
                 treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes.Add("WhiteCards", "White Cards");
                 int j = 0;
                 foreach (Card card in player.WhiteCards)

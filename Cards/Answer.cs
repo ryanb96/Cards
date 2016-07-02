@@ -5,15 +5,39 @@ using System.Text.RegularExpressions;
 
 namespace JoePitt.Cards
 {
+    /// <summary>
+    /// A player's answer.
+    /// </summary>
     [Serializable]
     public class Answer
     {
+        /// <summary>
+        /// The player who submitted the answer.
+        /// </summary>
         public Player Submitter { get; private set; }
+        /// <summary>
+        /// The Black Card the answer is for.
+        /// </summary>
         public Card BlackCard { get; private set; }
+        /// <summary>
+        /// The Submitted White Card.
+        /// </summary>
         public Card WhiteCard { get; private set; }
+        /// <summary>
+        /// The Second White card, where required, that was submitted.
+        /// </summary>
         public Card WhiteCard2 { get; private set; }
+        /// <summary>
+        /// The final text of the answer, after filling the blanks.
+        /// </summary>
         public string Text { get; private set; }
 
+        /// <summary>
+        /// Create an answer for a black card which requires 1 White Card.
+        /// </summary>
+        /// <param name="submitter">The Player submitting the answer.</param>
+        /// <param name="blackCard">The black card the answer is for.</param>
+        /// <param name="whiteCard">The white card being submitted.</param>
         public Answer(Player submitter, Card blackCard, Card whiteCard)
         {
             Submitter = submitter;
@@ -32,6 +56,13 @@ namespace JoePitt.Cards
             }
         }
 
+        /// <summary>
+        /// Create an answer for a black card which requires 2 White Card.
+        /// </summary>
+        /// <param name="submitter">The Player submitting the answer.</param>
+        /// <param name="blackCard">The black card the answer is for.</param>
+        /// <param name="whiteCard">The first white card being submitted.</param>
+        /// <param name="whiteCard2">The second white card being submitted.</param>
         public Answer(Player submitter, Card blackCard, Card whiteCard, Card whiteCard2)
         {
             Submitter = submitter;
@@ -59,6 +90,10 @@ namespace JoePitt.Cards
             }
         }
 
+        /// <summary>
+        /// Export the answer into a byte array.
+        /// </summary>
+        /// <returns>A byte array of the answer.</returns>
         public byte[] ToByteArray()
         {
             BinaryFormatter formatter = new BinaryFormatter();

@@ -1,12 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using System.Management;
-using System.Security.Cryptography;
-using System;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.IO;
 
 namespace JoePitt.Cards
 {
@@ -15,22 +11,55 @@ namespace JoePitt.Cards
     /// </summary>
     public class ClientNetworking
     {
-        private string Address;
-        private int Port;
-        public List<string> Log = new List<string>();
-        private Game Game;
-        public Player Owner;
-        private Thread ClientThread;
-
-        public bool NewCommand = false;
-        public string NextCommand = "";
-        public bool NewResponse = false;
-        public string LastResponse = "";
+        /// <summary>
+        /// The IP Address the Client is connected to.
+        /// </summary>
+        public string Address { get; private set; }
+        /// <summary>
+        /// The Port the Client is connected to.
+        /// </summary>
+        public int Port { get; private set; }
+        /// <summary>
+        /// The history of the Clients communications.
+        /// </summary>
+        public List<string> Log { get; private set; } = new List<string>();
+        /// <summary>
+        /// The Game the Client is connected to.
+        /// </summary>
+        public Game Game { get; private set; }
+        /// <summary>
+        /// The Player who's Client this is.
+        /// </summary>
+        public Player Owner { get; private set; }
+        /// <summary>
+        /// If there is a command waiting to be sent.
+        /// </summary>
+        public bool NewCommand { get; set; } = false;
+        /// <summary>
+        /// The next command to be sent.
+        /// </summary>
+        public string NextCommand { get; set; } = "";
+        /// <summary>
+        /// If there is a new response waiting to be processed.
+        /// </summary>
+        public bool NewResponse { get; set; } = false;
+        /// <summary>
+        /// The last response from the server.
+        /// </summary>
+        public string LastResponse { get; private set; } = "";
 
         /// <summary>
-        /// Initialise networking for the specified Game.
+        /// The thread which runs all communications.
+        /// </summary>
+        private Thread ClientThread;
+
+        /// <summary>
+        /// Sets up the Player's Networking.
         /// </summary>
         /// <param name="GameIn">The Game the networking is for.</param>
+        /// <param name="OwnerIn">The Player the networking is for.</param>
+        /// <param name="ServerAddress">The IP Address of the hosted game.</param>
+        /// <param name="ServerPort">The port of the hosted game.</param>
         public ClientNetworking(Game GameIn, Player OwnerIn, string ServerAddress, int ServerPort)
         {
             Game = GameIn;
@@ -44,13 +73,13 @@ namespace JoePitt.Cards
         }
 
         /// <summary>
-        /// Connects to the remove server and works a a messenger between local and remote game.
+        /// Handles communications with the host, run by ClientThread.
         /// </summary>
         private void RunSession()
         {
             TcpClient tcpClient;
             NetworkStream clientStream;
-            Log.Add(DateTime.Now.ToString() + ": Attempting to connect to " + Address + ":" + Port +"...");
+            Log.Add(DateTime.Now.ToString() + ": Attempting to connect to " + Address + ":" + Port + "...");
             try
             {
                 tcpClient = new TcpClient(Address, Port);

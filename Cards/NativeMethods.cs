@@ -8,12 +8,27 @@ using System.Windows.Forms;
 
 namespace JoePitt.Cards
 {
+    /// <summary>
+    /// Provides System Interop linkage.
+    /// </summary>
     public sealed class NativeMethods : IDisposable
     {
-        // Registers a hot key with Windows.
+        /// <summary>
+        /// Registers a Global Hotkey.
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <param name="id"></param>
+        /// <param name="fsModifiers"></param>
+        /// <param name="vk"></param>
+        /// <returns>If the hotkey was registered.</returns>
         [DllImport("user32.dll")]
         private static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
-        // Unregisters the hot key with Windows.
+        /// <summary>
+        /// Removes a hotkey registration.
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [DllImport("user32.dll")]
         private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
 
@@ -65,6 +80,9 @@ namespace JoePitt.Cards
         private Window _window = new Window();
         private int _currentId;
 
+        /// <summary>
+        /// The Keyboard Hook Handler.
+        /// </summary>
         public void KeyboardHook()
         {
             // register the event of the inner native window.
@@ -96,6 +114,9 @@ namespace JoePitt.Cards
 
         #region IDisposable Members
 
+        /// <summary>
+        /// Remove any Key Bindings and dispose of the class.
+        /// </summary>
         public void Dispose()
         {
             // unregister all the registered hot keys.
@@ -125,11 +146,17 @@ namespace JoePitt.Cards
             _key = key;
         }
 
+        /// <summary>
+        /// The Modifier key that was pressed.
+        /// </summary>
         public ModifierKeys Modifier
         {
             get { return _modifier; }
         }
 
+        /// <summary>
+        /// The Key that was pressed.
+        /// </summary>
         public Keys Key
         {
             get { return _key; }
@@ -142,9 +169,21 @@ namespace JoePitt.Cards
     [Flags]
     public enum ModifierKeys : uint
     {
+        /// <summary>
+        /// The ALT Key.
+        /// </summary>
         Alt = 1,
+        /// <summary>
+        /// The CTRL Key.
+        /// </summary>
         Control = 2,
+        /// <summary>
+        /// The SHIFT Key.
+        /// </summary>
         Shift = 4,
+        /// <summary>
+        /// The Windows Key.
+        /// </summary>
         Win = 8
     }
 }

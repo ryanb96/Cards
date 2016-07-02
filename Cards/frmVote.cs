@@ -71,7 +71,7 @@ namespace JoePitt.Cards
             if (cmbAnswers.SelectedIndex != -1)
             {
                 Vote myVote = new Vote(Program.CurrentPlayer.Owner, Program.CurrentGame.Answers[cmbAnswers.SelectedIndex]);
-                byte[] myVoteBytes = myVote.ToArray();
+                byte[] myVoteBytes = myVote.ToByteArray();
                 string myVoteBase64 = Convert.ToBase64String(myVoteBytes);
                 Program.CurrentPlayer.NextCommand = "VOTE " + myVoteBase64;
                 Program.CurrentPlayer.NewCommand = true;
@@ -84,7 +84,6 @@ namespace JoePitt.Cards
                 if (response == "SUBMITTED")
                 {
                     Submitted = true;
-                    Program.CurrentPlayer.Owner.Voted = Program.CurrentGame.Round;
                     Close();
                 }
                 else

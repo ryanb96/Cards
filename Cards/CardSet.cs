@@ -9,23 +9,65 @@ using System.Xml;
 
 namespace JoePitt.Cards
 {
+    /// <summary>
+    /// A collection of Cards which make up a Set.
+    /// </summary>
     [Serializable]
     public class CardSet
     {
+        /// <summary>
+        /// The Globally Unique Identifier of the Card Set.
+        /// </summary>
         public Guid GUID { get; private set; }
+        /// <summary>
+        /// The Display Name of the Card Set.
+        /// </summary>
         public string Name { get; private set; }
+        /// <summary>
+        /// The version of the Card Set, in x.y format.
+        /// </summary>
         public string Version { get; private set; }
+        /// <summary>
+        /// The location of the xml file which defines the Cad Set.
+        /// </summary>
         public string Path { get; private set; }
+        /// <summary>
+        /// The SHA256 Hash of the Card Set.
+        /// </summary>
         public string Hash { get; private set; }
+        /// <summary>
+        /// If the hash was successfully verified.
+        /// </summary>
         public bool Verified { get; private set; }
-
+        /// <summary>
+        /// The Number of White Cards.
+        /// </summary>
         public int WhiteCardCount { get; private set; }
+        /// <summary>
+        /// All the White Cards in the Set.
+        /// </summary>
         public Dictionary<string, Card> WhiteCards { get; private set; }
+        /// <summary>
+        /// The current order of the White Cards.
+        /// </summary>
         public Dictionary<int, string> WhiteCardIndex { get; private set; }
+        /// <summary>
+        /// The number of Black Cards in the Set.
+        /// </summary>
         public int BlackCardCount { get; private set; }
+        /// <summary>
+        /// All the Black Cards in the Set.
+        /// </summary>
         public Dictionary<string, Card> BlackCards { get; private set; }
+        /// <summary>
+        /// The current order of the Black Cards.
+        /// </summary>
         public Dictionary<int, string> BlackCardIndex { get; private set; }
 
+        /// <summary>
+        /// Loads a Card Set from its XML File.
+        /// </summary>
+        /// <param name="guid">The GUID of the Card Set to load.</param>
         public CardSet(Guid guid)
         {
             string path = Application.StartupPath + "\\Resources\\CardSets";
@@ -93,22 +135,11 @@ namespace JoePitt.Cards
                 WhiteCardIndex.Add(WhiteCardCount, cardID);
             }
         }
-
-        public string GetXML()
-        {
-            string path = Application.StartupPath + "\\Resources\\CardSets";
-            if (path.Contains("TESTWINDOW"))
-            {
-                path = "C:\\Users\\Public\\CardSets";
-            }
-            string[] files = Directory.GetFiles(path, "*" + GUID + ".cahc");
-            if (files == null)
-            {
-                return "SETERROR";
-            }
-            return File.ReadAllText(files[0]);
-        }
-
+        
+        /// <summary>
+        /// Merges 2 or more Card Sets into the Single Game Set.
+        /// </summary>
+        /// <param name="GUIDs">GUIDs for all the Card Sets to be added.</param>
         public void Merge(List<Guid> GUIDs)
         {
             GUID = new Guid();
@@ -173,6 +204,10 @@ namespace JoePitt.Cards
             Dealer.ShuffleCards(WhiteCardIndex);
         }
 
+        /// <summary>
+        /// Exports the Card Set as a byte array.
+        /// </summary>
+        /// <returns>A byte array of the Card Set.</returns>
         public byte[] ToByteArray()
         {
             BinaryFormatter formatter = new BinaryFormatter();

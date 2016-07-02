@@ -1,15 +1,15 @@
 ﻿using NATUPNPLib;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Linq;
 
 namespace JoePitt.Cards
 {
@@ -18,20 +18,58 @@ namespace JoePitt.Cards
     /// </summary>
     public class ServerNetworking
     {
-        Guid GameGUID = new Guid();
+        /// <summary>
+        /// The Default port for games of Cards.
+        /// </summary>
         const int DefaultPort = 60069;
-        public int Port = DefaultPort;
-        public bool IPv4UPnP = false;
-        public bool IPv6UPnP = false;
-        public List<IPAddress> LocalIPAddresses = new List<IPAddress>();
-        public IPAddress PublicIP = IPAddress.Parse("0.0.0.0");
-        public List<string> Log = new List<string>();
-        public TcpListener tcpListener;
-        public Thread listenThread;
-        public List<Thread> ClientThreads = new List<Thread>();
-        private List<TcpClient> ClientTCPClients = new List<TcpClient>();
-        private Game Game;
-        private bool ListernerUp = false;
+        /// <summary>
+        /// The Port this game is being played on.
+        /// </summary>
+        public int Port { get; private set; } = DefaultPort;
+        /// <summary>
+        /// If UPnP was successful for IPv4.
+        /// </summary>
+        public bool IPv4UPnP { get; private set; } = false;
+        /// <summary>
+        /// If UPnP was successful for IPv6.
+        /// </summary>
+        public bool IPv6UPnP { get; private set; } = false;
+        /// <summary>
+        /// This machine's IPv4 &amp; IPv6 Addresses.
+        /// </summary>
+        public List<IPAddress> LocalIPAddresses { get; private set; } = new List<IPAddress>();
+        /// <summary>
+        /// This machine's Public IP Address.
+        /// </summary>
+        public IPAddress PublicIP { get; private set; } = IPAddress.Parse("0.0.0.0");
+        /// <summary>
+        /// The Server Networking Handler's communications history.
+        /// </summary>
+        public List<string> Log { get; private set; } = new List<string>();
+        /// <summary>
+        /// The main listener for the game.
+        /// </summary>
+        private TcpListener tcpListener { get; set; }
+        /// <summary>
+        /// The thread that handles initial TCP Connection establishment.
+        /// </summary>
+        private Thread listenThread { get; set; }
+        /// <summary>
+        /// The threads that run the TCP Clients.
+        /// </summary>
+        private List<Thread> ClientThreads { get; set; } = new List<Thread>();
+        /// <summary>
+        /// The clients that handle gameplay networking.
+        /// </summary>
+        private List<TcpClient> ClientTCPClients { get; set; } = new List<TcpClient>();
+        /// <summary>
+        /// The game the networking is for.
+        /// </summary>
+        private Game Game { get; set; }
+        /// <summary>
+        /// If the listener has started.
+        /// </summary>
+        private bool ListernerUp { get; set; } = false;
 
         /// <summary>
         /// Initialise networking for the specified Game.
@@ -207,8 +245,6 @@ namespace JoePitt.Cards
             return false;
         }
 
-        //End of Discovery & UPnP Functions.
-
         //Start of Client Commnication Functions.
 
         /// <summary>
@@ -216,7 +252,6 @@ namespace JoePitt.Cards
         /// </summary>
         public void Start()
         {
-            GameGUID = Guid.NewGuid();
             Port = DefaultPort;
             IPv4UPnP = false;
             LocalIPAddresses = new List<IPAddress>();
@@ -509,7 +544,7 @@ namespace JoePitt.Cards
                             }
                             else if (Game.Stage == 'V')
                             {
-                                serverText = "VOTING " + Convert.ToBase64String(Game.ExportAnswers());
+                                serverText = "VOTING " + Convert.ToBase64String(Game.AnswersToByteArray());
                             }
                             else if (Game.Stage == 'E')
                             {
@@ -775,7 +810,7 @@ namespace JoePitt.Cards
                          * [Binary Representation of Game.Winners]
                          */
                         case "GETWINNER":
-                            serverText = Convert.ToBase64String(Game.ExportWinners());
+                            serverText = Convert.ToBase64String(Game.WinnersToByteArray());
                             break;
 
                         /*
@@ -851,6 +886,5 @@ namespace JoePitt.Cards
             tcpClient.Close();
             Log.Add(ThreadName + ": > Connection Lost!");
         }
-
     }
 }

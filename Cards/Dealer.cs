@@ -1,16 +1,14 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.DirectoryServices.AccountManagement;
 using System.IO;
+using System.Linq;
+using System.Management;
 using System.Security.Cryptography;
+using System.Security.Principal;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
-using System.DirectoryServices.AccountManagement;
-using System.Diagnostics;
-using System.Security.Principal;
-using System.Management;
-using System.Linq;
 
 namespace JoePitt.Cards
 {
@@ -19,6 +17,10 @@ namespace JoePitt.Cards
     /// </summary>
     public class Dealer
     {
+        /// <summary>
+        /// Gets the Display Name of the Windows/AD User running the game.
+        /// </summary>
+        /// <returns>The Current User's Display Name.</returns>
         static public string IDPlayer()
         {
             string targetUser = WindowsIdentity.GetCurrent().Name;
@@ -112,7 +114,7 @@ namespace JoePitt.Cards
         /// <summary>
         /// Install a Card Set.
         /// </summary>
-        /// <param name="file">The path to the Card Set to be installed.</param>
+        /// <param name="CardSetFile">The path to the Card Set to be installed.</param>
         /// <returns>If the Card Set was installed.</returns>
         static public bool InstallCardSet(string CardSetFile)
         {
@@ -365,8 +367,7 @@ namespace JoePitt.Cards
         /// <summary>
         /// Shuffle a Deck of Cards.
         /// </summary>
-        /// <param name="CardSetGUIDs">A list of the Card Set GUIDs to be shuffled.</param>
-        /// <param name="CardType">The type of Cards to shuffle.</param>
+        /// <param name="Cards">The card index to be shuffled.</param>
         /// <returns>A Shuffled Card Deck.</returns>
         static public Dictionary<int, string> ShuffleCards(Dictionary<int, string> Cards)
         {
@@ -398,7 +399,7 @@ namespace JoePitt.Cards
         /// <summary>
         /// Deal the White Cards for players.
         /// </summary>
-        /// <param name="WhiteCards">Pre-shuffled deck of White Cards.</param>
+        /// <param name="Set">Pre-shuffled CardSet.</param>
         /// <param name="NoOfPlayers">The total number of Players.</param>
         /// <param name="CardsPerPlayer">The number of Cards to deal to each Player.</param>
         /// <returns>The Dealt Hands</returns>

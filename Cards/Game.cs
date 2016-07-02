@@ -7,54 +7,115 @@ using System.Windows.Forms;
 
 namespace JoePitt.Cards
 {
-    [Serializable]
     /// <summary>
-    /// A Game of Cards Against Humanity.
+    /// A Game of Cards.
     /// </summary>
+    [Serializable]
     public class Game
     {
-        public bool Playable;
-        /* Game Type
-         * L = Local  (No Network)
-         * H = Host   (Hosting Game)
-         * C = Client (Joining Game)
-         */
-        [NonSerialized]
-        public char GameType;
+        /// <summary>
+        /// If the game is ready to be played.
+        /// </summary>
+        public bool Playable { get; set; }
+        /// <summary>
+        /// Identifies if the game is Local (L), Hosting (H) or Joining (J).
+        /// </summary>
+        public char GameType { get; private set; }
 
         //Networking
-        [NonSerialized]
-        public ServerNetworking HostNetwork;
-        [NonSerialized]
+        /// <summary>
+        /// The hosting network provider, for hosted games.
+        /// </summary>
+        public ServerNetworking HostNetwork { get; private set; }
+        /// <summary>
+        /// All the client networking proviers for this instance.
+        /// </summary>
         public List<ClientNetworking> LocalPlayers;
-        [NonSerialized]
+        /// <summary>
+        /// If networking is up and running.
+        /// </summary>
         public bool NetworkUp;
 
         //Settings
-        public bool Cheats;
-        public int CardsPerUser;
-        public int Rounds;
-        public bool NeverHaveI;
-        public bool RebootingTheUniverse;
-        public int PlayerCount;
-        public int BotCount;
-        public Player[] Players;
-        public List<CardSet> CardSets;
+        /// <summary>
+        /// The maximum number of human players.
+        /// </summary>
+        public int PlayerCount { get; private set; }
+        /// <summary>
+        /// The number of automated players.
+        /// </summary>
+        public int BotCount { get; private set; }
+        /// <summary>
+        /// Human and automated players.
+        /// </summary>
+        public Player[] Players { get; private set; }
+        /// <summary>
+        /// The Card Sets that are in use in the game.
+        /// </summary>
+        public List<CardSet> CardSets { get; private set; }
+        /// <summary>
+        /// If cheats are enabled.
+        /// </summary>
+        public bool Cheats { get; private set; }
+        /// <summary>
+        /// The number of cards each play should have.
+        /// </summary>
+        public int CardsPerUser { get; private set; }
+        /// <summary>
+        /// The number of rounds to play.
+        /// </summary>
+        public int Rounds { get; private set; }
+        /// <summary>
+        /// Enable Never Have I - Allowing swapping of cards that are not understood.
+        /// </summary>
+        public bool NeverHaveI { get; private set; }
+        /// <summary>
+        /// Enable Rebooting The Universie - Allowing entire hands to be re dealt.
+        /// </summary>
+        public bool RebootingTheUniverse { get; private set; }
 
         //Progress
-        public char Stage;
-        public CardSet GameSet;
-        public int CurrentBlackCard;
-        public int CurrentWhiteCard;
-        public int Round;
-
-        public List<Answer> Answers;
-        public List<Vote> Votes;
-        public List<Answer> Winners;
+        /// <summary>
+        /// The status of the game:
+        /// W: Waiting for players to Join.
+        /// P: Accepting answers to the current Black Card (Playing ).
+        /// V: Accepting votes on the best answers (Voting).
+        /// E: End of Game.
+        /// </summary>
+        public char Stage { get; set; }
+        /// <summary>
+        /// The, potentially merged, set of cards to use for the game.
+        /// </summary>
+        public CardSet GameSet { get; private set; }
+        /// <summary>
+        /// The Index of the current Black Card, from the shuffled CardSet.BlackCardIndex.
+        /// </summary>
+        public int CurrentBlackCard { get; private set; }
+        /// <summary>
+        /// The Index of the top White Card, from the shuffled CardSet.WhiteCardIndex.
+        /// </summary>
+        public int CurrentWhiteCard { get; private set; }
+        /// <summary>
+        /// The current round of the game.
+        /// </summary>
+        public int Round { get; set; }
+        /// <summary>
+        /// Answers that have been submitted for this round.
+        /// </summary>
+        public List<Answer> Answers { get; set; }
+        /// <summary>
+        /// Votes that have been submitted for this round.
+        /// </summary>
+        public List<Vote> Votes { get; private set; }
+        /// <summary>
+        /// The winning answers from the previous round.
+        /// </summary>
+        public List<Answer> Winners { get; set; }
 
         /// <summary>
         /// Initalise a game including the global settings.
         /// </summary>
+        /// <param name="Type">The Type of game to setup.</param>
         /// <param name="PlayerNames">List of player names.</param>
         public Game(char Type, List<string> PlayerNames)
         {
@@ -127,7 +188,7 @@ namespace JoePitt.Cards
         }
 
         /// <summary>
-        /// Shutdown the currently hosted game.
+        /// Shutdown the current game.
         /// </summary>
         /// <returns>If the game was stopped.</returns>
         public bool Stop()
@@ -443,7 +504,6 @@ namespace JoePitt.Cards
                             botAnswer = new Answer(player, GameSet.BlackCards[GameSet.BlackCardIndex[CurrentBlackCard]], player.WhiteCards[0], player.WhiteCards[1]);
                         }
                         Answers.Add(botAnswer);
-                        player.Submitted = Round;
                     }
                 }
 
@@ -491,7 +551,7 @@ namespace JoePitt.Cards
         /// Converts the GameSet to a byte array.
         /// </summary>
         /// <returns>The Binary Representation of the Game Set.</returns>
-        public byte[] ExportGameSet()
+        public byte[] ToByteArray()
         {
             BinaryFormatter formatter = new BinaryFormatter();
             using (MemoryStream stream = new MemoryStream())
@@ -505,7 +565,7 @@ namespace JoePitt.Cards
         /// Converts the Game's Players List into a byte array.
         /// </summary>
         /// <returns>The Binary Representation of the Players List.</returns>
-        public byte[] ExportPlayers()
+        public byte[] PlayersToByteArray()
         {
             BinaryFormatter formatter = new BinaryFormatter();
             using (MemoryStream stream = new MemoryStream())
@@ -519,7 +579,7 @@ namespace JoePitt.Cards
         /// Converts the Submitted Answers to a byte array.
         /// </summary>
         /// <returns>The Binary Representation of the Submitted Answers.</returns>
-        public byte[] ExportAnswers()
+        public byte[] AnswersToByteArray()
         {
             BinaryFormatter formatter = new BinaryFormatter();
             using (MemoryStream stream = new MemoryStream())
@@ -533,7 +593,7 @@ namespace JoePitt.Cards
         /// Converts the Winners list to a byte array.
         /// </summary>
         /// <returns>The Binary Representation of the Winners List.</returns>
-        public byte[] ExportWinners()
+        public byte[] WinnersToByteArray()
         {
             BinaryFormatter formatter = new BinaryFormatter();
             using (MemoryStream stream = new MemoryStream())

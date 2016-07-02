@@ -4,22 +4,40 @@ using System.Net.Sockets;
 
 namespace JoePitt.Cards
 {
-    [Serializable]
     /// <summary>
     /// Defines a player of the game.
     /// </summary>
+    [Serializable]
     public class Player
     {
-        public string Name;
-        public int Score;
-        public List<Card> WhiteCards;
-        public bool IsBot = false;
+        /// <summary>
+        /// The name of the player, prefixed by [bot] for automated players.
+        /// </summary>
+        public string Name { get; set; }
+        /// <summary>
+        /// The player's current score.
+        /// </summary>
+        public int Score { get; set; }
+        /// <summary>
+        /// The player's current White Cards.
+        /// </summary>
+        public List<Card> WhiteCards { get; set; }
+        /// <summary>
+        /// Defines if the player is automated.
+        /// </summary>
+        public bool IsBot { get; private set; } = false;
+        /// <summary>
+        /// The player's communications handler.
+        /// </summary>
         [NonSerialized]
         public TcpClient Connection;
-        public int Submitted;
-        public int Voted;
-        private string PasswordHash;
+        private string SessionKey { get; set; }
 
+        /// <summary>
+        /// Creates a new player.
+        /// </summary>
+        /// <param name="name">The player's name.</param>
+        /// <param name="whiteCardsIn">The player's initial White Cards.</param>
         public Player(string name, List<Card> whiteCardsIn)
         {
             Name = name;
@@ -29,19 +47,22 @@ namespace JoePitt.Cards
             }
             Score = 0;
             WhiteCards = whiteCardsIn;
-            Submitted = 0;
-            Voted = 0;
         }
 
-        public bool Verify(string Hash)
+        /// <summary>
+        /// Verifies that the player (re)joining has the same session key.
+        /// </summary>
+        /// <param name="SessionKeyIn">The provided Session Key.</param>
+        /// <returns></returns>
+        public bool Verify(string SessionKeyIn)
         {
-            if (PasswordHash == Hash)
+            if (SessionKey == SessionKeyIn)
             {
                 return true;
             }
-            else if (string.IsNullOrEmpty(PasswordHash))
+            else if (string.IsNullOrEmpty(SessionKey))
             {
-                PasswordHash = Hash;
+                SessionKey = SessionKeyIn;
                 return true;
             }
             else
