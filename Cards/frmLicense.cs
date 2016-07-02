@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace JoePitt.Cards
 {
+    /// <summary>
+    /// Licence UI Control.
+    /// </summary>
     public partial class frmLicense : Form
     {
+        /// <summary>
+        /// Initalises the License UI.
+        /// </summary>
         public frmLicense()
         {
             InitializeComponent();

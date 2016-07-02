@@ -67,7 +67,7 @@ namespace JoePitt.Cards
                 path = "C:\\Users\\Public\\CardSets";
             }
             if (!Directory.Exists(path)) Directory.CreateDirectory(path); 
-            string[] cardSetFiles = Directory.GetFiles(path, "*.cahc");
+            string[] cardSetFiles = Directory.GetFiles(path, "*.cardset");
             foreach (string cardSet in cardSetFiles)
             {
                 // Try to Open Card Set
@@ -243,9 +243,9 @@ namespace JoePitt.Cards
             {
                 if (MessageBox.Show(cardSetInfo.GetAttribute("Name") + " (" + cardSetInfo.GetAttribute("Version") + ") will be installed. Continue?", "Install Card Pack?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    if (File.Exists(path + "\\" + cardSetInfo.GetAttribute("Name").Replace(' ', '-') + "_" + cardSetInfo.GetAttribute("Version") + "_" + cardSetInfo.GetAttribute("GUID") + ".cahc"))
-                    { File.Delete(path + "\\" + cardSetInfo.GetAttribute("Name").Replace(' ', '-') + "_" + cardSetInfo.GetAttribute("Version") + "_" + cardSetInfo.GetAttribute("GUID") + ".cahc"); }
-                    File.Copy(CardSetFile, path + "\\" + cardSetInfo.GetAttribute("Name").Replace(' ', '-') + "_" + cardSetInfo.GetAttribute("Version") + "_" + cardSetInfo.GetAttribute("GUID") + ".cahc");
+                    if (File.Exists(path + "\\" + cardSetInfo.GetAttribute("Name").Replace(' ', '-') + "_" + cardSetInfo.GetAttribute("Version") + "_" + cardSetInfo.GetAttribute("GUID") + ".cardset"))
+                    { File.Delete(path + "\\" + cardSetInfo.GetAttribute("Name").Replace(' ', '-') + "_" + cardSetInfo.GetAttribute("Version") + "_" + cardSetInfo.GetAttribute("GUID") + ".cardset"); }
+                    File.Copy(CardSetFile, path + "\\" + cardSetInfo.GetAttribute("Name").Replace(' ', '-') + "_" + cardSetInfo.GetAttribute("Version") + "_" + cardSetInfo.GetAttribute("GUID") + ".cardset");
                     installed = true;
                 }
             }
@@ -268,7 +268,7 @@ namespace JoePitt.Cards
             {
                 path = "C:\\Users\\Public\\CardSets";
             }
-            string[] files = Directory.GetFiles(path, "*" + CardSetGUID.ToString() + ".cahc");
+            string[] files = Directory.GetFiles(path, "*" + CardSetGUID.ToString() + ".cardset");
             if (files == null)
             {
                 MessageBox.Show("ERROR: A card pack you are trying to use has gone missing, application will restart.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -299,7 +299,7 @@ namespace JoePitt.Cards
             {
                 path = "C:\\Users\\Public\\CardSets";
             }
-            string[] files = Directory.GetFiles(path, "*" + CardSet.ToString() + ".cahc");
+            string[] files = Directory.GetFiles(path, "*" + CardSet.ToString() + ".cardset");
             if (files == null)
             {
                 MessageBox.Show("ERROR: A card pack you are trying to use has gone missing, application will restart.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -338,7 +338,7 @@ namespace JoePitt.Cards
             {
                 path = "C:\\Users\\Public\\CardSets";
             }
-            string[] files = Directory.GetFiles(path, "*" + CardSet.ToString() + ".cahc");
+            string[] files = Directory.GetFiles(path, "*" + CardSet.ToString() + ".cardset");
             if (files == null)
             {
                 MessageBox.Show("ERROR: A card pack you are trying to use has gone missing, application will restart.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);

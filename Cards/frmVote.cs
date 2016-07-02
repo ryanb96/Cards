@@ -1,15 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 
 namespace JoePitt.Cards
 {
+    /// <summary>
+    /// Voting UI.
+    /// </summary>
     public partial class frmVote : Form
     {
         private bool Submitted = false;
+
+        /// <summary>
+        /// Initalise the Rules UI.
+        /// </summary>
         public frmVote()
         {
             InitializeComponent();

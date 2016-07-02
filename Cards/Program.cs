@@ -46,7 +46,7 @@ namespace JoePitt.Cards
                     string arg = Uri.UnescapeDataString(AppDomain.CurrentDomain.SetupInformation.ActivationArguments.ActivationData[0].Substring(8));
                     if (File.Exists(arg))
                     {
-                        if (arg.EndsWith(".cahc"))
+                        if (arg.EndsWith(".cardset"))
                         {
                             Dealer.InstallCardSet(arg);
                         }
@@ -256,11 +256,6 @@ namespace JoePitt.Cards
             Application.Exit();
         }
 
-        /// <summary>
-        /// Opens the Debug UI when CTRL+SHIFT+F1 is pressed during a game.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private static void Hook_KeyPressed(object sender, KeyPressedEventArgs e)
         {
             frmDebug debug = new frmDebug();

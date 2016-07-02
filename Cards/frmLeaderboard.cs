@@ -1,17 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace JoePitt.Cards
 {
+    /// <summary>
+    /// Leaderboard UI.
+    /// </summary>
     public partial class frmLeaderboard : Form
     {
+        /// <summary>
+        /// Initalises the Leaderboard UI.
+        /// </summary>
         public frmLeaderboard()
         {
             InitializeComponent();
@@ -27,6 +28,9 @@ namespace JoePitt.Cards
             }
         }
 
+        /// <summary>
+        /// Update the Leaderboard UI.
+        /// </summary>
         public void update()
         {
             int i = 1;

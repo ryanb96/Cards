@@ -8,8 +8,14 @@ using System.Windows.Forms;
 
 namespace JoePitt.Cards
 {
+    /// <summary>
+    /// New Game UI.
+    /// </summary>
     public partial class frmNew : Form
     {
+        /// <summary>
+        /// Initalises the New Game UI.
+        /// </summary>
         public frmNew()
         {
             InitializeComponent();

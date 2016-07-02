@@ -630,7 +630,7 @@
             // picLogo
             // 
             this.picLogo.AccessibleDescription = "Right Click for Rules and License";
-            this.picLogo.AccessibleName = "Cards Against Humanity Logo";
+            this.picLogo.AccessibleName = "Cards Logo";
             this.picLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.picLogo.Image = global::JoePitt.Cards.Properties.Resources.Logo;
             this.picLogo.Location = new System.Drawing.Point(0, 0);
@@ -659,7 +659,7 @@
             this.mnuLogo.Name = "mnuLogo";
             this.mnuLogo.ShowImageMargin = false;
             this.mnuLogo.Size = new System.Drawing.Size(94, 48);
-            this.mnuLogo.Text = "Cards Against Humanity";
+            this.mnuLogo.Text = "Cards";
             // 
             // rulesToolStripMenuItem
             // 

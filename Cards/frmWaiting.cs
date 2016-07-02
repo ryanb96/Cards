@@ -3,12 +3,18 @@ using System.Windows.Forms;
 
 namespace JoePitt.Cards
 {
+    /// <summary>
+    /// Waiting UI.
+    /// </summary>
     public partial class frmWaiting : Form
     {
         bool waiting = true;
         delegate void SetTextCallback(string text);
         delegate void CloseCallback();
 
+        /// <summary>
+        /// Initalise Waiting UI.
+        /// </summary>
         public frmWaiting()
         {
             InitializeComponent();
@@ -138,6 +144,10 @@ namespace JoePitt.Cards
             return;
         }
 
+        /// <summary>
+        /// Update the Waiting UI.
+        /// </summary>
+        /// <param name="Message">The new message to show.</param>
         public void Update(string Message)
         {
             if (this.txtMessage.InvokeRequired)

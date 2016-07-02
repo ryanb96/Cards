@@ -180,9 +180,9 @@
     <None Include="Resources\Banner-Black.png" />
     <None Include="Resources\Banner-White.png" />
     <Content Include="Logo.ico" />
-    <Content Include="Resources\CardSets\UK_1.6_dd12fa05-a7a7-4f6c-8467-4711abbcb16b.cahc">
+    <None Include="Resources\CardSets\UK_1.6_dd12fa05-a7a7-4f6c-8467-4711abbcb16b.cardset">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
     <EmbeddedResource Include="frmDebug.resx">
       <DependentUpon>frmDebug.cs</DependentUpon>
     </EmbeddedResource>
@@ -200,6 +200,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRules.resx">
       <DependentUpon>frmRules.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmVote.resx">
       <DependentUpon>frmVote.cs</DependentUpon>
@@ -222,20 +223,20 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Content Include="Resources\CardSets\US_1.0_e9983525-0cb7-4ee6-a4f1-befffa583e9c.cahc">
+    <None Include="Resources\CardSets\US_1.0_e9983525-0cb7-4ee6-a4f1-befffa583e9c.cardset">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\CardSets\FullStrengthIT_1.1_f4af220d-ab63-4e64-a8b3-1bbae1454a66.cahc">
+    <None Include="Resources\CardSets\FullStrengthIT_1.1_f4af220d-ab63-4e64-a8b3-1bbae1454a66.cardset">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\CardSets\SuperSecureInfoSec_1.0_9ee1f4a7-3fa6-4fe6-9ff3-517b50a39638.cahc">
+    </None>
+    <None Include="Resources\CardSets\SuperSecureInfoSec_1.0_9ee1f4a7-3fa6-4fe6-9ff3-517b50a39638.cardset">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.1">

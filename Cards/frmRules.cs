@@ -10,8 +10,14 @@ using System.Windows.Forms;
 
 namespace JoePitt.Cards
 {
+    /// <summary>
+    /// Rules UI.
+    /// </summary>
     public partial class frmRules : Form
     {
+        /// <summary>
+        /// Initalises the Rules UI.
+        /// </summary>
         public frmRules()
         {
             InitializeComponent();

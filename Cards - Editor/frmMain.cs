@@ -46,15 +46,15 @@ namespace JoePitt.Cards.Editor
             {
                 SaveFileDialog dlgSave = new SaveFileDialog();
                 dlgSave.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                dlgSave.FileName = txtName.Text + "_" + txtVersionMajor.Value + "." + txtVersionMinor.Value + "_" + txtGUID.Text + ".cahc";
-                dlgSave.Filter = "Cards Against Humanity Cards Set (*.cahc)|*.cahc";
+                dlgSave.FileName = txtName.Text + "_" + txtVersionMajor.Value + "." + txtVersionMinor.Value + "_" + txtGUID.Text + ".cardset";
+                dlgSave.Filter = "Cards - Card Set (*.cardset)|*.cardset";
                 DialogResult result = dlgSave.ShowDialog();
-                while (result == DialogResult.OK && !dlgSave.FileName.EndsWith(".cahc"))
+                while (result == DialogResult.OK && !dlgSave.FileName.EndsWith(".cardset"))
                 {
-                    MessageBox.Show("You must use the .cahc extension at the end of the file name", "Bad Extension", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("You must use the .cardset extension at the end of the file name", "Bad Extension", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     result = dlgSave.ShowDialog();
                 }
-                if (result == DialogResult.OK && dlgSave.FileName.EndsWith(".cahc"))
+                if (result == DialogResult.OK && dlgSave.FileName.EndsWith(".cardset"))
                 {
                     XmlDocument cardSetDoc = new XmlDocument();
                     XmlElement xmlCardSet = (XmlElement)cardSetDoc.AppendChild(cardSetDoc.CreateElement("CardSet"));
@@ -119,7 +119,7 @@ namespace JoePitt.Cards.Editor
         {
             OpenFileDialog dlgOpen = new OpenFileDialog();
             dlgOpen.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            dlgOpen.Filter = "Cards Against Humanity Cards Set (*.cahc)|*.cahc";
+            dlgOpen.Filter = "Cards - Card Set (*.cardset)|*.cardset";
             dlgOpen.ShowDialog();
             if (File.Exists(dlgOpen.FileName))
             {

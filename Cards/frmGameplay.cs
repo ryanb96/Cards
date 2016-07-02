@@ -16,6 +16,10 @@ namespace JoePitt.Cards
     {
         private Card BlackCard;
         private bool Submitted = false;
+
+        /// <summary>
+        /// Initalises the main gameplay UI.
+        /// </summary>
         public frmGameplay()
         {
             InitializeComponent();

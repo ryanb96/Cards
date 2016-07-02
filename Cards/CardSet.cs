@@ -75,7 +75,7 @@ namespace JoePitt.Cards
             {
                 path = "C:\\Users\\Public\\CardSets";
             }
-            string[] files = Directory.GetFiles(path, "*" + guid.ToString() + ".cahc");
+            string[] files = Directory.GetFiles(path, "*" + guid.ToString() + ".cardset");
             if (files == null)
             {
                 MessageBox.Show("ERROR: A card pack you are trying to use has gone missing, application will restart.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -153,7 +153,7 @@ namespace JoePitt.Cards
                 {
                     path = "C:\\Users\\Public\\CardSets";
                 }
-                string[] files = Directory.GetFiles(path, "*" + guid.ToString() + ".cahc");
+                string[] files = Directory.GetFiles(path, "*" + guid.ToString() + ".cardset");
                 if (files == null)
                 {
                     MessageBox.Show("ERROR: A card pack you are trying to use has gone missing, application will restart.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);

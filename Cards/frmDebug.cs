@@ -5,8 +5,14 @@ using System.Xml.Linq;
 
 namespace JoePitt.Cards
 {
+    /// <summary>
+    /// The Debug UI Control.
+    /// </summary>
     public partial class frmDebug : Form
     {
+        /// <summary>
+        /// Initalise the UI.
+        /// </summary>
         public frmDebug()
         {
             InitializeComponent();
@@ -121,7 +127,7 @@ namespace JoePitt.Cards
             {
                 treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameBlackCards"].Nodes.Add("Card_" + i, "Card_" + i);
                 treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameBlackCards"].Nodes[i].Nodes.Add("ID", "ID: " + card.ID);
-                treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameBlackCards"].Nodes[i].Nodes.Add("Text", "Text: " + card.Text); 
+                treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameBlackCards"].Nodes[i].Nodes.Add("Text", "Text: " + card.Text);
                 treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameBlackCards"].Nodes[i].Nodes.Add("Needs", "Needs: " + card.Needs);
                 i++;
             }
@@ -169,7 +175,7 @@ namespace JoePitt.Cards
             CheckAllNodes(treDebug.Nodes, true);
         }
 
-        public void CheckAllNodes(TreeNodeCollection nodes, bool Check)
+        private void CheckAllNodes(TreeNodeCollection nodes, bool Check)
         {
             foreach (TreeNode node in nodes)
             {
