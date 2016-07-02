@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
-using System.Runtime.Serialization.Formatters.Binary;
 
 namespace JoePitt.Cards
 {
@@ -112,7 +112,7 @@ namespace JoePitt.Cards
         public void Merge(List<Guid> GUIDs)
         {
             GUID = new Guid();
-            Name = "Merged GameSet";
+            Name = "GameSet";
             Version = "0.0";
             Path = "MEMORY";
             foreach (Guid guid in GUIDs)
@@ -153,18 +153,20 @@ namespace JoePitt.Cards
                 XmlNodeList Cards = CardBlock[0].ChildNodes;
                 foreach (XmlElement Card in Cards)
                 {
-                    BlackCards.Add(guid.ToString() + "/" + Card.Attributes["ID"].Value, new Card(Card.Attributes["ID"].Value, Card.InnerText, Convert.ToInt32(Card.Attributes["Needs"].Value)));
+                    string cardID = guid.ToString() + "/" + Card.Attributes["ID"].Value;
+                    BlackCards.Add(cardID, new Card(cardID, Card.InnerText, Convert.ToInt32(Card.Attributes["Needs"].Value)));
                     BlackCardCount++;
-                    BlackCardIndex.Add(BlackCardCount, guid.ToString() + "/" + Card.Attributes["ID"].Value);
+                    BlackCardIndex.Add(BlackCardCount, cardID);
                 }
 
                 CardBlock = cardSetDoc.GetElementsByTagName("WhiteCards");
                 Cards = CardBlock[0].ChildNodes;
                 foreach (XmlElement Card in Cards)
                 {
-                    WhiteCards.Add(guid.ToString() + "/" + Card.Attributes["ID"].Value, new Card(Card.Attributes["ID"].Value, Card.InnerText));
+                    string cardID = guid.ToString() + "/" + Card.Attributes["ID"].Value;
+                    WhiteCards.Add(cardID, new Card(cardID, Card.InnerText));
                     WhiteCardCount++;
-                    WhiteCardIndex.Add(WhiteCardCount, guid.ToString() + "/" + Card.Attributes["ID"].Value);
+                    WhiteCardIndex.Add(WhiteCardCount, cardID);
                 }
             }
             Dealer.ShuffleCards(BlackCardIndex);
