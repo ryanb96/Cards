@@ -57,6 +57,7 @@ namespace JoePitt.Cards
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            NewGame:
             RNGCryptoServiceProvider PassGen = new RNGCryptoServiceProvider();
             byte[] PassBytes = new byte[32];
             PassGen.GetBytes(PassBytes);
@@ -146,6 +147,46 @@ namespace JoePitt.Cards
                             CurrentGame.Stage = 'V';
                             break;
                         case "END":
+                            CurrentPlayer = CurrentGame.LocalPlayers[0];
+                            CurrentPlayer.NextCommand = "GETWINNER";
+                            CurrentPlayer.NewCommand = true;
+                            while (!CurrentPlayer.NewResponse)
+                            {
+                                Application.DoEvents();
+                            }
+                            response = CurrentPlayer.LastResponse.Split(' ');
+                            CurrentPlayer.NewResponse = false;
+                            try
+                            {
+                                BinaryFormatter formatter = new BinaryFormatter();
+                                byte[] test = Convert.FromBase64String(response[0]);
+                                using (MemoryStream stream = new MemoryStream(test))
+                                {
+                                    CurrentGame.Winners = (List<Answer>)formatter.Deserialize(stream);
+                                }
+                                string message = "";
+                                if (CurrentGame.Winners.Count > 1)
+                                {
+                                    message = "The winning answers are:" + Environment.NewLine;
+                                    foreach (Answer winner in CurrentGame.Winners)
+                                    {
+                                        message = message + Environment.NewLine + winner.Text + " (by " + winner.Submitter.Name + ")";
+                                    }
+                                }
+                                else
+                                {
+                                    message = "The winning answer is: " + CurrentGame.Winners[0].Text + " (by " + CurrentGame.Winners[0].Submitter.Name + ")";
+                                }
+                                MessageBox.Show(message, "Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                ShownWinners = CurrentGame.Round;
+                            }
+                            catch
+                            {
+                                MessageBox.Show("Unexpected Error! Bad response to GETWINNER, Application will exit!", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                CurrentGame.Stop();
+                                Application.Exit();
+                                break;
+                            }
                             CurrentGame.Stage = 'E';
                             break;
                         default:
@@ -239,9 +280,23 @@ namespace JoePitt.Cards
                             break;
                         case 'E':
                             CurrentGame.Playable = false;
-                            MessageBox.Show("Final Results Not Implemented, Exiting!");
+                            string FinalScore = "The Final Scores are:" + Environment.NewLine;
+                            int position = 1;
+                            foreach (Player player in CurrentGame.Players)
+                            {
+                                FinalScore = FinalScore + Environment.NewLine + position + ") " + player.Name + " with " + player.Score + " points";
+                                position++;
+                            }
+                            FinalScore = FinalScore + Environment.NewLine + Environment.NewLine + "Play Again?";
                             CurrentGame.Stop();
-                            Application.Exit();
+                            if (MessageBox.Show(FinalScore, "Final Results - Cards", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                            {
+                                goto NewGame;
+                            }
+                            else
+                            {
+                                Application.Exit();
+                            }
                             break;
                         default:
                             MessageBox.Show("Unexpected Error! Unknown Game State, Application will exit!", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);

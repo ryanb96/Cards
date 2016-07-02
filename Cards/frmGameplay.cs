@@ -12,6 +12,9 @@ using System.IO;
 
 namespace JoePitt.Cards
 {
+    /// <summary>
+    /// Main Gameplay UI Control.
+    /// </summary>
     public partial class frmGameplay : Form
     {
         private Card BlackCard;
