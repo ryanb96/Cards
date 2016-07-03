@@ -687,6 +687,7 @@ namespace JoePitt.Cards
                             {
                                 if (Game.Answers.Count == (Game.PlayerCount + Game.BotCount))
                                 {
+                                    Game.Answers = Dealer.ShuffleAnswers(Game.Answers);
                                     Game.Stage = 'V';
                                 }
                             }

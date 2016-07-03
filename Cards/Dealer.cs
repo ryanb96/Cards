@@ -378,7 +378,6 @@ namespace JoePitt.Cards
             Random shuffler = new Random(BitConverter.ToInt32(seed, 0));
             int shuffleCount = 0;
             int shuffles = shuffler.Next(10000, 50000);
-            Console.WriteLine("Shuffles: " + shuffles);
             while (shuffleCount < shuffles)
             {
                 while (moveFrom < Cards.Count)
@@ -395,6 +394,38 @@ namespace JoePitt.Cards
             }
             return Cards;
         }
+
+        /// <summary>
+        /// Shuffles Answers into a random order.
+        /// </summary>
+        /// <param name="Answers">The Answers to be shuffled.</param>
+        /// <returns></returns>
+        static public List<Answer> ShuffleAnswers(List<Answer> Answers)
+        {
+            int moveFrom = 0;
+            RNGCryptoServiceProvider seeder = new RNGCryptoServiceProvider();
+            byte[] seed = new byte[4];
+            seeder.GetBytes(seed);
+            Random shuffler = new Random(BitConverter.ToInt32(seed, 0));
+            int shuffleCount = 0;
+            int shuffles = shuffler.Next(10000, 50000);
+            while (shuffleCount < shuffles)
+            {
+                while (moveFrom < Answers.Count)
+                {
+                    int moveTo = shuffler.Next(1, Answers.Count);
+                    Answer x = Answers[moveFrom];
+                    Answer y = Answers[moveTo];
+                    Answers[moveFrom] = y;
+                    Answers[moveTo] = x;
+                    moveFrom++;
+                }
+                moveFrom = 1;
+                shuffleCount++;
+            }
+            return Answers;
+        }
+
 
         /// <summary>
         /// Deal the White Cards for players.
