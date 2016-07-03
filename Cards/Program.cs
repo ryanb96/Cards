@@ -218,6 +218,10 @@ namespace JoePitt.Cards
                                 switch (responseP[0])
                                 {
                                     case "YES":
+                                        if (CurrentGame.LocalPlayers.Count > 1)
+                                        {
+                                            MessageBox.Show("Pass to " + CurrentPlayer.Owner.Name, "Next Player", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                        }
                                         frmGameplay game = new frmGameplay();
                                         if (game.ShowDialog() == DialogResult.Abort)
                                         {
@@ -229,7 +233,7 @@ namespace JoePitt.Cards
                                         break;
                                     default:
                                         MessageBox.Show("Unexpected Error! Unknown NEED ANSWER Response, Application will exit!", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                                        CurrentGame.Stop();
+                            CurrentGame.Stop();
                                         Application.Exit();
                                         break;
                                 }
@@ -256,6 +260,10 @@ namespace JoePitt.Cards
                                 switch (responseP[0])
                                 {
                                     case "YES":
+                                        if (CurrentGame.LocalPlayers.Count > 1)
+                                        {
+                                            MessageBox.Show("Pass to " + CurrentPlayer.Owner.Name, "Next Player", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                        }
                                         frmVote vote = new frmVote();
                                         if (vote.ShowDialog() == DialogResult.Abort)
                                         {
