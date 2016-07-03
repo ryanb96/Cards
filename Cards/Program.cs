@@ -57,7 +57,7 @@ namespace JoePitt.Cards
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            NewGame:
+        NewGame:
             RNGCryptoServiceProvider PassGen = new RNGCryptoServiceProvider();
             byte[] PassBytes = new byte[32];
             PassGen.GetBytes(PassBytes);
@@ -233,7 +233,7 @@ namespace JoePitt.Cards
                                         break;
                                     default:
                                         MessageBox.Show("Unexpected Error! Unknown NEED ANSWER Response, Application will exit!", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                            CurrentGame.Stop();
+                                        CurrentGame.Stop();
                                         Application.Exit();
                                         break;
                                 }
