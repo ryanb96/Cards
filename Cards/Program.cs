@@ -99,7 +99,7 @@ namespace JoePitt.Cards
                         case "PLAYING":
                             CurrentGame.Stage = 'P';
                             CurrentGame.Round = Convert.ToInt32(response[2]);
-                            if (CurrentGame.Round > 1 && ShownWinners < CurrentGame.Round)
+                            if (CurrentGame.Round > 1 && ShownWinners < (CurrentGame.Round -1))
                             {
                                 CurrentPlayer = CurrentGame.LocalPlayers[0];
                                 CurrentPlayer.NextCommand = "GETWINNER";
