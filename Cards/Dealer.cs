@@ -413,7 +413,7 @@ namespace JoePitt.Cards
             {
                 while (moveFrom < Answers.Count)
                 {
-                    int moveTo = shuffler.Next(1, Answers.Count);
+                    int moveTo = shuffler.Next(0, Answers.Count - 1);
                     Answer x = Answers[moveFrom];
                     Answer y = Answers[moveTo];
                     Answers[moveFrom] = y;
