@@ -616,7 +616,7 @@ namespace JoePitt.Cards
                                         serverText = "YES";
                                         foreach (Answer answer in Game.Answers)
                                         {
-                                            if (answer.Submitter.Name == thisPlayer.Name)
+                                            if (answer.Submitter != null && answer.Submitter.Name == thisPlayer.Name)
                                             {
                                                 serverText = "NO";
                                             }
@@ -626,7 +626,7 @@ namespace JoePitt.Cards
                                         serverText = "YES";
                                         foreach (Vote vote in Game.Votes)
                                         {
-                                            if (vote.Voter.Name == thisPlayer.Name)
+                                            if (vote.Voter != null && vote.Voter.Name == thisPlayer.Name)
                                             {
                                                 serverText = "NO";
                                             }
