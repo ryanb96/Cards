@@ -727,9 +727,18 @@ namespace JoePitt.Cards
                                         byte[] voteIn = Convert.FromBase64String(ClientTexts[1]);
                                         using (MemoryStream stream = new MemoryStream(voteIn))
                                         {
-                                            Game.Votes[i] = (Vote)formatter.Deserialize(stream);
+                                            Vote thisVote = (Vote)formatter.Deserialize(stream);
+                                            if (thisVote.Choice.BlackCard != Game.GameSet.BlackCards[Game.GameSet.BlackCardIndex[Game.CurrentBlackCard]])
+                                            {
+                                                serverText = "ERROR";
+                                            }
+                                            else
+                                            {
+                                                Game.Votes[i] = thisVote;
+                                                serverText = "SUBMITTED";
+                                            }
                                         }
-                                        serverText = "SUBMITTED";
+                                        
                                         break;
                                     }
                                     i++;
