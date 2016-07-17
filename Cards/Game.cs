@@ -122,53 +122,54 @@ namespace JoePitt.Cards
             GameType = Type;
             // Settings
             Round = 0;
-            Rounds = Properties.Settings.Default.Rounds;
-            CardsPerUser = Properties.Settings.Default.Cards;
-            NeverHaveI = Properties.Settings.Default.NeverHaveI;
-            RebootingTheUniverse = Properties.Settings.Default.Rebooting;
-            Cheats = Properties.Settings.Default.Cheats;
 
-            // Deal First Hand
-            PrepareDeck();
-            List<Tuple<int, Card>> hands = new List<Tuple<int, Card>>();
-            try
+            if (Type != 'J')
             {
-                hands = Dealer.Deal(GameSet, PlayerNames.Count, CardsPerUser);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error, game not started. " + ex.Message, "Game Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Playable = false;
-                return;
-            }
+                Rounds = Properties.Settings.Default.Rounds;
+                CardsPerUser = Properties.Settings.Default.Cards;
+                NeverHaveI = Properties.Settings.Default.NeverHaveI;
+                RebootingTheUniverse = Properties.Settings.Default.Rebooting;
+                Cheats = Properties.Settings.Default.Cheats;
 
-            // Setup Players
-            Players = new Player[PlayerNames.Count];
-            int player = 0;
-            foreach (string playerName in PlayerNames)
-            { 
-                List<Card> hand = new List<Card>();
-                foreach (Tuple<int, Card> card in hands.GetRange(player * CardsPerUser, CardsPerUser))
+                // Deal First Hand
+                PrepareDeck();
+                List<Tuple<int, Card>> hands = new List<Tuple<int, Card>>();
+                try
                 {
-                    hand.Add(card.Item2);
+                    hands = Dealer.Deal(GameSet, PlayerNames.Count, CardsPerUser);
                 }
-                Players[player] = new Player(playerName, hand);
-                if (Players[player].Name.ToLower().StartsWith("[bot]"))
+                catch (Exception ex)
                 {
-                    BotCount++;
+                    MessageBox.Show("Error, game not started. " + ex.Message, "Game Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Playable = false;
+                    return;
                 }
-                else
-                {
-                    PlayerCount++;
-                }
-                player++;
-            }
 
-            //get game ready
-            CurrentBlackCard = 0;
+                // Setup Players
+                Players = new Player[PlayerNames.Count];
+                int player = 0;
+                foreach (string playerName in PlayerNames)
+                {
+                    List<Card> hand = new List<Card>();
+                    foreach (Tuple<int, Card> card in hands.GetRange(player * CardsPerUser, CardsPerUser))
+                    {
+                        hand.Add(card.Item2);
+                    }
+                    Players[player] = new Player(playerName, hand);
+                    if (Players[player].Name.ToLower().StartsWith("[bot]"))
+                    {
+                        BotCount++;
+                    }
+                    else
+                    {
+                        PlayerCount++;
+                    }
+                    player++;
+                }
 
-            if (Type == 'L' || Type == 'H')
-            {
+                //get game ready
+                CurrentBlackCard = 0;
+
                 try
                 {
                     HostNetwork = new ServerNetworking(this);
@@ -182,9 +183,13 @@ namespace JoePitt.Cards
                     MessageBox.Show("Unable to start game. " + ex.Message, "Game Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Playable = false;
                 }
+                NextRound();
             }
-
-            NextRound();
+            else
+            {
+                Players = new Player[1];
+                Players[0] = new Player(PlayerNames[0], new List<Card>());
+            }
         }
 
         /// <summary>
@@ -198,10 +203,13 @@ namespace JoePitt.Cards
             {
                 HostNetwork.Stop();
             }
-            foreach (ClientNetworking playerNetwork in LocalPlayers)
+            if (LocalPlayers != null)
             {
-                playerNetwork.NextCommand = "EXIT";
-                playerNetwork.NewCommand = true;
+                foreach (ClientNetworking playerNetwork in LocalPlayers)
+                {
+                    playerNetwork.NextCommand = "EXIT";
+                    playerNetwork.NewCommand = true;
+                }
             }
             return true;
         }
@@ -391,7 +399,7 @@ namespace JoePitt.Cards
                 GameSet.Merge(MergeList);
             }
 
-            if (GameSet.BlackCards.Count > 0 && GameSet.WhiteCards.Count > 0)
+            if (GameSet != null && GameSet.BlackCards.Count > 0 && GameSet.WhiteCards.Count > 0)
             {
                 CurrentWhiteCard = ((PlayerCount + BotCount) * CardsPerUser) + 1;
                 return true;
