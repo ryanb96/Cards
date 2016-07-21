@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace JoePitt.Cards
@@ -63,7 +64,19 @@ namespace JoePitt.Cards
                 {
                     BlackCard = (Card)formatter.Deserialize(stream);
                 }
-                txtBlackCard.Text = BlackCard.Text;
+                txtBlackCard.Text = BlackCard.Text + Environment.NewLine;
+                string blankRegEx = "_{3,}";
+                Regex regexr = new Regex(blankRegEx);
+                if (regexr.IsMatch(txtBlackCard.Text))
+                {
+                    string Text = regexr.Replace(txtBlackCard.Text, "[Blank]");
+                    txtBlackCard.AccessibleName = "Black Card is " + Text;
+                }
+                else
+                {
+                    txtBlackCard.AccessibleName = "Black Card is " + txtBlackCard.Text;
+                }
+                txtBlackCard.Select(txtBlackCard.Text.Length, 0);
 
                 Program.CurrentPlayer.NextCommand = "MYCARDS";
                 Program.CurrentPlayer.NewCommand = true;
