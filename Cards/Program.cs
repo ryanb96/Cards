@@ -39,6 +39,11 @@ namespace JoePitt.Cards
         [STAThread]
         static void Main()
         {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            frmBase baseUI = new frmBase();
+            baseUI.Show();
+
             try
             {
                 if (AppDomain.CurrentDomain.SetupInformation.ActivationArguments.ActivationData != null)
@@ -54,8 +59,6 @@ namespace JoePitt.Cards
                 }
             }
             catch { }
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
 
         NewGame:
             RNGCryptoServiceProvider PassGen = new RNGCryptoServiceProvider();

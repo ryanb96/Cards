@@ -114,6 +114,12 @@
     <Compile Include="CardSet.cs" />
     <Compile Include="Dealer.cs" />
     <Compile Include="ClientNetworking.cs" />
+    <Compile Include="frmBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBase.Designer.cs">
+      <DependentUpon>frmBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDebug.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +189,9 @@
     <None Include="Resources\CardSets\UK_1.6_dd12fa05-a7a7-4f6c-8467-4711abbcb16b.cardset">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <EmbeddedResource Include="frmBase.resx">
+      <DependentUpon>frmBase.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDebug.resx">
       <DependentUpon>frmDebug.cs</DependentUpon>
     </EmbeddedResource>
