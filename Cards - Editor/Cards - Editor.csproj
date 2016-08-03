@@ -30,14 +30,14 @@
     <InstallUrl>https://www.joepitt.co.uk/Project/Cards/Editor/</InstallUrl>
     <UpdateUrl>https://www.joepitt.co.uk/Project/Cards/Editor/</UpdateUrl>
     <SupportUrl>https://www.joepitt.co.uk/Project/Cards/</SupportUrl>
-    <ErrorReportUrl>https://bugs.joepitt.co.uk/cards/</ErrorReportUrl>
+    <ErrorReportUrl>https://bugs.joepitt.co.uk/Cards/</ErrorReportUrl>
     <TargetCulture>en-GB</TargetCulture>
     <ProductName>Cards - Editor</ProductName>
     <PublisherName>Joe Pitt</PublisherName>
     <SuiteName>Cards</SuiteName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
