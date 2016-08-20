@@ -35,6 +35,7 @@
     <ProductName>Cards</ProductName>
     <PublisherName>Joe Pitt</PublisherName>
     <SuiteName>Cards</SuiteName>
+    <WebPage>Default</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <TrustUrlParameters>true</TrustUrlParameters>
     <ApplicationRevision>1</ApplicationRevision>
@@ -82,7 +83,7 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <TargetZone>LocalIntranet</TargetZone>
+    <TargetZone>Internet</TargetZone>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>

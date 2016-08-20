@@ -208,6 +208,7 @@
             // chkRebootingTheUniverseLocal
             // 
             this.chkRebootingTheUniverseLocal.AutoSize = true;
+            this.chkRebootingTheUniverseLocal.Enabled = false;
             this.chkRebootingTheUniverseLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkRebootingTheUniverseLocal.Location = new System.Drawing.Point(9, 219);
             this.chkRebootingTheUniverseLocal.Name = "chkRebootingTheUniverseLocal";
@@ -219,6 +220,7 @@
             // chkNeverHaveILocal
             // 
             this.chkNeverHaveILocal.AutoSize = true;
+            this.chkNeverHaveILocal.Enabled = false;
             this.chkNeverHaveILocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkNeverHaveILocal.Location = new System.Drawing.Point(9, 194);
             this.chkNeverHaveILocal.Name = "chkNeverHaveILocal";
@@ -343,6 +345,7 @@
             // chkRebootingTheUniverseHost
             // 
             this.chkRebootingTheUniverseHost.AutoSize = true;
+            this.chkRebootingTheUniverseHost.Enabled = false;
             this.chkRebootingTheUniverseHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkRebootingTheUniverseHost.Location = new System.Drawing.Point(9, 219);
             this.chkRebootingTheUniverseHost.Name = "chkRebootingTheUniverseHost";
@@ -354,6 +357,7 @@
             // chkNeverHaveIHost
             // 
             this.chkNeverHaveIHost.AutoSize = true;
+            this.chkNeverHaveIHost.Enabled = false;
             this.chkNeverHaveIHost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkNeverHaveIHost.Location = new System.Drawing.Point(9, 194);
             this.chkNeverHaveIHost.Name = "chkNeverHaveIHost";
@@ -535,9 +539,9 @@
             this.tabJoin.Controls.Add(this.txtPlayerNameJoin);
             this.tabJoin.Controls.Add(this.lblPlayerNameJoin);
             this.tabJoin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabJoin.Location = new System.Drawing.Point(4, 22);
+            this.tabJoin.Location = new System.Drawing.Point(4, 23);
             this.tabJoin.Name = "tabJoin";
-            this.tabJoin.Size = new System.Drawing.Size(323, 475);
+            this.tabJoin.Size = new System.Drawing.Size(323, 474);
             this.tabJoin.TabIndex = 2;
             this.tabJoin.Text = "Join";
             this.tabJoin.UseVisualStyleBackColor = true;
