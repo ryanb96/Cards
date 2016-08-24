@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace JoePitt.Cards
@@ -31,7 +32,23 @@ namespace JoePitt.Cards
         /// <summary>
         /// The Last round that the winners prompt was shown for.
         /// </summary>
-        static private int ShownWinners { get; set; } = 0;
+        static private int ShownWinners { get; set; }
+        static private bool KeepRunning { get; set; } = true;
+
+        static void ShowBusyUI()
+        {
+            while (KeepRunning)
+            {
+                Application.DoEvents();
+            }
+        }
+
+        static public void Exit()
+        {
+            try { CurrentGame.Stop(); } catch { }
+            KeepRunning = false;
+            Application.Exit();
+        }
 
         /// <summary>
         /// The main entry point for the application.
@@ -41,9 +58,10 @@ namespace JoePitt.Cards
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Thread trdBusyUI = new Thread(ShowBusyUI);
+            trdBusyUI.Start();
             frmBase baseUI = new frmBase();
             baseUI.Show();
-
             try
             {
                 if (AppDomain.CurrentDomain.SetupInformation.ActivationArguments.ActivationData != null)
@@ -60,11 +78,13 @@ namespace JoePitt.Cards
             }
             catch { }
 
-        NewGame:
-            RNGCryptoServiceProvider PassGen = new RNGCryptoServiceProvider();
-            byte[] PassBytes = new byte[32];
-            PassGen.GetBytes(PassBytes);
-            SessionKey = Convert.ToBase64String(PassBytes);
+            NewGame:
+
+            ShownWinners = 0;
+            RNGCryptoServiceProvider KeyGen = new RNGCryptoServiceProvider();
+            byte[] KeyBytes = new byte[32];
+            KeyGen.GetBytes(KeyBytes);
+            SessionKey = Convert.ToBase64String(KeyBytes);
 
             frmNew newGame = new frmNew();
             newGame.ShowDialog();
@@ -102,7 +122,7 @@ namespace JoePitt.Cards
                         case "PLAYING":
                             CurrentGame.Stage = 'P';
                             CurrentGame.Round = Convert.ToInt32(response[2]);
-                            if (CurrentGame.Round > 1 && ShownWinners < (CurrentGame.Round -1))
+                            if (CurrentGame.Round > 1 && ShownWinners < (CurrentGame.Round - 1))
                             {
                                 CurrentPlayer = CurrentGame.LocalPlayers[0];
                                 CurrentPlayer.NextCommand = "GETWINNER";
@@ -140,8 +160,7 @@ namespace JoePitt.Cards
                                 catch
                                 {
                                     MessageBox.Show("Unexpected Error! Bad response to GETWINNER, Application will exit!", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                                    CurrentGame.Stop();
-                                    Application.Exit();
+                                    Exit();
                                     break;
                                 }
                             }
@@ -186,16 +205,14 @@ namespace JoePitt.Cards
                             catch
                             {
                                 MessageBox.Show("Unexpected Error! Bad response to GETWINNER, Application will exit!", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                                CurrentGame.Stop();
-                                Application.Exit();
+                                Exit();
                                 break;
                             }
                             CurrentGame.Stage = 'E';
                             break;
                         default:
                             MessageBox.Show("Unexpected Error! Unknown Game State, Application will exit!", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                            CurrentGame.Stop();
-                            Application.Exit();
+                            Exit();
                             break;
                     }
                     frmWaiting waiting = new frmWaiting();
@@ -236,8 +253,7 @@ namespace JoePitt.Cards
                                         break;
                                     default:
                                         MessageBox.Show("Unexpected Error! Unknown NEED ANSWER Response, Application will exit!", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                                        CurrentGame.Stop();
-                                        Application.Exit();
+                                        Exit();
                                         break;
                                 }
                             }
@@ -278,8 +294,7 @@ namespace JoePitt.Cards
                                         break;
                                     default:
                                         MessageBox.Show("Unexpected Error! Unknown NEED VOTE Response, Application will exit!", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                                        CurrentGame.Stop();
-                                        Application.Exit();
+                                        Exit();
                                         break;
                                 }
                             }
@@ -306,20 +321,19 @@ namespace JoePitt.Cards
                             }
                             else
                             {
-                                Application.Exit();
+                                Exit();
                             }
                             break;
                         default:
                             MessageBox.Show("Unexpected Error! Unknown Game State, Application will exit!", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                            CurrentGame.Stop();
-                            Application.Exit();
+                            Exit();
                             break;
                     }
                 }
 
                 CurrentGame.Stop();
             }
-            Application.Exit();
+            Exit();
         }
 
         private static void Hook_KeyPressed(object sender, KeyPressedEventArgs e)

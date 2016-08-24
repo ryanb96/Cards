@@ -80,8 +80,7 @@ namespace JoePitt.Cards
                         break;
                     default:
                         MessageBox.Show("Unexpected Error! Unknown Game State, Application will exit!", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                        Program.CurrentGame.Stop();
-                        Application.Exit();
+                        Program.Exit();
                         break;
                 }
 
@@ -111,8 +110,7 @@ namespace JoePitt.Cards
                                     break;
                                 default:
                                     MessageBox.Show("Unexpected Error! Unknown NEED ANSWER Response, Application will exit!", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                                    Program.CurrentGame.Stop();
-                                    Application.Exit();
+                                    Program.Exit();
                                     break;
                             }
                         }
@@ -139,8 +137,7 @@ namespace JoePitt.Cards
                                     break;
                                 default:
                                     MessageBox.Show("Unexpected Error! Unknown NEED VOTE Response, Application will exit!", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                                    Program.CurrentGame.Stop();
-                                    Application.Exit();
+                                    Program.Exit();
                                     break;
                             }
                         }

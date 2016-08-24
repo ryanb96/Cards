@@ -96,7 +96,7 @@ namespace JoePitt.Cards
                 catch
                 {
                     MessageBox.Show("Unexpected Error! Unable to get White Cards. Application will exit!", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    Application.Exit();
+                    Program.Exit();
                 }
                 
                 foreach (Card playerCard in Program.CurrentPlayer.Owner.WhiteCards)
@@ -215,7 +215,7 @@ namespace JoePitt.Cards
                 else
                 {
                     MessageBox.Show("Unexpected Error! Unable to submit answer. Application will exit!", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    Application.Exit();
+                    Program.Exit();
                 }
             }
         }
