@@ -110,9 +110,9 @@ namespace JoePitt.Cards
                 int j = 0;
                 foreach (Card card in player.WhiteCards)
                 {
-                    treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes[5].Nodes.Add("Cards_" + j, "Cards_" + j);
-                    treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes[5].Nodes[j].Nodes.Add("ID", "ID: " + card.ID);
-                    treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes[5].Nodes[j].Nodes.Add("Text", "Text: " + card.Text);
+                    treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes[3].Nodes.Add("Cards_" + j, "Cards_" + j);
+                    treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes[3].Nodes[j].Nodes.Add("ID", "ID: " + card.ID);
+                    treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes[3].Nodes[j].Nodes.Add("Text", "Text: " + card.Text);
                     j++;
                 }
                 i++;
