@@ -5,6 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
 using System.Threading;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace JoePitt.Cards
 {
@@ -308,7 +309,7 @@ namespace JoePitt.Cards
                             CurrentGame.Playable = false;
                             string FinalScore = "The Final Scores are:" + Environment.NewLine;
                             int position = 1;
-                            foreach (Player player in CurrentGame.Players)
+                            foreach (Player player in CurrentGame.Players.OrderByDescending(player => player.Score).ThenBy(player => player.Name))
                             {
                                 FinalScore = FinalScore + Environment.NewLine + position + ") " + player.Name + " with " + player.Score + " points";
                                 position++;
