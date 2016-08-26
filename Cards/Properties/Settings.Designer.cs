@@ -108,51 +108,5 @@ namespace JoePitt.Cards.Properties {
                 this["Cheats"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
-<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
-  <string>Player 01</string>
-  <string>Player 02</string>
-  <string>Player 03</string>
-  <string>Player 04</string>
-  <string>Player 05</string>
-  <string>Player 06</string>
-  <string>Player 07</string>
-  <string>Player 08</string>
-  <string>Player 09</string>
-  <string>Player 10</string>
-  <string>Player 11</string>
-  <string>Player 12</string>
-  <string>Player 13</string>
-  <string>Player 14</string>
-  <string>Player 15</string>
-  <string>Player 16</string>
-  <string>Player 17</string>
-  <string>Player 18</string>
-  <string>Player 19</string>
-  <string>Player 20</string>
-</ArrayOfString>")]
-        public global::System.Collections.Specialized.StringCollection Names {
-            get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["Names"]));
-            }
-            set {
-                this["Names"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("20")]
-        public int LocalPlayers {
-            get {
-                return ((int)(this["LocalPlayers"]));
-            }
-            set {
-                this["LocalPlayers"] = value;
-            }
-        }
     }
 }

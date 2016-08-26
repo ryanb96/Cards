@@ -23,9 +23,9 @@ namespace JoePitt.Cards
             tabsType.SelectedIndexChanged += TabsType_SelectedIndexChanged;
             txtAddPlayerLocal.GotFocus += TxtAddPlayerLocal_GotFocus;
             txtAddPlayerLocal.LostFocus += TxtAddPlayerLocal_LostFocus;
-            lstPlayersLocal.Items.Add(Dealer.IDPlayer());
-            txtPlayerNameHost.Text = Dealer.IDPlayer();
-            txtPlayerNameJoin.Text = Dealer.IDPlayer();
+            try { lstPlayersLocal.Items.Add(Dealer.IDPlayer()); } catch { }
+            try { txtPlayerNameHost.Text = Dealer.IDPlayer(); } catch { }
+            try { txtPlayerNameJoin.Text = Dealer.IDPlayer(); } catch { }
         }
 
         private void TxtAddPlayerLocal_GotFocus(object sender, EventArgs e)

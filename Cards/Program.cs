@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Security.Cryptography;
-using System.Threading;
 using System.Windows.Forms;
 using System.Linq;
 
@@ -36,14 +35,6 @@ namespace JoePitt.Cards
         static private int ShownWinners { get; set; }
         static private bool KeepRunning { get; set; } = true;
 
-        static void ShowBusyUI()
-        {
-            while (KeepRunning)
-            {
-                Application.DoEvents();
-            }
-        }
-
         static public void Exit()
         {
             try { CurrentGame.Stop(); } catch { }
@@ -57,10 +48,10 @@ namespace JoePitt.Cards
         [STAThread]
         static void Main()
         {
+            AppDomain currentDomain = AppDomain.CurrentDomain;
+            currentDomain.UnhandledException += CurrentDomain_UnhandledException;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Thread trdBusyUI = new Thread(ShowBusyUI);
-            trdBusyUI.Start();
             frmBase baseUI = new frmBase();
             baseUI.Show();
             try
@@ -335,6 +326,16 @@ namespace JoePitt.Cards
                 CurrentGame.Stop();
             }
             Exit();
+        }
+
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            Exception ex = (Exception)e.ExceptionObject;
+            string Error = "FATAL ERROR" + Environment.NewLine + Environment.NewLine +
+                ex.Message + Environment.NewLine + Environment.NewLine +
+                ex.Data + Environment.NewLine + Environment.NewLine +
+                ex.StackTrace;
+            MessageBox.Show(Error);
         }
 
         private static void Hook_KeyPressed(object sender, KeyPressedEventArgs e)

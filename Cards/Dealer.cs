@@ -23,33 +23,25 @@ namespace JoePitt.Cards
         /// <returns>The Current User's Display Name.</returns>
         static public string IDPlayer()
         {
-            string targetUser = WindowsIdentity.GetCurrent().Name;
-            try
+            string Username = "FAIL";
+            string FullUsername = WindowsIdentity.GetCurrent().Name;
+            if (FullUsername.Contains("\\"))
             {
-                return UserPrincipal.Current.DisplayName;
+                Username = FullUsername.Substring(FullUsername.LastIndexOf("\\") + 1);
             }
-            catch
+            else
             {
-                ManagementObjectSearcher usersSearcher = new ManagementObjectSearcher(@"SELECT * FROM Win32_UserAccount");
-                ManagementObjectCollection users = usersSearcher.Get();
-
-                var localUsers = users.Cast<ManagementObject>().Where(
-                    u => (bool)u["LocalAccount"] == true &&
-                         (bool)u["Disabled"] == false &&
-                         (bool)u["Lockout"] == false &&
-                         int.Parse(u["SIDType"].ToString()) == 1 &&
-                         u["Name"].ToString() != "HomeGroupUser$");
-
-                foreach (ManagementObject user in users)
-                {
-                    string thisUser = user["Domain"].ToString() + "\\" + user["Name"].ToString();
-                    if (thisUser == targetUser)
-                    {
-                        return user["FullName"].ToString();
-                    }
-                }
+                Username = FullUsername;
             }
-            return targetUser.Split('\\')[1];
+            string Query = "SELECT * FROM Win32_UserAccount WHERE Name = '" + Username + "'";
+            ManagementObjectSearcher usersSearcher = new ManagementObjectSearcher(Query);
+            ManagementObjectCollection users = usersSearcher.Get();
+
+            foreach (ManagementObject user in users)
+            {
+                return user["FullName"].ToString();
+            }
+            return null;
         }
 
         /// <summary>
