@@ -30,17 +30,15 @@
     <InstallUrl>https://www.joepitt.co.uk/Project/Cards/</InstallUrl>
     <UpdateUrl>https://www.joepitt.co.uk/Project/Cards/</UpdateUrl>
     <SupportUrl>https://www.joepitt.co.uk/Project/Cards/</SupportUrl>
-    <ErrorReportUrl>https://bugs.joepitt.co.uk/Cards/</ErrorReportUrl>
     <TargetCulture>en-GB</TargetCulture>
     <ProductName>Cards</ProductName>
     <PublisherName>Joe Pitt</PublisherName>
     <SuiteName>Cards</SuiteName>
-    <WebPage>Default</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <AutorunEnabled>true</AutorunEnabled>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>6</ApplicationRevision>
-    <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>2.1.0.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -57,6 +55,8 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Debug\Cards.XML</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>ExtendedDesignGuidelineRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -69,6 +69,7 @@
     <DocumentationFile>
     </DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Logo.ico</ApplicationIcon>
@@ -80,11 +81,10 @@
     <ManifestCertificateThumbprint>5D81F6A4E1FB468A3B97AEB3601A467CDD5E3266</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>StrongNamingKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>Internet</TargetZone>
@@ -98,6 +98,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>JoePitt.Cards.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -119,69 +122,72 @@
     <Compile Include="Card.cs" />
     <Compile Include="CardSet.cs" />
     <Compile Include="Dealer.cs" />
-    <Compile Include="ClientNetworking.cs" />
-    <Compile Include="frmBase.cs">
+    <Compile Include="Net\ClientNetworking.cs" />
+    <Compile Include="Exceptions\NoFreePortsException.cs" />
+    <Compile Include="Exceptions\OutOfCardsException.cs" />
+    <Compile Include="UI\Running.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBase.Designer.cs">
-      <DependentUpon>frmBase.cs</DependentUpon>
+    <Compile Include="UI\Running.Designer.cs">
+      <DependentUpon>Running.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmDebug.cs">
+    <Compile Include="UI\Debug.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDebug.Designer.cs">
-      <DependentUpon>frmDebug.cs</DependentUpon>
+    <Compile Include="UI\Debug.Designer.cs">
+      <DependentUpon>Debug.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmGameplay.cs">
+    <Compile Include="UI\Gameplay.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmGameplay.Designer.cs">
-      <DependentUpon>frmGameplay.cs</DependentUpon>
+    <Compile Include="UI\Gameplay.Designer.cs">
+      <DependentUpon>Gameplay.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLeaderboard.cs">
+    <Compile Include="UI\Leaderboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLeaderboard.Designer.cs">
-      <DependentUpon>frmLeaderboard.cs</DependentUpon>
+    <Compile Include="UI\Leaderboard.Designer.cs">
+      <DependentUpon>Leaderboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLicense.cs">
+    <Compile Include="UI\License.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLicense.Designer.cs">
-      <DependentUpon>frmLicense.cs</DependentUpon>
+    <Compile Include="UI\License.Designer.cs">
+      <DependentUpon>License.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmNew.cs">
+    <Compile Include="UI\NewGame.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmNew.Designer.cs">
-      <DependentUpon>frmNew.cs</DependentUpon>
+    <Compile Include="UI\NewGame.Designer.cs">
+      <DependentUpon>NewGame.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmRules.cs">
+    <Compile Include="UI\Rules.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmRules.Designer.cs">
-      <DependentUpon>frmRules.cs</DependentUpon>
+    <Compile Include="UI\Rules.Designer.cs">
+      <DependentUpon>Rules.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmVote.cs">
+    <Compile Include="UI\Voting.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmVote.Designer.cs">
-      <DependentUpon>frmVote.cs</DependentUpon>
+    <Compile Include="UI\Voting.Designer.cs">
+      <DependentUpon>Voting.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmWaiting.cs">
+    <Compile Include="UI\Waiting.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmWaiting.Designer.cs">
-      <DependentUpon>frmWaiting.cs</DependentUpon>
+    <Compile Include="UI\Waiting.Designer.cs">
+      <DependentUpon>Waiting.cs</DependentUpon>
     </Compile>
     <Compile Include="Game.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ServerNetworking.cs" />
+    <Compile Include="Net\ServerNetworking.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -195,33 +201,33 @@
     <None Include="Resources\Banner-Black.png" />
     <None Include="Resources\Banner-White.png" />
     <Content Include="Logo.ico" />
-    <EmbeddedResource Include="frmBase.resx">
-      <DependentUpon>frmBase.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Running.resx">
+      <DependentUpon>Running.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDebug.resx">
-      <DependentUpon>frmDebug.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Debug.resx">
+      <DependentUpon>Debug.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmGameplay.resx">
-      <DependentUpon>frmGameplay.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Gameplay.resx">
+      <DependentUpon>Gameplay.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLeaderboard.resx">
-      <DependentUpon>frmLeaderboard.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Leaderboard.resx">
+      <DependentUpon>Leaderboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLicense.resx">
-      <DependentUpon>frmLicense.cs</DependentUpon>
+    <EmbeddedResource Include="UI\License.resx">
+      <DependentUpon>License.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmNew.resx">
-      <DependentUpon>frmNew.cs</DependentUpon>
+    <EmbeddedResource Include="UI\NewGame.resx">
+      <DependentUpon>NewGame.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmRules.resx">
-      <DependentUpon>frmRules.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Rules.resx">
+      <DependentUpon>Rules.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmVote.resx">
-      <DependentUpon>frmVote.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Voting.resx">
+      <DependentUpon>Voting.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmWaiting.resx">
-      <DependentUpon>frmWaiting.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Waiting.resx">
+      <DependentUpon>Waiting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -241,6 +247,7 @@
     <Content Include="Resources\CardSets\US_1.0_e9983525-0cb7-4ee6-a4f1-befffa583e9c.cardset">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="StrongNamingKey.snk" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -294,10 +301,6 @@
     </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
@@ -305,8 +308,8 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <!-- Sign for External Use -->
-  <Target Name="AfterCompile">
-    <Exec Command="SignTool.exe sign /a /fd SHA256 /i Certum /td SHA256 /tr http://time.certum.pl/ &quot;$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)&quot;" />
+  <Target Name="AfterPublish">
+    <Exec Command="ping 127.0.0.1 -n 6 &gt; nul" />
+    <Exec Command="mkisofs.exe -V  &quot;$(ProjectName)&quot; -o &quot;$(ProjectDir)publish\$(ProjectName).iso&quot; &quot;$(ProjectDir)publish\&quot;" />
   </Target>
 </Project>

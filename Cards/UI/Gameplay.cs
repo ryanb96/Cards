@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace JoePitt.Cards
+namespace JoePitt.Cards.UI
 {
     /// <summary>
     /// Main Gameplay UI Control.
     /// </summary>
-    public partial class frmGameplay : Form
+    public partial class Gameplay : Form
     {
         private Card BlackCard;
         private bool Submitted = false;
@@ -18,7 +19,7 @@ namespace JoePitt.Cards
         /// <summary>
         /// Initalises the main gameplay UI.
         /// </summary>
-        public frmGameplay()
+        public Gameplay()
         {
             InitializeComponent();
             FormClosing += FrmGameplay_FormClosing;
@@ -64,7 +65,7 @@ namespace JoePitt.Cards
                 {
                     BlackCard = (Card)formatter.Deserialize(stream);
                 }
-                txtBlackCard.Text = BlackCard.Text + Environment.NewLine;
+                txtBlackCard.Text = BlackCard.ToString + Environment.NewLine;
                 string blankRegEx = "_{3,}";
                 Regex regexr = new Regex(blankRegEx);
                 if (regexr.IsMatch(txtBlackCard.Text))
@@ -93,16 +94,16 @@ namespace JoePitt.Cards
                         Program.CurrentPlayer.Owner.WhiteCards = (List<Card>)formatter.Deserialize(stream);
                     }
                 }
-                catch
+                catch (SerializationException ex)
                 {
-                    MessageBox.Show("Unexpected Error! Unable to get White Cards. Application will exit!", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Unexpected Error! Unable to get White Cards (" + ex.Message + "). Application will exit!", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     Program.Exit();
                 }
-                
+
                 foreach (Card playerCard in Program.CurrentPlayer.Owner.WhiteCards)
                 {
-                    cmbWhiteCard.Items.Add(playerCard.Text);
-                    cmbWhiteCard2.Items.Add(playerCard.Text);
+                    cmbWhiteCard.Items.Add(playerCard.ToString);
+                    cmbWhiteCard2.Items.Add(playerCard.ToString);
                 }
                 if (BlackCard.Needs == 1)
                 {
@@ -133,7 +134,7 @@ namespace JoePitt.Cards
             txtWhiteCard.Text = cmbWhiteCard.SelectedItem.ToString();
             if (cmbWhiteCard.SelectedIndex == cmbWhiteCard2.SelectedIndex)
             {
-                if (cmbWhiteCard2.SelectedIndex == cmbWhiteCard2.Items.Count -1)
+                if (cmbWhiteCard2.SelectedIndex == cmbWhiteCard2.Items.Count - 1)
                 {
                     cmbWhiteCard2.SelectedIndex = 0;
                 }
@@ -170,12 +171,12 @@ namespace JoePitt.Cards
             if (Program.LeaderBoard.Visible)
             {
                 Program.LeaderBoard.Hide();
-                Program.LeaderBoard.update();
+                Program.LeaderBoard.UpdateScores();
             }
             else
             {
                 Program.LeaderBoard.Show();
-                Program.LeaderBoard.update();
+                Program.LeaderBoard.UpdateScores();
             }
         }
 
@@ -190,7 +191,7 @@ namespace JoePitt.Cards
             {
                 myAnswer = new Answer(Program.CurrentPlayer.Owner, BlackCard, Program.CurrentPlayer.Owner.WhiteCards[cmbWhiteCard.SelectedIndex], Program.CurrentPlayer.Owner.WhiteCards[cmbWhiteCard2.SelectedIndex]);
             }
-            if (MessageBox.Show("Submit: " + myAnswer.Text, "Confirm Answer", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Submit: " + myAnswer.ToString, "Confirm Answer", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 //submit 
                 BinaryFormatter formatter = new BinaryFormatter();
@@ -222,14 +223,14 @@ namespace JoePitt.Cards
 
         private void btnRules_Click(object sender, EventArgs e)
         {
-            frmRules rules = new frmRules();
+            Rules rules = new Rules();
             rules.ShowDialog();
             rules.Dispose();
         }
 
         private void btnLicense_Click(object sender, EventArgs e)
         {
-            frmLicense license = new frmLicense();
+            License license = new License();
             license.ShowDialog();
             license.Dispose();
         }

@@ -1,6 +1,6 @@
-﻿namespace JoePitt.Cards
+﻿namespace JoePitt.Cards.UI
 {
-    partial class frmRules
+    partial class Rules
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRules));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Rules));
             this.btnClose = new System.Windows.Forms.Button();
             this.txtRules = new System.Windows.Forms.TextBox();
             this.SuspendLayout();

@@ -1,6 +1,6 @@
-﻿namespace JoePitt.Cards
+﻿namespace JoePitt.Cards.UI
 {
-    partial class frmLeaderboard
+    partial class Leaderboard
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLeaderboard));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Leaderboard));
             this.lstPosition = new System.Windows.Forms.ListBox();
             this.lstName = new System.Windows.Forms.ListBox();
             this.lstPts = new System.Windows.Forms.ListBox();

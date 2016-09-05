@@ -1,19 +1,20 @@
-﻿using System;
+﻿using JoePitt.Cards.Net;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
-namespace JoePitt.Cards
+namespace JoePitt.Cards.UI
 {
     /// <summary>
     /// The Debug UI Control.
     /// </summary>
-    public partial class frmDebug : Form
+    public partial class Debug : Form
     {
         /// <summary>
         /// Initalise the UI.
         /// </summary>
-        public frmDebug()
+        public Debug()
         {
             InitializeComponent();
             KeyDown += FrmDebug_KeyDown;
@@ -44,6 +45,7 @@ namespace JoePitt.Cards
             }
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId = "CardSet")]
         private void frmDebug_Load(object sender, EventArgs e)
         {
             Game game = Program.CurrentGame;
@@ -53,8 +55,11 @@ namespace JoePitt.Cards
 
             if (game.GameType != 'J')
             {
-                treDebug.Nodes[0].Nodes["ServerNetworking"].Nodes.Add("UPnP_IPv4", "UPnP (IPv4): " + game.HostNetwork.IPv4UPnP);
-                treDebug.Nodes[0].Nodes["ServerNetworking"].Nodes.Add("UPnP_IPv6", "UPnP (IPv6): " + game.HostNetwork.IPv6UPnP);
+                treDebug.Nodes[0].Nodes["ServerNetworking"].Nodes.Add("Connection Strings");
+                foreach (string ConnectionString in game.HostNetwork.ConnectionStrings)
+                {
+                    treDebug.Nodes[0].Nodes["ServerNetworking"].Nodes[0].Nodes.Add(ConnectionString);
+                }
                 treDebug.Nodes[0].Nodes["ServerNetworking"].Nodes.Add("Port", "Port: " + game.HostNetwork.Port);
             }
             else
@@ -111,8 +116,8 @@ namespace JoePitt.Cards
                 foreach (Card card in player.WhiteCards)
                 {
                     treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes[3].Nodes.Add("Cards_" + j, "Cards_" + j);
-                    treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes[3].Nodes[j].Nodes.Add("ID", "ID: " + card.ID);
-                    treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes[3].Nodes[j].Nodes.Add("Text", "Text: " + card.Text);
+                    treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes[3].Nodes[j].Nodes.Add("ID", "ID: " + card.Id);
+                    treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes[3].Nodes[j].Nodes.Add("Text", "Text: " + card.ToString);
                     j++;
                 }
                 i++;
@@ -122,7 +127,7 @@ namespace JoePitt.Cards
             foreach (CardSet cardSet in game.CardSets)
             {
                 treDebug.Nodes[0].Nodes["CardSets"].Nodes.Add("CardSet_" + i, "CardSet_" + i);
-                treDebug.Nodes[0].Nodes["CardSets"].Nodes[i].Nodes.Add("GUID", "GUID: " + cardSet.GUID);
+                treDebug.Nodes[0].Nodes["CardSets"].Nodes[i].Nodes.Add("GUID", "GUID: " + cardSet.CardSetGuid);
                 treDebug.Nodes[0].Nodes["CardSets"].Nodes[i].Nodes.Add("Name", "Name: " + cardSet.Name);
                 treDebug.Nodes[0].Nodes["CardSets"].Nodes[i].Nodes.Add("Version", "Version " + cardSet.Version);
                 treDebug.Nodes[0].Nodes["CardSets"].Nodes[i].Nodes.Add("BlackCardCount", "Black Card Count: " + cardSet.BlackCardCount);
@@ -136,8 +141,8 @@ namespace JoePitt.Cards
             foreach (Card card in game.GameSet.BlackCards.Values)
             {
                 treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameBlackCards"].Nodes.Add("Card_" + i, "Card_" + i);
-                treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameBlackCards"].Nodes[i].Nodes.Add("ID", "ID: " + card.ID);
-                treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameBlackCards"].Nodes[i].Nodes.Add("Text", "Text: " + card.Text);
+                treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameBlackCards"].Nodes[i].Nodes.Add("ID", "ID: " + card.Id);
+                treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameBlackCards"].Nodes[i].Nodes.Add("Text", "Text: " + card.ToString);
                 treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameBlackCards"].Nodes[i].Nodes.Add("Needs", "Needs: " + card.Needs);
                 i++;
             }
@@ -145,8 +150,8 @@ namespace JoePitt.Cards
             foreach (Card card in game.GameSet.WhiteCards.Values)
             {
                 treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameWhiteCards"].Nodes.Add("Card_" + i, "Card_" + i);
-                treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameWhiteCards"].Nodes[i].Nodes.Add("ID", "ID: " + card.ID);
-                treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameWhiteCards"].Nodes[i].Nodes.Add("Text", "Text: " + card.Text);
+                treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameWhiteCards"].Nodes[i].Nodes.Add("ID", "ID: " + card.Id);
+                treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameWhiteCards"].Nodes[i].Nodes.Add("Text", "Text: " + card.ToString);
                 i++;
             }
 
@@ -159,7 +164,7 @@ namespace JoePitt.Cards
             {
                 treDebug.Nodes[0].Nodes["Answers"].Nodes.Add("Answer_" + i, "Answer_" + i);
                 treDebug.Nodes[0].Nodes["Answers"].Nodes[i].Nodes.Add("Submitter", "Submitter: " + answer.Submitter.Name);
-                treDebug.Nodes[0].Nodes["Answers"].Nodes[i].Nodes.Add("Text", "Text: " + answer.Text);
+                treDebug.Nodes[0].Nodes["Answers"].Nodes[i].Nodes.Add("Text", "Text: " + answer.ToString);
                 i++;
             }
 
@@ -168,7 +173,7 @@ namespace JoePitt.Cards
             {
                 treDebug.Nodes[0].Nodes["Votes"].Nodes.Add("Vote_" + i, vote.Voter.Name);
                 treDebug.Nodes[0].Nodes["Votes"].Nodes[i].Nodes.Add("Voter", "Voter: " + vote.Voter.Name);
-                treDebug.Nodes[0].Nodes["Votes"].Nodes[i].Nodes.Add("Text", "Text: " + vote.Choice.Text);
+                treDebug.Nodes[0].Nodes["Votes"].Nodes[i].Nodes.Add("Text", "Text: " + vote.Choice.ToString);
                 i++;
             }
 
@@ -183,6 +188,7 @@ namespace JoePitt.Cards
             treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameWhiteCards"].Collapse();
             treDebug.SelectedNode = treDebug.Nodes[0];
             CheckAllNodes(treDebug.Nodes, true);
+            CheckChildren(treDebug.Nodes[0].Nodes["ServerNetworking"].Nodes["Connection Strings"], false);
         }
 
         /// <summary>

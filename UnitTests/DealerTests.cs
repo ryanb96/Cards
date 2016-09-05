@@ -6,22 +6,22 @@ using System.Collections.Generic;
 namespace UnitTests
 {
     [TestClass]
-    public class DealerTests
+    internal class DealerTests
     {
         [TestMethod]
-        public void GetCardSets()
+        internal void GetCardSets()
         {
             Dealer.GetCardSets();
         }
 
         [TestMethod]
-        public void GetCardSetInfo()
+        internal void GetCardSetInfo()
         {
             Dealer.GetCardSetInfo(new Guid("dd12fa05-a7a7-4f6c-8467-4711abbcb16b"));
         }
 
         [TestMethod]
-        public void Shuffle()
+        internal void Shuffle()
         {
             List<Guid> GUIDs = new List<Guid>();
             GUIDs.Add(new Guid("dd12fa05-a7a7-4f6c-8467-4711abbcb16b"));
@@ -33,7 +33,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void Deal()
+        internal void Deal()
         {
             List<Guid> GUIDs = new List<Guid>();
             GUIDs.Add(new Guid("dd12fa05-a7a7-4f6c-8467-4711abbcb16b"));

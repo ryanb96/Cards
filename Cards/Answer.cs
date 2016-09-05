@@ -1,15 +1,15 @@
 ﻿using System;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
 
 namespace JoePitt.Cards
 {
     /// <summary>
-    /// A player's answer.
+    /// A player's answer, consisting of a Black Card and one or two White Cards.
     /// </summary>
     [Serializable]
-    public class Answer
+    [DebuggerDisplay("{Submitter.Name}: {ToString}")]
+    internal class Answer
     {
         /// <summary>
         /// The player who submitted the answer.
@@ -30,7 +30,8 @@ namespace JoePitt.Cards
         /// <summary>
         /// The final text of the answer, after filling the blanks.
         /// </summary>
-        public string Text { get; private set; }
+        public new string ToString { get; private set; }
+        private string blankRegEx = "_{3,}";
 
         /// <summary>
         /// Create an answer for a black card which requires 1 White Card.
@@ -38,21 +39,24 @@ namespace JoePitt.Cards
         /// <param name="submitter">The Player submitting the answer.</param>
         /// <param name="blackCard">The black card the answer is for.</param>
         /// <param name="whiteCard">The white card being submitted.</param>
+        /// <exception cref="ArgumentNullException">A required parameter is missing.</exception>
         public Answer(Player submitter, Card blackCard, Card whiteCard)
         {
+            if (submitter == null) { throw new ArgumentNullException("submitter"); }
+            if (blackCard == null) { throw new ArgumentNullException("blackCard"); }
+            if (whiteCard == null) { throw new ArgumentNullException("whiteCard"); }
             Submitter = submitter;
             BlackCard = blackCard;
             WhiteCard = whiteCard;
-            Text = BlackCard.Text;
-            string blankRegEx = "_{3,}";
+            ToString = BlackCard.ToString;
             Regex regexr = new Regex(blankRegEx);
-            if (regexr.IsMatch(Text))
+            if (regexr.IsMatch(ToString))
             {
-                Text = regexr.Replace(Text, WhiteCard.Text, 1);
+                ToString = regexr.Replace(ToString, WhiteCard.ToString, 1);
             }
             else
             {
-                Text = Text + " " + WhiteCard.Text;
+                ToString = ToString + " " + WhiteCard.ToString;
             }
         }
 
@@ -63,44 +67,35 @@ namespace JoePitt.Cards
         /// <param name="blackCard">The black card the answer is for.</param>
         /// <param name="whiteCard">The first white card being submitted.</param>
         /// <param name="whiteCard2">The second white card being submitted.</param>
+        /// <exception cref="ArgumentNullException">A required parameter is missing.</exception>
         public Answer(Player submitter, Card blackCard, Card whiteCard, Card whiteCard2)
         {
+            if (submitter == null) { throw new ArgumentNullException("submitter"); }
+            if (blackCard == null) { throw new ArgumentNullException("blackCard"); }
+            if (whiteCard == null) { throw new ArgumentNullException("whiteCard"); }
+            if (whiteCard2 == null) { throw new ArgumentNullException("whiteCard2"); }
             Submitter = submitter;
             BlackCard = blackCard;
             WhiteCard = whiteCard;
             WhiteCard2 = whiteCard2;
-            Text = BlackCard.Text;
+            ToString = BlackCard.ToString;
             string blankRegEx = "_{3,}";
             Regex regexr = new Regex(blankRegEx);
-            if (regexr.IsMatch(Text))
+            if (regexr.IsMatch(ToString))
             {
-                Text = regexr.Replace(Text, whiteCard.Text, 1);
-                if (regexr.IsMatch(Text))
+                ToString = regexr.Replace(ToString, whiteCard.ToString, 1);
+                if (regexr.IsMatch(ToString))
                 {
-                    Text = regexr.Replace(Text, whiteCard2.Text, 1);
+                    ToString = regexr.Replace(ToString, whiteCard2.ToString, 1);
                 }
                 else
                 {
-                    Text = Text + " " + WhiteCard2.Text;
+                    ToString = ToString + " " + WhiteCard2.ToString;
                 }
             }
             else
             {
-                Text = Text + " " + WhiteCard.Text + " -- " + WhiteCard2.Text;
-            }
-        }
-
-        /// <summary>
-        /// Export the answer into a byte array.
-        /// </summary>
-        /// <returns>A byte array of the answer.</returns>
-        public byte[] ToByteArray()
-        {
-            BinaryFormatter formatter = new BinaryFormatter();
-            using (MemoryStream stream = new MemoryStream())
-            {
-                formatter.Serialize(stream, this);
-                return stream.ToArray();
+                ToString = ToString + " " + WhiteCard.ToString + " -- " + WhiteCard2.ToString;
             }
         }
     }

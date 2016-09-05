@@ -8,7 +8,7 @@ namespace JoePitt.Cards
     /// A Player's Vote of the best answer.
     /// </summary>
     [Serializable]
-    public class Vote
+    internal class Vote
     {
         /// <summary>
         /// Who submitted the vote.
@@ -22,12 +22,12 @@ namespace JoePitt.Cards
         /// <summary>
         /// Creates a vote.
         /// </summary>
-        /// <param name="VoteFrom">Who's submitting the vote.</param>
-        /// <param name="VoteFor">Which Answer did they vote for.</param>
-        public Vote(Player VoteFrom, Answer VoteFor)
+        /// <param name="voteFrom">Who's submitting the vote.</param>
+        /// <param name="voteFor">Which Answer did they vote for.</param>
+        public Vote(Player voteFrom, Answer voteFor)
         {
-            Voter = VoteFrom;
-            Choice = VoteFor;
+            Voter = voteFrom;
+            Choice = voteFor;
         }
 
         /// <summary>

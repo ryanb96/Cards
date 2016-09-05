@@ -6,11 +6,11 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace JoePitt.Cards.Editor
+namespace JoePitt.Cards.Editor.UI
 {
-    public partial class frmMain : Form
+    public partial class MainUI : Form
     {
-        public frmMain()
+        public MainUI()
         {
             InitializeComponent();
             FormClosing += FrmMain_FormClosing;

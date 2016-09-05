@@ -1,6 +1,6 @@
-﻿namespace JoePitt.Cards
+﻿namespace JoePitt.Cards.UI
 {
-    partial class frmVote
+    partial class Voting
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVote));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Voting));
             this.btnVote = new System.Windows.Forms.Button();
             this.picBlackCard = new System.Windows.Forms.PictureBox();
             this.txtAnswer = new System.Windows.Forms.TextBox();

@@ -1,6 +1,6 @@
-﻿namespace JoePitt.Cards
+﻿namespace JoePitt.Cards.UI
 {
-    partial class frmLicense
+    partial class License
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLicense));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(License));
             this.btnClose = new System.Windows.Forms.Button();
             this.txtTerms = new System.Windows.Forms.TextBox();
             this.SuspendLayout();

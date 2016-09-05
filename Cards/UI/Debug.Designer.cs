@@ -1,6 +1,6 @@
-﻿namespace JoePitt.Cards
+﻿namespace JoePitt.Cards.UI
 {
-    partial class frmDebug
+    partial class Debug
     {
         /// <summary>
         /// Required designer variable.
@@ -75,7 +75,7 @@
             treeNode21,
             treeNode22,
             treeNode23});
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDebug));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Debug));
             this.treDebug = new System.Windows.Forms.TreeView();
             this.SuspendLayout();
             // 

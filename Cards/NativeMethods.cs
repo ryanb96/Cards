@@ -97,7 +97,7 @@ namespace JoePitt.Cards
         /// </summary>
         /// <param name="modifier">The modifiers that are associated with the hot key.</param>
         /// <param name="key">The key itself that is associated with the hot key.</param>
-        public void RegisterHotKey(ModifierKeys modifier, Keys key)
+        public void RegisterHotkey(ModifierKeys modifier, Keys key)
         {
             // increment the counter.
             _currentId = _currentId + 1;
@@ -110,7 +110,7 @@ namespace JoePitt.Cards
         /// <summary>
         /// A hot key has been pressed.
         /// </summary>
-        public event EventHandler<KeyPressedEventArgs> KeyPressed;
+        internal event EventHandler<KeyPressedEventArgs> KeyPressed;
 
         #region IDisposable Members
 
@@ -135,7 +135,7 @@ namespace JoePitt.Cards
     /// <summary>
     /// Event Args for the event that is fired after the hot key has been pressed.
     /// </summary>
-    public class KeyPressedEventArgs : EventArgs
+    internal class KeyPressedEventArgs : EventArgs
     {
         private ModifierKeys _modifier;
         private Keys _key;
@@ -149,7 +149,7 @@ namespace JoePitt.Cards
         /// <summary>
         /// The Modifier key that was pressed.
         /// </summary>
-        public ModifierKeys Modifier
+        internal ModifierKeys Modifier
         {
             get { return _modifier; }
         }
@@ -157,7 +157,7 @@ namespace JoePitt.Cards
         /// <summary>
         /// The Key that was pressed.
         /// </summary>
-        public Keys Key
+        internal Keys Key
         {
             get { return _key; }
         }
@@ -167,7 +167,7 @@ namespace JoePitt.Cards
     /// The enumeration of possible modifiers.
     /// </summary>
     [Flags]
-    public enum ModifierKeys : uint
+    public enum ModifierKeys : int
     {
         /// <summary>
         /// The ALT Key.

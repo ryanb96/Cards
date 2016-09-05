@@ -4,19 +4,19 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 
-namespace JoePitt.Cards
+namespace JoePitt.Cards.UI
 {
     /// <summary>
     /// Voting UI.
     /// </summary>
-    public partial class frmVote : Form
+    public partial class Voting : Form
     {
         private bool Submitted = false;
 
         /// <summary>
         /// Initalise the Voting UI.
         /// </summary>
-        public frmVote()
+        public Voting()
         {
             InitializeComponent();
             FormClosing += FrmVote_FormClosing;
@@ -66,7 +66,7 @@ namespace JoePitt.Cards
             Text = Program.CurrentPlayer.Owner.Name + Text;
             foreach (Answer answer in Program.CurrentGame.Answers)
             {
-                cmbAnswers.Items.Add(answer.Text);
+                cmbAnswers.Items.Add(answer.ToString);
             }
             cmbAnswers.SelectedIndex = 0;
         }
@@ -78,7 +78,7 @@ namespace JoePitt.Cards
         /// <param name="e"></param>
         private void cmbAnswers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtAnswer.Text = Program.CurrentGame.Answers[cmbAnswers.SelectedIndex].Text;
+            txtAnswer.Text = Program.CurrentGame.Answers[cmbAnswers.SelectedIndex].ToString;
         }
 
         private void btnVote_Click(object sender, EventArgs e)

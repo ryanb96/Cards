@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JoePitt.Cards.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.DirectoryServices.AccountManagement;
 using System.IO;
@@ -15,13 +16,13 @@ namespace JoePitt.Cards
     /// <summary>
     /// Carries out Card Set Management and Dealer Functions.
     /// </summary>
-    public class Dealer
+    static internal class Dealer
     {
         /// <summary>
         /// Gets the Display Name of the Windows/AD User running the game.
         /// </summary>
         /// <returns>The Current User's Display Name.</returns>
-        static public string IDPlayer()
+        static public string GetPlayerName()
         {
             string Username = "FAIL";
             string FullUsername = WindowsIdentity.GetCurrent().Name;
@@ -58,7 +59,7 @@ namespace JoePitt.Cards
             {
                 path = "C:\\Users\\Public\\CardSets";
             }
-            if (!Directory.Exists(path)) Directory.CreateDirectory(path); 
+            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
             string[] cardSetFiles = Directory.GetFiles(path, "*.cardset");
             foreach (string cardSet in cardSetFiles)
             {
@@ -68,9 +69,14 @@ namespace JoePitt.Cards
                 {
                     cardSetDoc.Load(cardSet);
                 }
-                catch
+                catch (XmlException ex)
                 {
-                    MessageBox.Show(cardSet + " is not a valid Card Set", "Bad Card Set", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(cardSet + " is not a valid Card Set (" + ex.Message + ")", "Bad Card Set", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    continue;
+                }
+                catch (IOException ex)
+                {
+                    MessageBox.Show(cardSet + " is not a valid Card Set (" + ex.Message + ")", "Bad Card Set", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     continue;
                 }
                 // Load Card Set Details
@@ -106,9 +112,9 @@ namespace JoePitt.Cards
         /// <summary>
         /// Install a Card Set.
         /// </summary>
-        /// <param name="CardSetFile">The path to the Card Set to be installed.</param>
+        /// <param name="cardSetFile">The path to the Card Set to be installed.</param>
         /// <returns>If the Card Set was installed.</returns>
-        static public bool InstallCardSet(string CardSetFile)
+        static public bool InstallCardSet(string cardSetFile)
         {
             string path = Application.StartupPath + "\\Resources\\CardSets";
             if (path.Contains("TESTWINDOW"))
@@ -122,11 +128,16 @@ namespace JoePitt.Cards
             XmlDocument cardSetDoc = new XmlDocument();
             try
             {
-                cardSetDoc.Load(CardSetFile);
+                cardSetDoc.Load(cardSetFile);
             }
-            catch
+            catch (XmlException ex)
             {
-                MessageBox.Show(CardSetFile + " is not a valid Card Set", "Bad Card Set", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(cardSetFile + " is not a valid Card Set (" + ex.Message + ")", "Bad Card Set", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return installed;
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show(cardSetFile + " is not a valid Card Set (" + ex.Message + ")", "Bad Card Set", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return installed;
             }
             XmlElement cardSetInfo = (XmlElement)cardSetDoc.GetElementsByTagName("CardSet")[0];
@@ -148,7 +159,7 @@ namespace JoePitt.Cards
                         if (MessageBox.Show(cardSetInfo.GetAttribute("Name") + " (" + cardSetInfo.GetAttribute("Version") + ") is already installed. Reinstall?", "Reinstall Pack?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             File.Delete(installedSet[3]);
-                            File.Copy(CardSetFile, installedSet[3]);
+                            File.Copy(cardSetFile, installedSet[3]);
                             installed = true;
                             break;
                         }
@@ -171,7 +182,7 @@ namespace JoePitt.Cards
                         if (MessageBox.Show(installedSet[1] + " (" + installedSet[2] + ") will be upgraded to " + cardSetInfo.GetAttribute("Name") + " (" + cardSetInfo.GetAttribute("Version") + "). Continue?", "Upgrade Card Pack?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             File.Delete(installedSet[3]);
-                            File.Copy(CardSetFile, installedSet[3]);
+                            File.Copy(cardSetFile, installedSet[3]);
                             installed = true;
                             break;
                         }
@@ -188,7 +199,7 @@ namespace JoePitt.Cards
                             if (MessageBox.Show(installedSet[1] + " (" + installedSet[2] + ") will be upgraded to " + cardSetInfo.GetAttribute("Name") + " (" + cardSetInfo.GetAttribute("Version") + "). Continue?", "Upgrade Card Pack?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
                                 File.Delete(installedSet[3]);
-                                File.Copy(CardSetFile, installedSet[3]);
+                                File.Copy(cardSetFile, installedSet[3]);
                                 installed = true;
                                 break;
                             }
@@ -203,7 +214,7 @@ namespace JoePitt.Cards
                             if (MessageBox.Show(installedSet[1] + " (" + installedSet[2] + ") will be DOWNGRADED to " + cardSetInfo.GetAttribute("Name") + " (" + cardSetInfo.GetAttribute("Version") + "). Continue?", "Downgrade Card Pack?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                             {
                                 File.Delete(installedSet[3]);
-                                File.Copy(CardSetFile, installedSet[3]);
+                                File.Copy(cardSetFile, installedSet[3]);
                                 installed = true;
                                 break;
                             }
@@ -219,7 +230,7 @@ namespace JoePitt.Cards
                         if (MessageBox.Show(installedSet[1] + " (" + installedSet[2] + ") will be DOWNGRADED to " + cardSetInfo.GetAttribute("Name") + " (" + cardSetInfo.GetAttribute("Version") + "). Continue?", "Downgrade Card Pack?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
                             File.Delete(installedSet[3]);
-                            File.Copy(CardSetFile, installedSet[3]);
+                            File.Copy(cardSetFile, installedSet[3]);
                             installed = true;
                             break;
                         }
@@ -237,7 +248,7 @@ namespace JoePitt.Cards
                 {
                     if (File.Exists(path + "\\" + cardSetInfo.GetAttribute("Name").Replace(' ', '-') + "_" + cardSetInfo.GetAttribute("Version") + "_" + cardSetInfo.GetAttribute("GUID") + ".cardset"))
                     { File.Delete(path + "\\" + cardSetInfo.GetAttribute("Name").Replace(' ', '-') + "_" + cardSetInfo.GetAttribute("Version") + "_" + cardSetInfo.GetAttribute("GUID") + ".cardset"); }
-                    File.Copy(CardSetFile, path + "\\" + cardSetInfo.GetAttribute("Name").Replace(' ', '-') + "_" + cardSetInfo.GetAttribute("Version") + "_" + cardSetInfo.GetAttribute("GUID") + ".cardset");
+                    File.Copy(cardSetFile, path + "\\" + cardSetInfo.GetAttribute("Name").Replace(' ', '-') + "_" + cardSetInfo.GetAttribute("Version") + "_" + cardSetInfo.GetAttribute("GUID") + ".cardset");
                     installed = true;
                 }
             }
@@ -249,120 +260,13 @@ namespace JoePitt.Cards
         }
 
         /// <summary>
-        /// Get the details about a Card Set.
-        /// </summary>
-        /// <param name="CardSetGUID">The GUID of the Card Set.</param>
-        /// <returns>Details of the Card Set</returns>
-        static public string[] GetCardSetInfo(Guid CardSetGUID)
-        {
-            string path = Application.StartupPath + "\\Resources\\CardSets";
-            if (path.Contains("TESTWINDOW"))
-            {
-                path = "C:\\Users\\Public\\CardSets";
-            }
-            string[] files = Directory.GetFiles(path, "*" + CardSetGUID.ToString() + ".cardset");
-            if (files == null)
-            {
-                MessageBox.Show("ERROR: A card pack you are trying to use has gone missing, application will restart.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                Application.Restart();
-            }
-            XmlDocument cardSetDoc = new XmlDocument();
-            cardSetDoc.Load(files[0]);
-            XmlElement cardSetInfo = (XmlElement)cardSetDoc.GetElementsByTagName("CardSet")[0];
-            string[] setInfo = new string[5];
-            setInfo[0] = cardSetInfo.GetAttribute("GUID");
-            setInfo[1] = cardSetInfo.GetAttribute("Name");
-            setInfo[2] = cardSetInfo.GetAttribute("Version");
-            setInfo[3] = files[0];
-            return setInfo;
-        }
-
-        /// <summary>
-        /// Get the value of a Card.
-        /// </summary>
-        /// <param name="CardSet">The GUID of the Card Set the Card belongs to.</param>
-        /// <param name="CardType">If the Card is a Black or White Card.</param>
-        /// <param name="CardID">The ID of the Card.</param>
-        /// <returns>The text of the Card.</returns>
-        static public string GetCard(Guid CardSet, char CardType, string CardID)
-        {
-            string path = Application.StartupPath + "\\Resources\\CardSets";
-            if (path.Contains("TESTWINDOW"))
-            {
-                path = "C:\\Users\\Public\\CardSets";
-            }
-            string[] files = Directory.GetFiles(path, "*" + CardSet.ToString() + ".cardset");
-            if (files == null)
-            {
-                MessageBox.Show("ERROR: A card pack you are trying to use has gone missing, application will restart.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                Application.Restart();
-            }
-            XmlDocument cardSetDoc = new XmlDocument();
-            cardSetDoc.Load(files[0]);
-            XmlNodeList CardBlock = cardSetDoc.GetElementsByTagName("CardPack");
-            if (CardType == 'B')
-            { CardBlock = cardSetDoc.GetElementsByTagName("BlackCards"); }
-            else if (CardType == 'W')
-            { CardBlock = cardSetDoc.GetElementsByTagName("WhiteCards"); }
-            XmlNodeList Cards = CardBlock[0].ChildNodes;
-            foreach (XmlElement Card in Cards)
-            {
-                if (Card.GetAttribute("ID") == CardID)
-                {
-                    return Card.InnerText;
-                }
-            }
-            return "ERROR!";
-        }
-
-        /// <summary>
-        /// Get all the White or Black Cards in a Card Set.
-        /// </summary>
-        /// <param name="CardSet">The Card Set GUID.</param>
-        /// <param name="CardType">The type of Cards to get.</param>
-        /// <returns>All the requested Cards.</returns>
-        static public List<string> GetCards(Guid CardSet, char CardType)
-        {
-            if (CardType != 'B' && CardType != 'W')
-            { throw new Exception("Bad CardType param"); }
-            string path = Application.StartupPath + "\\Resources\\CardSets";
-            if (path.Contains("TESTWINDOW"))
-            {
-                path = "C:\\Users\\Public\\CardSets";
-            }
-            string[] files = Directory.GetFiles(path, "*" + CardSet.ToString() + ".cardset");
-            if (files == null)
-            {
-                MessageBox.Show("ERROR: A card pack you are trying to use has gone missing, application will restart.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                Application.Restart();
-            }
-            XmlDocument cardSetDoc = new XmlDocument();
-            cardSetDoc.Load(files[0]);
-            XmlNodeList CardBlock = cardSetDoc.GetElementsByTagName("CardPack");
-            if (CardType == 'B')
-            { CardBlock = cardSetDoc.GetElementsByTagName("BlackCards"); }
-            else if (CardType == 'W')
-            { CardBlock = cardSetDoc.GetElementsByTagName("WhiteCards"); }
-            XmlNodeList Cards = CardBlock[0].ChildNodes;
-            List<string> CardIDs = new List<string>();
-            foreach (XmlElement Card in Cards)
-            {
-                if (CardType == 'W')
-                { CardIDs.Add(CardSet.ToString() + "/" + CardType + "/" + Card.Attributes["ID"].Value); }
-                else
-                { CardIDs.Add(CardSet.ToString() + "/" + CardType + "/" + Card.Attributes["ID"].Value + "/" + Card.Attributes["Needs"].Value); }
-            }
-
-            return CardIDs;
-        }
-
-        /// <summary>
         /// Shuffle a Deck of Cards.
         /// </summary>
-        /// <param name="Cards">The card index to be shuffled.</param>
+        /// <param name="cards">The card index to be shuffled.</param>
         /// <returns>A Shuffled Card Deck.</returns>
-        static public Dictionary<int, string> ShuffleCards(Dictionary<int, string> Cards)
+        static public Dictionary<int, string> ShuffleCards(Dictionary<int, string> cards)
         {
+            if (cards == null) { throw new ArgumentNullException("cards"); }
             int moveFrom = 1;
             RNGCryptoServiceProvider seeder = new RNGCryptoServiceProvider();
             byte[] seed = new byte[4];
@@ -372,28 +276,29 @@ namespace JoePitt.Cards
             int shuffles = shuffler.Next(10000, 50000);
             while (shuffleCount < shuffles)
             {
-                while (moveFrom < Cards.Count)
+                while (moveFrom < cards.Count)
                 {
-                    int moveTo = shuffler.Next(1, Cards.Count + 1);
-                    string x = Cards[moveFrom];
-                    string y = Cards[moveTo];
-                    Cards[moveFrom] = y;
-                    Cards[moveTo] = x;
+                    int moveTo = shuffler.Next(1, cards.Count + 1);
+                    string x = cards[moveFrom];
+                    string y = cards[moveTo];
+                    cards[moveFrom] = y;
+                    cards[moveTo] = x;
                     moveFrom++;
                 }
                 moveFrom = 1;
                 shuffleCount++;
             }
-            return Cards;
+            return cards;
         }
 
         /// <summary>
         /// Shuffles Answers into a random order.
         /// </summary>
-        /// <param name="Answers">The Answers to be shuffled.</param>
+        /// <param name="answers">The Answers to be shuffled.</param>
         /// <returns></returns>
-        static public List<Answer> ShuffleAnswers(List<Answer> Answers)
+        static public List<Answer> ShuffleAnswers(List<Answer> answers)
         {
+            if (answers == null) { throw new ArgumentNullException("answers"); }
             int moveFrom = 0;
             RNGCryptoServiceProvider seeder = new RNGCryptoServiceProvider();
             byte[] seed = new byte[4];
@@ -403,48 +308,50 @@ namespace JoePitt.Cards
             int shuffles = shuffler.Next(10000, 50000);
             while (shuffleCount < shuffles)
             {
-                while (moveFrom < Answers.Count)
+                while (moveFrom < answers.Count)
                 {
-                    int moveTo = shuffler.Next(0, Answers.Count - 1);
-                    Answer x = Answers[moveFrom];
-                    Answer y = Answers[moveTo];
-                    Answers[moveFrom] = y;
-                    Answers[moveTo] = x;
+                    int moveTo = shuffler.Next(0, answers.Count - 1);
+                    Answer x = answers[moveFrom];
+                    Answer y = answers[moveTo];
+                    answers[moveFrom] = y;
+                    answers[moveTo] = x;
                     moveFrom++;
                 }
                 moveFrom = 1;
                 shuffleCount++;
             }
-            return Answers;
+            return answers;
         }
 
 
         /// <summary>
         /// Deal the White Cards for players.
         /// </summary>
-        /// <param name="Set">Pre-shuffled CardSet.</param>
-        /// <param name="NoOfPlayers">The total number of Players.</param>
-        /// <param name="CardsPerPlayer">The number of Cards to deal to each Player.</param>
+        /// <param name="cardSet">Pre-shuffled CardSet.</param>
+        /// <param name="playerCount">The total number of Players.</param>
+        /// <param name="cardsPerPlayer">The number of Cards to deal to each Player.</param>
         /// <returns>The Dealt Hands</returns>
-        static public List<Tuple<int, Card>> Deal(CardSet Set, int NoOfPlayers, int CardsPerPlayer)
+        /// <exception cref="ApplicationException">If no card are left</exception>
+        static public List<Tuple<int, Card>> Deal(CardSet cardSet, int playerCount, int cardsPerPlayer)
         {
+            if (cardSet == null) { throw new ArgumentNullException("cardSet"); }
             List<Tuple<int, Card>> hands = new List<Tuple<int, Card>>();
             int card = 1;
             int player = 1;
             int dealtEach = 0;
-            while (dealtEach < CardsPerPlayer)
+            while (dealtEach < cardsPerPlayer)
             {
-                while (player <= NoOfPlayers)
+                while (player <= playerCount)
                 {
                     try
                     {
-                        hands.Add(new Tuple<int, Card>(player, Set.WhiteCards[Set.WhiteCardIndex[card]]));
+                        hands.Add(new Tuple<int, Card>(player, cardSet.WhiteCards[cardSet.WhiteCardIndex[card]]));
                         card++;
                         player++;
                     }
                     catch
                     {
-                        throw new Exception("Out of Cards");
+                        throw new OutOfCardsException();
                     }
                 }
                 player = 1;

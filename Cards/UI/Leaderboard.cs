@@ -3,17 +3,17 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace JoePitt.Cards
+namespace JoePitt.Cards.UI
 {
     /// <summary>
     /// Leaderboard UI.
     /// </summary>
-    public partial class frmLeaderboard : Form
+    public partial class Leaderboard : Form
     {
         /// <summary>
         /// Initalises the Leaderboard UI.
         /// </summary>
-        public frmLeaderboard()
+        public Leaderboard()
         {
             InitializeComponent();
             FormClosing += FrmLeaderboard_FormClosing;
@@ -36,7 +36,7 @@ namespace JoePitt.Cards
         /// <summary>
         /// Update the Leaderboard UI.
         /// </summary>
-        public void update()
+        public void UpdateScores()
         {
             int i = 1;
             lstPosition.Items.Clear();

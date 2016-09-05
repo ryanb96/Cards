@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace JoePitt.Cards
+namespace JoePitt.Cards.UI
 {
     /// <summary>
     /// Licence UI Control.
     /// </summary>
-    public partial class frmLicense : Form
+    public partial class License : Form
     {
         /// <summary>
         /// Initalises the License UI.
         /// </summary>
-        public frmLicense()
+        public License()
         {
             InitializeComponent();
         }

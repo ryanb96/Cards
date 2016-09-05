@@ -1,12 +1,13 @@
-﻿using System.Threading;
+﻿using JoePitt.Cards.Net;
+using System.Threading;
 using System.Windows.Forms;
 
-namespace JoePitt.Cards
+namespace JoePitt.Cards.UI
 {
     /// <summary>
     /// Waiting UI.
     /// </summary>
-    public partial class frmWaiting : Form
+    public partial class Waiting : Form
     {
         bool waiting = true;
         delegate void SetTextCallback(string text);
@@ -15,7 +16,7 @@ namespace JoePitt.Cards
         /// <summary>
         /// Initalise Waiting UI.
         /// </summary>
-        public frmWaiting()
+        public Waiting()
         {
             InitializeComponent();
             FormClosing += FrmWaiting_FormClosing;
@@ -157,17 +158,17 @@ namespace JoePitt.Cards
         /// <summary>
         /// Replaces the text of the UI.
         /// </summary>
-        /// <param name="Message">The new message to show.</param>
-        public void Update(string Message)
+        /// <param name="message">The new message to show.</param>
+        public void Update(string message)
         {
             if (this.txtMessage.InvokeRequired)
             {
                 SetTextCallback d = new SetTextCallback(Update);
-                this.Invoke(d, new object[] { Message });
+                this.Invoke(d, new object[] { message });
             }
             else
             {
-                txtMessage.Text = Message;
+                txtMessage.Text = message;
             }
         }
     }

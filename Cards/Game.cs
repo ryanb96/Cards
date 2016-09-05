@@ -1,7 +1,7 @@
-﻿using System;
+﻿using JoePitt.Cards.Net;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 
@@ -11,7 +11,7 @@ namespace JoePitt.Cards
     /// A Game of Cards.
     /// </summary>
     [Serializable]
-    public class Game
+    internal class Game
     {
         /// <summary>
         /// If the game is ready to be played.
@@ -30,11 +30,11 @@ namespace JoePitt.Cards
         /// <summary>
         /// All the client networking proviers for this instance.
         /// </summary>
-        public List<ClientNetworking> LocalPlayers;
+        public List<ClientNetworking> LocalPlayers { get; set; }
         /// <summary>
         /// If networking is up and running.
         /// </summary>
-        public bool NetworkUp;
+        public bool NetworkUp { get; set; }
 
         //Settings
         /// <summary>
@@ -48,7 +48,7 @@ namespace JoePitt.Cards
         /// <summary>
         /// Human and automated players.
         /// </summary>
-        public Player[] Players { get; private set; }
+        public List<Player> Players { get; private set; }
         /// <summary>
         /// The Card Sets that are in use in the game.
         /// </summary>
@@ -115,15 +115,16 @@ namespace JoePitt.Cards
         /// <summary>
         /// Initalise a game including the global settings.
         /// </summary>
-        /// <param name="Type">The Type of game to setup.</param>
-        /// <param name="PlayerNames">List of player names.</param>
-        public Game(char Type, List<string> PlayerNames)
+        /// <param name="type">The Type of game to setup.</param>
+        /// <param name="playerNames">List of player names.</param>
+        public Game(char type, List<string> playerNames)
         {
-            GameType = Type;
+            if (playerNames == null) { throw new ArgumentNullException("playerNames"); }
+            GameType = type;
             // Settings
             Round = 0;
 
-            if (Type != 'J')
+            if (type != 'J')
             {
                 Rounds = Properties.Settings.Default.Rounds;
                 CardsPerUser = Properties.Settings.Default.Cards;
@@ -136,9 +137,9 @@ namespace JoePitt.Cards
                 List<Tuple<int, Card>> hands = new List<Tuple<int, Card>>();
                 try
                 {
-                    hands = Dealer.Deal(GameSet, PlayerNames.Count, CardsPerUser);
+                    hands = Dealer.Deal(GameSet, playerNames.Count, CardsPerUser);
                 }
-                catch (Exception ex)
+                catch (ApplicationException ex)
                 {
                     MessageBox.Show("Error, game not started. " + ex.Message, "Game Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Playable = false;
@@ -146,16 +147,16 @@ namespace JoePitt.Cards
                 }
 
                 // Setup Players
-                Players = new Player[PlayerNames.Count];
+                Players = new List<Player>();
                 int player = 0;
-                foreach (string playerName in PlayerNames)
+                foreach (string playerName in playerNames)
                 {
                     List<Card> hand = new List<Card>();
                     foreach (Tuple<int, Card> card in hands.GetRange(player * CardsPerUser, CardsPerUser))
                     {
                         hand.Add(card.Item2);
                     }
-                    Players[player] = new Player(playerName, hand);
+                    Players.Add(new Player(playerName, hand));
                     if (Players[player].Name.ToLower().StartsWith("[bot]"))
                     {
                         BotCount++;
@@ -170,25 +171,16 @@ namespace JoePitt.Cards
                 //get game ready
                 CurrentBlackCard = 0;
 
-                try
-                {
-                    HostNetwork = new ServerNetworking(this);
-                    HostNetwork.Start();
-                    LocalPlayers = new List<ClientNetworking>();
-                    Stage = 'W';
-                    Playable = true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Unable to start game. " + ex.Message, "Game Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Playable = false;
-                }
+                HostNetwork = new ServerNetworking(this);
+                LocalPlayers = new List<ClientNetworking>();
+                Stage = 'W';
+                Playable = true;
                 NextRound();
             }
             else
             {
-                Players = new Player[1];
-                Players[0] = new Player(PlayerNames[0], new List<Card>());
+                Players = new List<Cards.Player>();
+                Players.Add(new Player(playerNames[0], new List<Card>()));
             }
         }
 
@@ -201,7 +193,7 @@ namespace JoePitt.Cards
             Playable = false;
             if (HostNetwork != null)
             {
-                HostNetwork.Stop();
+                HostNetwork.Close();
             }
             if (LocalPlayers != null)
             {
@@ -217,23 +209,15 @@ namespace JoePitt.Cards
         /// <summary>
         /// Join a Remote Game.
         /// </summary>
-        /// <param name="Address">Hostname, IPv4 or IPv6 Address of game.</param>
-        /// <param name="Port">TCP Port of Game.</param>
+        /// <param name="address">Hostname, IPv4 or IPv6 Address of game.</param>
+        /// <param name="port">TCP Port of Game.</param>
         /// <returns>If Game was joined.</returns>
-        public bool Join(string Address, int Port)
+        public bool Join(string address, int port)
         {
             StartJoin:
             LocalPlayers = new List<ClientNetworking>();
             ClientNetworking playerNetwork;
-            try
-            {
-                playerNetwork = new ClientNetworking(this, Players[0], Address, Port);
-            }
-            catch
-            {
-                MessageBox.Show("Failed to Connect", "Game Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
+            playerNetwork = new ClientNetworking(Players[0], address, port);
             LocalPlayers.Add(playerNetwork);
             playerNetwork.NextCommand = "HELLO";
             playerNetwork.NewCommand = true;
@@ -424,7 +408,7 @@ namespace JoePitt.Cards
             else
             {
                 if (Stage != 'W')
-                { 
+                {
                     Stage = 'P';
                 }
                 if (Round == 0)
@@ -445,11 +429,11 @@ namespace JoePitt.Cards
                     foreach (Answer answer in Answers)
                     {
                         NextWhiteCard();
-                        string remove = answer.WhiteCard.ID;
+                        string remove = answer.WhiteCard.Id;
                         int i = 0;
                         foreach (Card card in answer.Submitter.WhiteCards)
                         {
-                            if (card.ID == remove)
+                            if (card.Id == remove)
                             {
                                 answer.Submitter.WhiteCards.RemoveAt(i);
                                 break;
@@ -471,11 +455,11 @@ namespace JoePitt.Cards
                         if (answer.BlackCard.Needs == 2)
                         {
                             NextWhiteCard();
-                            remove = answer.WhiteCard2.ID;
+                            remove = answer.WhiteCard2.Id;
                             i = 0;
                             foreach (Card card in answer.Submitter.WhiteCards)
                             {
-                                if (card.ID == remove)
+                                if (card.Id == remove)
                                 {
                                     answer.Submitter.WhiteCards.RemoveAt(i);
                                     break;
@@ -535,7 +519,7 @@ namespace JoePitt.Cards
                     Card whiteCard = GameSet.WhiteCards[GameSet.WhiteCardIndex[CurrentWhiteCard]];
                     foreach (Card card in player.WhiteCards)
                     {
-                        if (card.ID == whiteCard.ID)
+                        if (card.Id == whiteCard.Id)
                         {
                             found = true;
                             if (CurrentWhiteCard + 1 > GameSet.WhiteCardCount)
@@ -554,35 +538,7 @@ namespace JoePitt.Cards
                 if (!found) CardUsed = false;
             }
         }
-
-        /// <summary>
-        /// Converts the GameSet to a byte array.
-        /// </summary>
-        /// <returns>The Binary Representation of the Game Set.</returns>
-        public byte[] ToByteArray()
-        {
-            BinaryFormatter formatter = new BinaryFormatter();
-            using (MemoryStream stream = new MemoryStream())
-            {
-                formatter.Serialize(stream, GameSet);
-                return stream.ToArray();
-            }
-        }
-
-        /// <summary>
-        /// Converts the Game's Players List into a byte array.
-        /// </summary>
-        /// <returns>The Binary Representation of the Players List.</returns>
-        public byte[] PlayersToByteArray()
-        {
-            BinaryFormatter formatter = new BinaryFormatter();
-            using (MemoryStream stream = new MemoryStream())
-            {
-                formatter.Serialize(stream, Players);
-                return stream.ToArray();
-            }
-        }
-
+        
         /// <summary>
         /// Converts the Submitted Answers to a byte array.
         /// </summary>

@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Resources;
+using System;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -35,7 +36,7 @@ using System.Resources;
 // [assembly: AssemblyVersion("1.0.*")]
 //[assembly: AssemblyVersion("1.3.0.0")]
 //[assembly: AssemblyFileVersion("1.3.0.0")]
-[assembly: AssemblyVersion("2.0.*")]
+[assembly: AssemblyVersion("2.1")]
 [assembly: NeutralResourcesLanguage("en-GB")]
-[assembly: AssemblyFileVersion("2.0.0.0")]
-
+[assembly: AssemblyFileVersion("2.1")]
+[assembly: CLSCompliant(true)]

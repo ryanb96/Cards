@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace JoePitt.Cards
+namespace JoePitt.Cards.UI
 {
     /// <summary>
     /// Rules UI.
     /// </summary>
-    public partial class frmRules : Form
+    public partial class Rules : Form
     {
         /// <summary>
         /// Initalises the Rules UI.
         /// </summary>
-        public frmRules()
+        public Rules()
         {
             InitializeComponent();
         }

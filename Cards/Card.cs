@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Diagnostics;
 
 namespace JoePitt.Cards
 {
@@ -8,20 +9,17 @@ namespace JoePitt.Cards
     /// A playing card.
     /// </summary>
     [Serializable]
-    public class Card
+    [DebuggerDisplay("{Color}: {ToString}")]
+    internal class Card
     {
-        /// <summary>
-        /// If the card is a Black or White Card.
-        /// </summary>
-        public char Type { get; private set; }
         /// <summary>
         /// The Unique Identified of the card, [GUID]/[Type][Number]
         /// </summary>
-        public string ID { get; private set; }
+        public string Id { get; private set; }
         /// <summary>
         /// The text of the card.
         /// </summary>
-        public string Text { get; private set; }
+        public new string ToString { get; private set; }
         /// <summary>
         /// For black cards, the number of white cards required by this card.
         /// </summary>
@@ -35,9 +33,8 @@ namespace JoePitt.Cards
         /// <param name="needs">How many white cards, this black card requires.</param>
         public Card(string id, string text, int needs)
         {
-            ID = id;
-            Type = 'B';
-            Text = text;
+            Id = id;
+            ToString = text;
             Needs = needs;
         }
 
@@ -48,9 +45,8 @@ namespace JoePitt.Cards
         /// <param name="text">The Text of the card.</param>
         public Card(string id, string text)
         {
-            ID = id;
-            Type = 'W';
-            Text = text;
+            Id = id;
+            ToString = text;
         }
 
         /// <summary>

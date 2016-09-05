@@ -1,31 +1,36 @@
-﻿using System;
+﻿using JoePitt.Cards.Net;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Net;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace JoePitt.Cards
+namespace JoePitt.Cards.UI
 {
     /// <summary>
     /// New Game UI.
     /// </summary>
-    public partial class frmNew : Form
+    public partial class NewGame : Form
     {
         /// <summary>
         /// Initalises the New Game UI.
         /// </summary>
-        public frmNew()
+        public NewGame()
         {
             InitializeComponent();
             picLogo.ContextMenuStrip = mnuLogo;
             tabsType.SelectedIndexChanged += TabsType_SelectedIndexChanged;
             txtAddPlayerLocal.GotFocus += TxtAddPlayerLocal_GotFocus;
             txtAddPlayerLocal.LostFocus += TxtAddPlayerLocal_LostFocus;
-            try { lstPlayersLocal.Items.Add(Dealer.IDPlayer()); } catch { }
-            try { txtPlayerNameHost.Text = Dealer.IDPlayer(); } catch { }
-            try { txtPlayerNameJoin.Text = Dealer.IDPlayer(); } catch { }
+            string displayName = "";
+            try { displayName = Dealer.GetPlayerName(); } catch (ArgumentNullException) { }
+            if (!string.IsNullOrEmpty(displayName))
+            {
+                lstPlayersLocal.Items.Add(displayName);
+                txtPlayerNameHost.Text = displayName;
+                txtPlayerNameJoin.Text = displayName;
+            }
         }
 
         private void TxtAddPlayerLocal_GotFocus(object sender, EventArgs e)
@@ -139,7 +144,7 @@ namespace JoePitt.Cards
                     {
                         if (!player.Name.ToLower().StartsWith("[bot]"))
                         {
-                            ClientNetworking playerNetwork = new ClientNetworking(Program.CurrentGame, player, "127.0.0.1", Program.CurrentGame.HostNetwork.Port);
+                            ClientNetworking playerNetwork = new ClientNetworking(player, "127.0.0.1", Program.CurrentGame.HostNetwork.Port);
                             playerNetwork.NextCommand = "JOIN " + player.Name.Replace(' ', '_') + " " + Program.SessionKey;
                             playerNetwork.NewCommand = true;
                             while (!playerNetwork.NewResponse)
@@ -153,7 +158,6 @@ namespace JoePitt.Cards
                             }
                         }
                     }
-                    //Program.CurrentGame.Stage = 'P';
                     DialogResult = DialogResult.OK;
                     Close();
                 }
@@ -198,6 +202,7 @@ namespace JoePitt.Cards
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId = "NoName")]
         private void btnStartHost_Click(object sender, EventArgs e)
         {
             // Prevent Changes
@@ -247,7 +252,7 @@ namespace JoePitt.Cards
             Program.CurrentGame = new Game('H', players);
             if (Program.CurrentGame.Playable)
             {
-                ClientNetworking playerNetwork = new ClientNetworking(Program.CurrentGame, Program.CurrentGame.Players[0], "127.0.0.1", Program.CurrentGame.HostNetwork.Port);
+                ClientNetworking playerNetwork = new ClientNetworking(Program.CurrentGame.Players[0], "127.0.0.1", Program.CurrentGame.HostNetwork.Port);
                 playerNetwork.NextCommand = "JOIN " + txtPlayerNameHost.Text.Replace(' ', '_') + " " + Program.SessionKey;
                 playerNetwork.NewCommand = true;
                 while (!playerNetwork.NewResponse)
@@ -260,47 +265,11 @@ namespace JoePitt.Cards
                     Program.CurrentGame.LocalPlayers.Add(playerNetwork);
 
                     string IPs = "";
-                    if (Program.CurrentGame.HostNetwork.PublicIP.ToString() != "0.0.0.0")
+                    foreach (string ConnectionString in Program.CurrentGame.HostNetwork.ConnectionStrings)
                     {
-                        IPs = Program.CurrentGame.HostNetwork.PublicIP.ToString();
-                        if (Program.CurrentGame.HostNetwork.IPv4UPnP)
-                        {
-                            IPs = IPs + " (Internet)" + Environment.NewLine;
-                        }
-                        else
-                        {
-                            IPs = IPs + " (Internet (Manual Forwarding Required))" + Environment.NewLine;
-                            MessageBox.Show("UPnP Port Mapping Failed, ensure port " + Program.CurrentGame.HostNetwork.Port + " is manually forwarded to use IP: " + Program.CurrentGame.HostNetwork.PublicIP.ToString(), "UPnP Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
+                        IPs = IPs + ConnectionString + Environment.NewLine;
                     }
-                    foreach (IPAddress IP in Program.CurrentGame.HostNetwork.LocalIPAddresses)
-                    {
-                        if (IP.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
-                        {
-                            IPs = IPs + IP.ToString() + " (Local Network)" + Environment.NewLine;
-                        }
-                        else if (IP.AddressFamily == System.Net.Sockets.AddressFamily.InterNetworkV6)
-                        {
-                            if (IP.IsIPv6LinkLocal)
-                            {
-                                IPs = IPs + IP.ToString() + " (IPv6 Link-Local)" + Environment.NewLine;
-                            }
-                            else
-                            {
-                                if (Program.CurrentGame.HostNetwork.IPv6UPnP)
-                                {
-                                    IPs = IPs + IP.ToString() + " (IPv6 Internet)" + Environment.NewLine;
-                                }
-                                else
-                                {
-                                    IPs = IPs + IP.ToString() + " (IPv6 Internet (Manual Forwarding Required))" + Environment.NewLine;
-                                }
-                            }
-                        }
-                    }
-                    IPs = IPs + "127.0.0.1 (Loopback)" + Environment.NewLine;
-
-                    MessageBox.Show("Game Started on Port " + Program.CurrentGame.HostNetwork.Port + " on IPs:" + Environment.NewLine + Environment.NewLine + IPs, "Game Started", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Game Started, connect using:" + Environment.NewLine + Environment.NewLine + IPs, "Game Started", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     DialogResult = DialogResult.OK;
                     Close();
@@ -354,14 +323,14 @@ namespace JoePitt.Cards
 
         private void rulesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmRules rules = new frmRules();
+            Rules rules = new Rules();
             rules.ShowDialog();
             rules.Dispose();
         }
 
         private void licenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmLicense license = new frmLicense();
+            License license = new License();
             license.ShowDialog();
             license.Dispose();
         }

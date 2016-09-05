@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using JoePitt.Cards.Editor.UI;
 
 namespace JoePitt.Cards.Editor
 {
@@ -13,7 +14,7 @@ namespace JoePitt.Cards.Editor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            Application.Run(new MainUI());
         }
     }
 }
