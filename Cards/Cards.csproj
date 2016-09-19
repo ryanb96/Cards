@@ -17,7 +17,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <PublishUrl>W:\www.joepitt.co.uk\Public\Project\Cards\</PublishUrl>
+    <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -27,8 +27,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>https://www.joepitt.co.uk/Project/Cards/</InstallUrl>
-    <UpdateUrl>https://www.joepitt.co.uk/Project/Cards/</UpdateUrl>
+    <InstallUrl>https://www.joepitt.co.uk/Project/Cards/Publish/</InstallUrl>
+    <UpdateUrl>https://www.joepitt.co.uk/Project/Cards/Publish/</UpdateUrl>
     <SupportUrl>https://www.joepitt.co.uk/Project/Cards/</SupportUrl>
     <TargetCulture>en-GB</TargetCulture>
     <ProductName>Cards</ProductName>
@@ -75,10 +75,10 @@
     <ApplicationIcon>Logo.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>5D81F6A4E1FB468A3B97AEB3601A467CDD5E3266</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>F3F33CCC36FFFFE5BABA632D76E73177206143EB</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -308,8 +308,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <Target Name="AfterPublish">
-    <Exec Command="ping 127.0.0.1 -n 6 &gt; nul" />
-    <Exec Command="mkisofs.exe -V  &quot;$(ProjectName)&quot; -o &quot;$(ProjectDir)publish\$(ProjectName).iso&quot; &quot;$(ProjectDir)publish\&quot;" />
-  </Target>
 </Project>
