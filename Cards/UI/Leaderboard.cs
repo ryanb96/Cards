@@ -33,6 +33,12 @@ namespace JoePitt.Cards.UI
             }
         }
 
+        /// <summary>
+        /// Handles keyboard input for DebugUI calls.
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="keys">The Keys that have been pressed.</param>
+        /// <returns>If the key press has been handled.</returns>
         protected override bool ProcessCmdKey(ref Message message, Keys keys)
         {
             switch (keys)
@@ -40,7 +46,7 @@ namespace JoePitt.Cards.UI
                 case Keys.Control | Keys.Shift | Keys.F1:
                     UI.Debug debugUI = new Debug();
                     debugUI.ShowDialog();
-                    return false;
+                    return true;
             }
             return false;
         }

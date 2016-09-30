@@ -258,6 +258,7 @@ namespace JoePitt.Cards
                 byte[] test = Convert.FromBase64String(response[0]);
                 using (MemoryStream stream = new MemoryStream(test))
                 {
+                    stream.Position = 0;
                     CurrentGame.Winners = (List<Answer>)formatter.Deserialize(stream);
                 }
                 string message = "";
@@ -300,6 +301,7 @@ namespace JoePitt.Cards
                 byte[] test = Convert.FromBase64String(response[0]);
                 using (MemoryStream stream = new MemoryStream(test))
                 {
+                    stream.Position = 0;
                     CurrentGame.Winners = (List<Answer>)formatter.Deserialize(stream);
                 }
                 string message = "";

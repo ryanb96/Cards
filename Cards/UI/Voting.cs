@@ -71,6 +71,7 @@ namespace JoePitt.Cards.UI
                 BinaryFormatter formatter = new BinaryFormatter();
                 using (MemoryStream stream = new MemoryStream(Convert.FromBase64String(response[1])))
                 {
+                    stream.Position = 0;
                     Program.CurrentGame.Answers = (List<Answer>)formatter.Deserialize(stream);
                 }
             }

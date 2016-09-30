@@ -772,6 +772,7 @@ namespace JoePitt.Cards.Net
                     {
                         using (MemoryStream stream = new MemoryStream(Convert.FromBase64String(ClientTexts[1])))
                         {
+                            stream.Position = 0;
                             Game.Answers[i] = (Answer)formatter.Deserialize(stream);
                         }
                         serverText = "SUBMITTED";
@@ -784,6 +785,7 @@ namespace JoePitt.Cards.Net
                     string base64Answer = ClientTexts[1];
                     using (MemoryStream stream = new MemoryStream(Convert.FromBase64String(base64Answer)))
                     {
+                        stream.Position = 0;
                         Game.Answers.Add((Answer)formatter.Deserialize(stream));
                         serverText = "SUBMITTED";
                     }
@@ -829,6 +831,7 @@ namespace JoePitt.Cards.Net
                         byte[] voteIn = Convert.FromBase64String(ClientTexts[1]);
                         using (MemoryStream stream = new MemoryStream(voteIn))
                         {
+                            stream.Position = 0;
                             Vote thisVote = (Vote)formatter.Deserialize(stream);
                             if (thisVote.Choice.BlackCard != Game.GameSet.BlackCards[Game.GameSet.BlackCardIndex[Game.CurrentBlackCard]])
                             {
@@ -850,6 +853,7 @@ namespace JoePitt.Cards.Net
                     byte[] test = Convert.FromBase64String(ClientTexts[1]);
                     using (MemoryStream stream = new MemoryStream(test))
                     {
+                        stream.Position = 0;
                         Game.Votes.Add((Vote)formatter.Deserialize(stream));
                         serverText = "SUBMITTED";
                     }

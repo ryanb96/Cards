@@ -323,6 +323,7 @@ namespace JoePitt.Cards
                 BinaryFormatter formatter = new BinaryFormatter();
                 using (MemoryStream stream = new MemoryStream(Convert.FromBase64String(response)))
                 {
+                    stream.Position = 0;
                     GameSet = (CardSet)formatter.Deserialize(stream);
                 }
                 Playable = true;

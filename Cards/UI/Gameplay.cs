@@ -63,6 +63,7 @@ namespace JoePitt.Cards.UI
                 BinaryFormatter formatter = new BinaryFormatter();
                 using (MemoryStream stream = new MemoryStream(Convert.FromBase64String(response[1])))
                 {
+                    stream.Position = 0;
                     BlackCard = (Card)formatter.Deserialize(stream);
                 }
                 txtBlackCard.Text = BlackCard.ToString + Environment.NewLine;
@@ -91,6 +92,7 @@ namespace JoePitt.Cards.UI
                 {
                     using (MemoryStream stream = new MemoryStream(Convert.FromBase64String(cards)))
                     {
+                        stream.Position = 0;
                         Program.CurrentPlayer.Owner.WhiteCards = (List<Card>)formatter.Deserialize(stream);
                     }
                 }
