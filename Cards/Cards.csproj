@@ -191,7 +191,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vote.cs" />
-    <Content Include="Resources\CardSets\UK_1.8_dd12fa05-a7a7-4f6c-8467-4711abbcb16b.cardset">
+    <Content Include="Resources\CardSets\UK_1.9_dd12fa05-a7a7-4f6c-8467-4711abbcb16b.cardset">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\Logo.ico" />

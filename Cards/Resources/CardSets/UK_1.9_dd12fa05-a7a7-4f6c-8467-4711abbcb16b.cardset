@@ -1,4 +1,4 @@
-<CardSet GUID="dd12fa05-a7a7-4f6c-8467-4711abbcb16b" Name="UK" Version="1.8" Hash="MtjfXletravMaGc83KlUyzOFJq3uPnb0eKf91UjXqMc=">
+<CardSet GUID="dd12fa05-a7a7-4f6c-8467-4711abbcb16b" Name="UK" Version="1.9" Hash="sFH+7Drhtg1FeL5SvMrN/hvYP1SFUd4yab19o47FLqA=">
   <BlackCards>
     <Card ID="B1" Needs="1">How did I lose my virginity?</Card>
     <Card ID="B2" Needs="1">Why can't I sleep at night?</Card>
@@ -26,68 +26,68 @@
     <Card ID="B24" Needs="1">In Wormwood Scrubs, word is you can trade 200 cigarettes for ____________.</Card>
     <Card ID="B25" Needs="1">What's the most emo?</Card>
     <Card ID="B26" Needs="1">In 1,000 years when paper money is distant memory, how will we pay for goods and services?</Card>
-    <Card ID="B27" Needs="1">What’s the next superhero/sidekick duo?</Card>
-    <Card ID="B28" Needs="1">A romantic candlelit dinner would be incomplete without ____________.</Card>
-    <Card ID="B29" Needs="1">____________? Jim'll Fix It!</Card>
-    <Card ID="B30" Needs="1">White people like ____________.</Card>
-    <Card ID="B31" Needs="1">When I am Prime Minister of the United Kingdom, I will create the Ministry of ____________.</Card>
-    <Card ID="B32" Needs="1">Next from J.K. Rowling: Harry Potter and the Chamber of ____________.</Card>
-    <Card ID="B33" Needs="1">What kept Margaret Thatcher busy in her waning years?</Card>
-    <Card ID="B34" Needs="1">War! What is it good for?</Card>
-    <Card ID="B35" Needs="1">During sex, I like to think about ____________.</Card>
-    <Card ID="B36" Needs="1">What are my parents hiding from me?</Card>
-    <Card ID="B37" Needs="1">What will always get you laid?</Card>
-    <Card ID="B38" Needs="1">In her latest feature length film, Tracy Beaker struggles with ____________ for the first time.</Card>
-    <Card ID="B39" Needs="1">Airport security guidelines now prohibits ____________ on airplanes.</Card>
-    <Card ID="B40" Needs="1">What don't you want to find in your Kung Pao Chicken?</Card>
-    <Card ID="B41" Needs="1">What will I bring back in time to convince people I am a powerful wizard?</Card>
-    <Card ID="B42" Needs="1">How am I maintaining my relationship status?</Card>
-    <Card ID="B43" Needs="1">____________. It's a trap.</Card>
-    <Card ID="B44" Needs="1">The school trip was completely ruined by ____________.</Card>
-    <Card ID="B45" Needs="1">What did I bring back from Amsterdam?</Card>
-    <Card ID="B46" Needs="1">After the earthquake, Sean Penn brought ____________ for the people of Haiti.</Card>
-    <Card ID="B47" Needs="1">The TFL apologises for the delay in train service due to ____________.</Card>
-    <Card ID="B48" Needs="1">But before I kill you, Mr Bond, I must show you ____________.</Card>
-    <Card ID="B49" Needs="1">What gives me uncontrollable gas?</Card>
-    <Card ID="B50" Needs="1">What do old people smell like?</Card>
-    <Card ID="B51" Needs="1">Next on Sky Sports: The World Championship of ____________.</Card>
-    <Card ID="B52" Needs="1">When Pharaoh remained unmoved, Moses called down a plague of ____________.</Card>
-    <Card ID="B53" Needs="1">What's my secret power?</Card>
-    <Card ID="B54" Needs="1">What's there a ton of in heaven?</Card>
-    <Card ID="B55" Needs="1">What would Grandma find disturbing, yet oddly charming?</Card>
-    <Card ID="B56" Needs="1">What did the US airdrop to the children of Afghanistan?</Card>
-    <Card ID="B57" Needs="1">What helps Obama unwind?</Card>
-    <Card ID="B58" Needs="1">What did Vin Diesel eat for dinner?</Card>
-    <Card ID="B59" Needs="1">____________: good to the last drop.</Card>
-    <Card ID="B60" Needs="1">Why am I sticky?</Card>
-    <Card ID="B61" Needs="1">What gets better with age?</Card>
-    <Card ID="B62" Needs="1">____________: kid tested, mother approved.</Card>
-    <Card ID="B63" Needs="1">Channel 5's new reality show features 8 washed-up celebrates living with ____________.</Card>
-    <Card ID="B64" Needs="1">Instead of coal, Father Christmas now give the naughty children ____________.</Card>
-    <Card ID="B65" Needs="1">Studies show the Lab Rats navigate mazes 50% faster after being exposed to ____________.</Card>
-    <Card ID="B66" Needs="1">Life for American Indians was forever changed when a White man introduced them to ____________.</Card>
-    <Card ID="B67" Needs="1">I do not know with what weapon World War III will be fought, but World War IV will be fought with ____________.</Card>
-    <Card ID="B68" Needs="1">Why do I hurt all over?</Card>
-    <Card ID="B69" Needs="1">What am I giving up for Lent?</Card>
-    <Card ID="B70" Needs="1">In Michael Jackson's last moments, he thought about ____________.</Card>
-    <Card ID="B71" Needs="1">Coming to the West End this year, ____________: The Musical.</Card>
-    <Card ID="B72" Needs="1">____________: Once you pop the fun don't stop.</Card>
-    <Card ID="B73" Needs="1">When I am a billionaire, I shall erect a 50-foot statue to commemorate ____________.</Card>
-    <Card ID="B74" Needs="1">What are school administrators using to curb rampant teenage pregnancy?</Card>
-    <Card ID="B75" Needs="1">What never fails to liven up the party?</Card>
-    <Card ID="B76" Needs="1">What's the new fad diet?</Card>
-    <Card ID="B77" Needs="1">____________. That's why mum's go to Iceland.</Card>
-    <Card ID="B78" Needs="2">Rumour has it that Vladimir Putin's favourite delicacy is ____________ stuffed with ____________.</Card>
-    <Card ID="B79" Needs="2">For my next trick, I will pull ____________ out of ____________.</Card>
-    <Card ID="B80" Needs="2">____________ is a slippery slope that leads to ____________.</Card>
-    <Card ID="B81" Needs="2">In M. Night Shyamalan's new movie Bruce Willis discovers that ____________ has really been ____________ all along.</Card>
-    <Card ID="B82" Needs="2">In a world ravaged by ____________, our only solace is ____________.</Card>
-    <Card ID="B83" Needs="2">Step 1 ____________, Step 2 ____________, Step 3 Profit.</Card>
-    <Card ID="B84" Needs="2">And the BAFTA for ____________ goes to ____________.</Card>
-    <Card ID="B85" Needs="2">I never truly understood ____________ until I encountered ____________.</Card>
-    <Card ID="B86" Needs="2">Channel 4 presents ____________, the story of ____________.</Card>
-    <Card ID="B87" Needs="2">When I was tripping on acid, ____________ turned into ____________.</Card>
-    <Card ID="B88" Needs="2">That's right I killed ____________, how you ask? ____________.</Card>
+    <Card ID="B27" Needs="1">A romantic candlelit dinner would be incomplete without ____________.</Card>
+    <Card ID="B28" Needs="1">____________? Jim'll Fix It!</Card>
+    <Card ID="B29" Needs="1">White people like ____________.</Card>
+    <Card ID="B30" Needs="1">When I am Prime Minister of the United Kingdom, I will create the Ministry of ____________.</Card>
+    <Card ID="B31" Needs="1">Next from J.K. Rowling: Harry Potter and the Chamber of ____________.</Card>
+    <Card ID="B32" Needs="1">What kept Margaret Thatcher busy in her waning years?</Card>
+    <Card ID="B33" Needs="1">War! What is it good for?</Card>
+    <Card ID="B34" Needs="1">During sex, I like to think about ____________.</Card>
+    <Card ID="B35" Needs="1">What are my parents hiding from me?</Card>
+    <Card ID="B36" Needs="1">What will always get you laid?</Card>
+    <Card ID="B37" Needs="1">In her latest feature length film, Tracy Beaker struggles with ____________ for the first time.</Card>
+    <Card ID="B38" Needs="1">Airport security guidelines now prohibits ____________ on airplanes.</Card>
+    <Card ID="B39" Needs="1">What don't you want to find in your Kung Pao Chicken?</Card>
+    <Card ID="B40" Needs="1">What will I bring back in time to convince people I am a powerful wizard?</Card>
+    <Card ID="B41" Needs="1">How am I maintaining my relationship status?</Card>
+    <Card ID="B42" Needs="1">____________. It's a trap.</Card>
+    <Card ID="B43" Needs="1">The school trip was completely ruined by ____________.</Card>
+    <Card ID="B44" Needs="1">What did I bring back from Amsterdam?</Card>
+    <Card ID="B45" Needs="1">After the earthquake, Sean Penn brought ____________ for the people of Haiti.</Card>
+    <Card ID="B46" Needs="1">The TFL apologises for the delay in train service due to ____________.</Card>
+    <Card ID="B47" Needs="1">But before I kill you, Mr Bond, I must show you ____________.</Card>
+    <Card ID="B48" Needs="1">What gives me uncontrollable gas?</Card>
+    <Card ID="B49" Needs="1">What do old people smell like?</Card>
+    <Card ID="B50" Needs="1">Next on Sky Sports: The World Championship of ____________.</Card>
+    <Card ID="B51" Needs="1">When Pharaoh remained unmoved, Moses called down a plague of ____________.</Card>
+    <Card ID="B52" Needs="1">What's my secret power?</Card>
+    <Card ID="B53" Needs="1">What's there a ton of in heaven?</Card>
+    <Card ID="B54" Needs="1">What would Grandma find disturbing, yet oddly charming?</Card>
+    <Card ID="B55" Needs="1">What did the US airdrop to the children of Afghanistan?</Card>
+    <Card ID="B56" Needs="1">What helps Obama unwind?</Card>
+    <Card ID="B57" Needs="1">What did Vin Diesel eat for dinner?</Card>
+    <Card ID="B58" Needs="1">____________: good to the last drop.</Card>
+    <Card ID="B59" Needs="1">Why am I sticky?</Card>
+    <Card ID="B60" Needs="1">What gets better with age?</Card>
+    <Card ID="B61" Needs="1">____________: kid tested, mother approved.</Card>
+    <Card ID="B62" Needs="1">Channel 5's new reality show features 8 washed-up celebrates living with ____________.</Card>
+    <Card ID="B63" Needs="1">Instead of coal, Father Christmas now give the naughty children ____________.</Card>
+    <Card ID="B64" Needs="1">Studies show the Lab Rats navigate mazes 50% faster after being exposed to ____________.</Card>
+    <Card ID="B65" Needs="1">Life for American Indians was forever changed when a White man introduced them to ____________.</Card>
+    <Card ID="B66" Needs="1">I do not know with what weapon World War III will be fought, but World War IV will be fought with ____________.</Card>
+    <Card ID="B67" Needs="1">Why do I hurt all over?</Card>
+    <Card ID="B68" Needs="1">What am I giving up for Lent?</Card>
+    <Card ID="B69" Needs="1">In Michael Jackson's last moments, he thought about ____________.</Card>
+    <Card ID="B70" Needs="1">Coming to the West End this year, ____________: The Musical.</Card>
+    <Card ID="B71" Needs="1">____________: Once you pop the fun don't stop.</Card>
+    <Card ID="B72" Needs="1">When I am a billionaire, I shall erect a 50-foot statue to commemorate ____________.</Card>
+    <Card ID="B73" Needs="1">What are school administrators using to curb rampant teenage pregnancy?</Card>
+    <Card ID="B74" Needs="1">What never fails to liven up the party?</Card>
+    <Card ID="B75" Needs="1">What's the new fad diet?</Card>
+    <Card ID="B76" Needs="1">____________. That's why mum's go to Iceland.</Card>
+    <Card ID="B77" Needs="2">Rumour has it that Vladimir Putin's favourite delicacy is ____________ stuffed with ____________.</Card>
+    <Card ID="B78" Needs="2">For my next trick, I will pull ____________ out of ____________.</Card>
+    <Card ID="B79" Needs="2">____________ is a slippery slope that leads to ____________.</Card>
+    <Card ID="B80" Needs="2">In M. Night Shyamalan's new movie Bruce Willis discovers that ____________ has really been ____________ all along.</Card>
+    <Card ID="B81" Needs="2">In a world ravaged by ____________, our only solace is ____________.</Card>
+    <Card ID="B82" Needs="2">Step 1 ____________, Step 2 ____________, Step 3 Profit.</Card>
+    <Card ID="B83" Needs="2">And the BAFTA for ____________ goes to ____________.</Card>
+    <Card ID="B84" Needs="2">I never truly understood ____________ until I encountered ____________.</Card>
+    <Card ID="B85" Needs="2">Channel 4 presents ____________, the story of ____________.</Card>
+    <Card ID="B86" Needs="2">When I was tripping on acid, ____________ turned into ____________.</Card>
+    <Card ID="B87" Needs="2">That's right I killed ____________, how you ask? ____________.</Card>
+    <Card ID="B88" Needs="2">What’s the next superhero/sidekick duo? ____________ and ____________</Card>
   </BlackCards>
   <WhiteCards>
     <Card ID="W1">Being on fire</Card>
