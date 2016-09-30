@@ -44,6 +44,18 @@ namespace JoePitt.Cards.UI
             }
         }
 
+        protected override bool ProcessCmdKey(ref Message message, Keys keys)
+        {
+            switch (keys)
+            {
+                case Keys.Control | Keys.Shift | Keys.F1:
+                    UI.Debug debugUI = new Debug();
+                    debugUI.ShowDialog();
+                    return false;
+            }
+            return false;
+        }
+
         private void frmVote_Load(object sender, EventArgs e)
         {
             Program.CurrentPlayer.NextCommand = "GAMEUPDATE";

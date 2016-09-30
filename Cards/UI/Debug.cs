@@ -120,6 +120,7 @@ namespace JoePitt.Cards.UI
                     treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes[3].Nodes[j].Nodes.Add("Text", "Text: " + card.ToString);
                     j++;
                 }
+                treDebug.Nodes[0].Nodes["Players"].Nodes[i].Nodes["WhiteCards"].Collapse();
                 i++;
             }
 
@@ -186,6 +187,10 @@ namespace JoePitt.Cards.UI
             treDebug.ExpandAll();
             treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameBlackCards"].Collapse();
             treDebug.Nodes[0].Nodes["GameSet"].Nodes["GameWhiteCards"].Collapse();
+            foreach (TreeNode node in treDebug.Nodes[0].Nodes["Players"].Nodes)
+            {
+                node.Nodes["WhiteCards"].Collapse();
+            }
             treDebug.SelectedNode = treDebug.Nodes[0];
             CheckAllNodes(treDebug.Nodes, true);
             CheckChildren(treDebug.Nodes[0].Nodes["ServerNetworking"].Nodes["Connection Strings"], false);
@@ -212,10 +217,13 @@ namespace JoePitt.Cards.UI
         /// <param name="Check">Whether to Check or Uncheck.</param>
         private void CheckChildren(TreeNode rootNode, bool Check)
         {
-            foreach (TreeNode node in rootNode.Nodes)
+            if (rootNode != null)
             {
-                CheckChildren(node, Check);
-                node.Checked = Check;
+                foreach (TreeNode node in rootNode.Nodes)
+                {
+                    CheckChildren(node, Check);
+                    node.Checked = Check;
+                }
             }
         }
 

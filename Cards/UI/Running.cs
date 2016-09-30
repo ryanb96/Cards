@@ -14,6 +14,22 @@ namespace JoePitt.Cards.UI
         {
             InitializeComponent();
         }
-        
+
+        protected override bool ProcessCmdKey(ref Message message, Keys keys)
+        {
+            switch (keys)
+            {
+                case Keys.Control | Keys.Shift | Keys.F1:
+                    if (Program.CurrentGame != null)
+                    {
+                        UI.Debug debugUI = new Debug();
+                        debugUI.ShowDialog();
+                        return false;
+                    }
+                    break;
+            }
+            return false;
+        }
+
     }
 }

@@ -181,7 +181,6 @@
     </Compile>
     <Compile Include="Game.cs" />
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="NativeMethods.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

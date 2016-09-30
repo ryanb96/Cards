@@ -49,6 +49,18 @@ namespace JoePitt.Cards.UI
             }
         }
 
+        protected override bool ProcessCmdKey(ref Message message, Keys keys)
+        {
+            switch (keys)
+            {
+                case Keys.Control | Keys.Shift | Keys.F1:
+                    UI.Debug debugUI = new Debug();
+                    debugUI.ShowDialog();
+                    return false;
+            }
+            return false;
+        }
+
         /// <summary>
         /// Updates the UI every second.
         /// </summary>

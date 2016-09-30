@@ -33,6 +33,18 @@ namespace JoePitt.Cards.UI
             }
         }
 
+        protected override bool ProcessCmdKey(ref Message message, Keys keys)
+        {
+            switch (keys)
+            {
+                case Keys.Control | Keys.Shift | Keys.F1:
+                    UI.Debug debugUI = new Debug();
+                    debugUI.ShowDialog();
+                    return false;
+            }
+            return false;
+        }
+
         /// <summary>
         /// Update the Leaderboard UI.
         /// </summary>

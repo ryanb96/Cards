@@ -139,17 +139,6 @@ namespace JoePitt.Cards
             if (CurrentGame != null)
             {
                 LeaderBoard = new Leaderboard();
-                try
-                {
-                    NativeMethods hook = new NativeMethods();
-                    hook.KeyboardHook();
-                    hook.KeyPressed += Hook_KeyPressed;
-                    hook.RegisterHotkey(ModifierKeys.Control | ModifierKeys.Shift, Keys.F1);
-                }
-                catch (InvalidOperationException)
-                {
-                    MessageBox.Show("DebugUI HotKey Not Mapped");
-                }
                 return true;
             }
             else return false;
@@ -369,13 +358,6 @@ namespace JoePitt.Cards
                 ex.Data + Environment.NewLine + Environment.NewLine +
                 ex.StackTrace;
             MessageBox.Show(Error);
-        }
-
-        private static void Hook_KeyPressed(object sender, KeyPressedEventArgs e)
-        {
-            Debug debug = new Debug();
-            debug.ShowDialog();
-            debug.Dispose();
         }
     }
 }
