@@ -70,14 +70,16 @@ namespace JoePitt.Cards.Net
             }
             ASCIIEncoding encoder = new ASCIIEncoding();
             byte[] buffer = encoder.GetBytes("");
-            byte[] message = new byte[5243000];
+            byte[] message = new byte[4];
             int bytesRead;
 
             while (Program.CurrentGame.Playable)
             {
+                message = new byte[4];
                 if (NewCommand)
                 {
                     buffer = encoder.GetBytes(NextCommand);
+                    clientStream.Write(BitConverter.GetBytes(buffer.Length), 0, 4);
                     clientStream.Write(buffer, 0, buffer.Length);
                     clientStream.Flush();
                     NewCommand = false;
@@ -85,7 +87,11 @@ namespace JoePitt.Cards.Net
                     try
                     {
                         //blocks until the server sends a message
-                        bytesRead = clientStream.Read(message, 0, 5243000);
+                        //bytesRead = clientStream.Read(message, 0, 5243000);
+                        bytesRead = clientStream.Read(message, 0, 4);
+                        int messageLength = BitConverter.ToInt32(message, 0);
+                        message = new byte[messageLength];
+                        bytesRead = clientStream.Read(message, 0, messageLength);
                     }
                     catch (System.IO.IOException ex)
                     {

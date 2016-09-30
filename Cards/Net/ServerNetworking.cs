@@ -327,17 +327,21 @@ namespace JoePitt.Cards.Net
             NetworkStream clientStream = myClient.GetStream();
             ASCIIEncoding encoder = new ASCIIEncoding();
             byte[] buffer = encoder.GetBytes("");
-            byte[] message = new byte[5243000];
+            byte[] message = new byte[4];
             int bytesRead;
             Player thisPlayer = new Player("FAKE", new List<Card>());
 
             while (myClient.Connected)
             {
+                message = new byte[4];
                 bytesRead = 0;
                 try
                 {
                     //blocks until a client sends a message
-                    bytesRead = clientStream.Read(message, 0, 5243000);
+                    bytesRead = clientStream.Read(message, 0, 4);
+                    int messageLength = BitConverter.ToInt32(message, 0);
+                    message = new byte[messageLength];
+                    bytesRead = clientStream.Read(message, 0, messageLength);
                 }
                 catch (IOException)
                 {
@@ -563,6 +567,7 @@ namespace JoePitt.Cards.Net
 
                 serverText = serverText + Environment.NewLine;
                 buffer = encoder.GetBytes(serverText);
+                clientStream.Write(BitConverter.GetBytes(buffer.Length), 0, 4);
                 clientStream.Write(buffer, 0, buffer.Length);
                 clientStream.Flush();
             }
@@ -776,7 +781,8 @@ namespace JoePitt.Cards.Net
                 }
                 if (serverText != "SUBMITTED")
                 {
-                    using (MemoryStream stream = new MemoryStream(Convert.FromBase64String(ClientTexts[1])))
+                    string base64Answer = ClientTexts[1];
+                    using (MemoryStream stream = new MemoryStream(Convert.FromBase64String(base64Answer)))
                     {
                         Game.Answers.Add((Answer)formatter.Deserialize(stream));
                         serverText = "SUBMITTED";
