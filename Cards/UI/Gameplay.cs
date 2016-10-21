@@ -207,14 +207,7 @@ namespace JoePitt.Cards.UI
             }
             if (MessageBox.Show("Submit: " + myAnswer.ToString, "Confirm Answer", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                //submit 
-                BinaryFormatter formatter = new BinaryFormatter();
-                using (MemoryStream stream = new MemoryStream())
-                {
-                    formatter.Serialize(stream, myAnswer);
-                    byte[] myAnswerBytes = stream.ToArray();
-                    Program.CurrentPlayer.NextCommand = "SUBMIT " + Convert.ToBase64String(myAnswerBytes);
-                }
+                Program.CurrentPlayer.NextCommand = "SUBMIT " + Convert.ToBase64String(myAnswer.ToByteArray());
                 Program.CurrentPlayer.NewCommand = true;
                 while (!Program.CurrentPlayer.NewResponse)
                 {

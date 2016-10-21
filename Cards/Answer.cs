@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
 
 namespace JoePitt.Cards
@@ -97,6 +99,28 @@ namespace JoePitt.Cards
             {
                 ToString = ToString + " " + WhiteCard.ToString + " -- " + WhiteCard2.ToString;
             }
+        }
+
+
+        public Answer(byte[] SerialisedAnswer)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            MemoryStream stream = new MemoryStream(SerialisedAnswer);
+            Answer imported = (Answer)formatter.Deserialize(stream);
+            Submitter = imported.Submitter;
+            BlackCard = imported.BlackCard;
+            WhiteCard = imported.WhiteCard;
+            WhiteCard2 = imported.WhiteCard2;
+            ToString = imported.ToString;
+        }
+
+
+        public byte[] ToByteArray()
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            MemoryStream stream = new MemoryStream();
+            formatter.Serialize(stream, this);
+            return stream.ToArray();
         }
     }
 }
