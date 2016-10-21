@@ -70,7 +70,7 @@ namespace JoePitt.Cards
             }
             catch { }
 
-            NewGame:
+        NewGame:
             if (Setup())
             {
                 while (CurrentGame.Playable)
@@ -360,6 +360,7 @@ namespace JoePitt.Cards
                 ex.Data + Environment.NewLine + Environment.NewLine +
                 ex.StackTrace;
             MessageBox.Show(Error);
+            Application.Restart();
         }
     }
 }
