@@ -9,7 +9,7 @@ namespace JoePitt.Cards
     /// A playing card.
     /// </summary>
     [Serializable]
-    [DebuggerDisplay("{Color}: {ToString}")]
+    [DebuggerDisplay("{ToString}")]
     internal class Card
     {
         /// <summary>
