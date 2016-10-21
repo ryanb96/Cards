@@ -327,7 +327,7 @@ namespace JoePitt.Cards.Net
             while (myClient.Connected)
             {
                 string clientText = SharedNetworking.ReceiveString(myClient);
-                if (clientText == "")
+                if (string.IsNullOrEmpty(clientText))
                 {
                     goto drop;
                 }
@@ -365,7 +365,6 @@ namespace JoePitt.Cards.Net
                         else
                         {
                             thisPlayer = newPlayer;
-                            thisPlayer.IsConnected = true;
                             serverText = "SUCCESS";
                         }
                         break;
@@ -619,7 +618,6 @@ namespace JoePitt.Cards.Net
                         {
                             player.Name = ClientTexts[1].Replace('_', ' ');
                             player.Verify(ClientTexts[2]);
-                            thisPlayer.IsConnected = true;
                             found = true;
                             playersJoin++;
                             thisPlayer = player;

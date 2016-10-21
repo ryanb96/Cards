@@ -74,12 +74,6 @@
     <ApplicationIcon>Logo.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>false</SignManifests>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ManifestCertificateThumbprint>F3F33CCC36FFFFE5BABA632D76E73177206143EB</ManifestCertificateThumbprint>
-  </PropertyGroup>
-  <PropertyGroup>
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
@@ -90,10 +84,6 @@
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
-  </PropertyGroup>
-  <PropertyGroup />
-  <PropertyGroup>
-    <ManifestTimestampUrl>http://time.certum.pl/</ManifestTimestampUrl>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>JoePitt.Cards.Program</StartupObject>

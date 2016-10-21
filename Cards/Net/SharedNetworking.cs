@@ -75,7 +75,7 @@ namespace JoePitt.Cards.Net
                 }
                 return false;
             }
-            catch
+            catch (IOException)
             {
                 return false;
             }

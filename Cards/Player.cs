@@ -26,10 +26,6 @@ namespace JoePitt.Cards
         /// Defines if the player is automated.
         /// </summary>
         public bool IsBot { get; private set; } = false;
-        /// <summary>
-        /// Indicates if the user is connected or not.
-        /// </summary>
-        public bool IsConnected { get; set; }
         private string SessionKey;
 
         /// <summary>

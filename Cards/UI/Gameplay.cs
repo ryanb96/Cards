@@ -126,14 +126,20 @@ namespace JoePitt.Cards.UI
             }
         }
 
-        protected override bool ProcessCmdKey(ref Message message, Keys keys)
+        /// <summary>
+        /// Handles Key Presses and Launch Debug UI if CTRL+SHIFT+F1 is pressed.
+        /// </summary>
+        /// <param name="msg">System-Generated.</param>
+        /// <param name="keyData">The keys that are pressed.</param>
+        /// <returns>If the keypress was handled.</returns>
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            switch (keys)
+            switch (keyData)
             {
                 case Keys.Control | Keys.Shift | Keys.F1:
                     UI.Debug debugUI = new Debug();
                     debugUI.ShowDialog();
-                    return false;
+                    return true;
             }
             return false;
         }

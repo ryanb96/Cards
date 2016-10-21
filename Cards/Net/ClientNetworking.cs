@@ -79,7 +79,7 @@ namespace JoePitt.Cards.Net
                         {
                             LastResponse = LastResponse.Replace(Environment.NewLine, "");
                         }
-                        if (LastResponse != "")
+                        if (String.IsNullOrEmpty(LastResponse))
                         {
                             NewResponse = true;
                         }
