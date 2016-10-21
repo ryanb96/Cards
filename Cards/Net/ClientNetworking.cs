@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -56,11 +55,9 @@ namespace JoePitt.Cards.Net
         private void RunSession()
         {
             TcpClient tcpClient;
-            NetworkStream clientStream;
             try
             {
                 tcpClient = new TcpClient(Address, Port);
-                clientStream = tcpClient.GetStream();
             }
             catch (SocketException ex)
             {
@@ -68,55 +65,58 @@ namespace JoePitt.Cards.Net
                 Application.Restart();
                 return;
             }
-            ASCIIEncoding encoder = new ASCIIEncoding();
-            byte[] buffer = encoder.GetBytes("");
-            byte[] message = new byte[4];
-            int bytesRead;
 
             while (Program.CurrentGame.Playable)
             {
-                message = new byte[4];
                 if (NewCommand)
                 {
-                    buffer = encoder.GetBytes(NextCommand);
-                    clientStream.Write(BitConverter.GetBytes(buffer.Length), 0, 4);
-                    clientStream.Write(buffer, 0, buffer.Length);
-                    clientStream.Flush();
-                    NewCommand = false;
-                    bytesRead = 0;
-                    try
+                retry:
+                    if (SharedNetworking.Send(tcpClient, NextCommand))
                     {
-                        //blocks until the server sends a message
-                        //bytesRead = clientStream.Read(message, 0, 5243000);
-                        bytesRead = clientStream.Read(message, 0, 4);
-                        int messageLength = BitConverter.ToInt32(message, 0);
-                        message = new byte[messageLength];
-                        bytesRead = clientStream.Read(message, 0, messageLength);
+                        NewCommand = false;
+                        LastResponse = SharedNetworking.ReceiveString(tcpClient);
+                        if (LastResponse.Contains(Environment.NewLine))
+                        {
+                            LastResponse = LastResponse.Replace(Environment.NewLine, "");
+                        }
+                        if (LastResponse != "")
+                        {
+                            NewResponse = true;
+                        }
+                        else
+                        {
+                            if (MessageBox.Show("A network error has occurred while getting the response to the last command", "Network Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                            {
+                                NewResponse = false;
+                                NewCommand = true;
+                                goto retry;
+                            }
+                            else
+                            {
+                                Application.Restart();
+                            }
+                        }
                     }
-                    catch (System.IO.IOException ex)
+                    else
                     {
-                        //a socket error has occured
-                        MessageBox.Show("A socket error has occurred on the client connection (" + ex.Message + ")", "Socket Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Application.Restart();
-                        break;
+                        if (MessageBox.Show("A network error has occurred while sending the last command", "Network Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                        {
+                            NewResponse = false;
+                            NewCommand = true;
+                            goto retry;
+                        }
+                        else
+                        {
+                            Application.Restart();
+                        }
                     }
-
-                    if (bytesRead == 0)
-                    {
-                        //the server has disconnected
-                        break;
-                    }
-
-                    //message has successfully been received
-                    string ServerText = encoder.GetString(message, 0, bytesRead);
-                    LastResponse = ServerText.Replace(Environment.NewLine, "");
-                    NewResponse = true;
                 }
                 else
                 {
                     Thread.Sleep(500);
                 }
             }
+            tcpClient.Close();
         }
     }
 }

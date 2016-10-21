@@ -124,6 +124,7 @@
     <Compile Include="Net\ClientNetworking.cs" />
     <Compile Include="Exceptions\NoFreePortsException.cs" />
     <Compile Include="Exceptions\OutOfCardsException.cs" />
+    <Compile Include="Net\SharedNetworking.cs" />
     <Compile Include="UI\Running.cs">
       <SubType>Form</SubType>
     </Compile>

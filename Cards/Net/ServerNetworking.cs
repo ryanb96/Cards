@@ -1,4 +1,5 @@
-﻿using NATUPNPLib;
+﻿using JoePitt.Cards.Exceptions;
+using NATUPNPLib;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,11 +8,9 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
-using JoePitt.Cards.Exceptions;
 
 namespace JoePitt.Cards.Net
 {
@@ -62,7 +61,6 @@ namespace JoePitt.Cards.Net
             {
                 throw new NoFreePortsException();
             }
-            ConnectionStrings = new List<string>();
             DiscoverLocalIPV4Addresses();
             if (Game.GameType != 'L')
             {
@@ -178,7 +176,7 @@ namespace JoePitt.Cards.Net
                             {
                                 if (thisGateway.Address.AddressFamily == AddressFamily.InterNetwork)
                                 {
-                                    retry:
+                                retry:
                                     try
                                     {
                                         mappings.Add(IPV4ExternalPort, "TCP", Port, ip.Address.ToString(), true, "Cards-IPv4");
@@ -262,7 +260,7 @@ namespace JoePitt.Cards.Net
                             GatewayIPAddressInformation Gateway = Interface.GetIPProperties().GatewayAddresses[0];
                             if (Gateway.Address.AddressFamily == AddressFamily.InterNetworkV6)
                             {
-                                retry:
+                            retry:
                                 try
                                 {
                                     mappings.Add(IPV6ExternalPort, "TCP", Port, LocalIP.ToString(), true, "Cards-IPv6");
@@ -324,41 +322,15 @@ namespace JoePitt.Cards.Net
         private void ClientLink(object myClientObj)
         {
             TcpClient myClient = (TcpClient)myClientObj;
-            NetworkStream clientStream = myClient.GetStream();
-            ASCIIEncoding encoder = new ASCIIEncoding();
-            byte[] buffer = encoder.GetBytes("");
-            byte[] message = new byte[4];
-            int bytesRead;
             Player thisPlayer = new Player("FAKE", new List<Card>());
 
             while (myClient.Connected)
             {
-                message = new byte[4];
-                bytesRead = 0;
-                try
+                string clientText = SharedNetworking.ReceiveString(myClient);
+                if (clientText == "")
                 {
-                    //blocks until a client sends a message
-                    bytesRead = clientStream.Read(message, 0, 4);
-                    int messageLength = BitConverter.ToInt32(message, 0);
-                    message = new byte[messageLength];
-                    bytesRead = clientStream.Read(message, 0, messageLength);
+                    goto drop;
                 }
-                catch (IOException)
-                {
-                    //a socket error has occured
-                    thisPlayer.IsConnected = false;
-                    break;
-                }
-
-                if (bytesRead == 0)
-                {
-                    //the client has disconnected from the server
-                    thisPlayer.IsConnected = false;
-                    break;
-                }
-
-                //message has successfully been received
-                string clientText = encoder.GetString(message, 0, bytesRead);
                 string serverText = "";
                 string[] ClientTexts = clientText.Split(' ');
                 switch (ClientTexts[0])
@@ -564,14 +536,21 @@ namespace JoePitt.Cards.Net
                         serverText = "Shut up meg!";
                         break;
                 }
-
                 serverText = serverText + Environment.NewLine;
-                buffer = encoder.GetBytes(serverText);
-                clientStream.Write(BitConverter.GetBytes(buffer.Length), 0, 4);
-                clientStream.Write(buffer, 0, buffer.Length);
-                clientStream.Flush();
+            retry:
+                if (!SharedNetworking.Send(myClient, serverText))
+                {
+                    if (MessageBox.Show("A network error has occurred while sending the last response", "Network Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                    {
+                        goto retry;
+                    }
+                    else
+                    {
+                        Application.Restart();
+                    }
+                }
             }
-            drop:
+        drop:
             myClient.Close();
         }
 
@@ -599,6 +578,7 @@ namespace JoePitt.Cards.Net
             }
             return Game.Players[0].Name.Replace(' ', '_') + " " + players_H + " " + (maxPlayers_H - players_H) + " " + cardSets;
         }
+
         private Player HandleJoin(Player thisPlayer, string[] ClientTexts)
         {
             int playersJoin = 0;
@@ -654,6 +634,7 @@ namespace JoePitt.Cards.Net
             }
             return thisPlayer;
         }
+
         private string HandleGetCards()
         {
             using (MemoryStream stream = new MemoryStream())
@@ -663,6 +644,7 @@ namespace JoePitt.Cards.Net
                 return Convert.ToBase64String(cardsArray);
             }
         }
+
         private string HandleGetRules()
         {
             string serverText = "CardsPerPlayer:" + Game.CardsPerUser;
@@ -675,6 +657,7 @@ namespace JoePitt.Cards.Net
             }
             return serverText;
         }
+
         private string HandleGameUpdate()
         {
             switch (Game.Stage)
@@ -691,6 +674,7 @@ namespace JoePitt.Cards.Net
                     return "X";
             }
         }
+
         private string HandleGameScores()
         {
             string serverText = "";
@@ -701,6 +685,7 @@ namespace JoePitt.Cards.Net
             serverText = serverText.Substring(0, serverText.Length - 1);
             return serverText;
         }
+
         private string HandleMyCards(Player thisPlayer)
         {
             if (thisPlayer.Name == "FAKE")
@@ -718,6 +703,7 @@ namespace JoePitt.Cards.Net
                 }
             }
         }
+
         private string HandleNeed(Player thisPlayer, string[] ClientTexts)
         {
             string serverText = "";
@@ -756,12 +742,13 @@ namespace JoePitt.Cards.Net
             }
             return serverText;
         }
+
         private string HandleSubmit(Player thisPlayer, string[] ClientTexts)
         {
             string serverText = "";
             if (ClientTexts.Length != 2)
             {
-                serverText = "Usage: SUBMIT WhiteCardID [2ndWhiteCardID]";
+                serverText = "Usage: SUBMIT Base64Answer";
             }
             else
             {
@@ -770,11 +757,7 @@ namespace JoePitt.Cards.Net
                 {
                     if (answer.Submitter.Name == thisPlayer.Name)
                     {
-                        using (MemoryStream stream = new MemoryStream(Convert.FromBase64String(ClientTexts[1])))
-                        {
-                            stream.Position = 0;
-                            Game.Answers[i] = (Answer)formatter.Deserialize(stream);
-                        }
+                        Game.Answers[i] = new Answer(Convert.FromBase64String(ClientTexts[1]));
                         serverText = "SUBMITTED";
                         break;
                     }
@@ -782,13 +765,8 @@ namespace JoePitt.Cards.Net
                 }
                 if (serverText != "SUBMITTED")
                 {
-                    string base64Answer = ClientTexts[1];
-                    using (MemoryStream stream = new MemoryStream(Convert.FromBase64String(base64Answer)))
-                    {
-                        stream.Position = 0;
-                        Game.Answers.Add((Answer)formatter.Deserialize(stream));
-                        serverText = "SUBMITTED";
-                    }
+                    Game.Answers.Add(new Answer(Convert.FromBase64String(ClientTexts[1])));
+                    serverText = "SUBMITTED";
                 }
             }
             if (serverText != "SUBMITTED")
@@ -805,6 +783,7 @@ namespace JoePitt.Cards.Net
             }
             return serverText;
         }
+
         private string HandleVote(Player thisPlayer, string[] ClientTexts)
         {
             string serverText = "";
@@ -916,10 +895,12 @@ namespace JoePitt.Cards.Net
             }
             return serverText;
         }
+
         private string HandleGetWinner()
         {
             return Convert.ToBase64String(Game.WinnersToByteArray());
         }
+
         private string HandleSpecial(Player thisPlayer, string[] ClientTexts)
         {
             string test = thisPlayer.Name + Game.Stage;
@@ -932,6 +913,7 @@ namespace JoePitt.Cards.Net
                 return "NOT IMPLEMENTED YET!" + test;
             }
         }
+
         private string HandleCheat(Player thisPlayer, string[] ClientTexts)
         {
             string test = thisPlayer.Name + Game.Stage;
