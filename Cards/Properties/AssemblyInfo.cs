@@ -1,8 +1,8 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
+using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Resources;
-using System;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -34,9 +34,15 @@ using System;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-//[assembly: AssemblyVersion("1.3.0.0")]
-//[assembly: AssemblyFileVersion("1.3.0.0")]
+
 [assembly: AssemblyVersion("2.2")]
 [assembly: NeutralResourcesLanguage("en-GB")]
 [assembly: AssemblyFileVersion("2.2")]
 [assembly: CLSCompliant(true)]
+
+[assembly: InternalsVisibleTo("UnitTests, PublicKey=" + 
+    "0024000004800000940000000602000000240000525341310004000001000100b3fc157502fe75" +
+    "16e0e8127e4a44364a47273787a7638d31ea6198d585c621e80c0df3d67f5cca8b5092ede48ead" +
+    "ed048bd0bfae3af304aa30c1fba922039c025e690a85e9b89b64fdeb622a73355060c466262c84" +
+    "ebf278af272c0c664e3536f578964038cdbc8c1c3c65eb0ae9812275dc50b0f0d734bca842756a" +
+    "0816cda8")]

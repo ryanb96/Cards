@@ -15,6 +15,7 @@ namespace JoePitt.Cards
     /// </summary>
     static class Program
     {
+        static public string CardSetPath { get; private set; }
         /// <summary>
         /// The game that is currently being played.
         /// </summary>
@@ -70,7 +71,7 @@ namespace JoePitt.Cards
             }
             catch { }
 
-        NewGame:
+            NewGame:
             if (Setup())
             {
                 while (CurrentGame.Playable)
@@ -123,6 +124,10 @@ namespace JoePitt.Cards
             Exit();
         }
 
+        static public void Init()
+        {
+            CardSetPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\JoePitt\\Cards\\";
+        }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId = "DebugUI")]
         static private bool Setup()
