@@ -18,6 +18,34 @@ namespace JoePitt.Cards
     /// </summary>
     static internal class Dealer
     {
+        static public bool TestCardSetPath()
+        {
+
+            try
+            {
+                if (!Directory.Exists(Program.CardSetPath))
+                {
+                    if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\JoePitt"))
+                    {
+                        Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\JoePitt");
+                    }
+                    Directory.CreateDirectory(Program.CardSetPath);
+                    //Copy in Card Sets...
+                    foreach (string CardSet in Directory.GetFiles("Resources\\CardSets\\", "*.cardset"))
+                    {
+                        string filename = CardSet.Substring(CardSet.LastIndexOf("\\") + 1);
+                        File.Copy(CardSet, Program.CardSetPath + filename);
+                    }
+                    return true;
+                }
+                return true;
+            }
+            catch (IOException)
+            {
+                return false;
+            }
+        }
+
         /// <summary>
         /// Gets the Display Name of the Windows/AD User running the game.
         /// </summary>
@@ -51,16 +79,10 @@ namespace JoePitt.Cards
         /// <returns>Details of Installed Card Sets</returns>
         static public List<string[]> GetCardSets()
         {
-            Console.WriteLine(Application.StartupPath + "\\Resources\\CardSets");
             List<string[]> cardSets = new List<string[]>();
             // Find Card Sets
-            string path = Application.StartupPath + "\\Resources\\CardSets";
-            if (path.Contains("TESTWINDOW"))
-            {
-                path = "C:\\Users\\Public\\CardSets";
-            }
-            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
-            string[] cardSetFiles = Directory.GetFiles(path, "*.cardset");
+            if (!TestCardSetPath()) return new List<string[]>();
+            string[] cardSetFiles = Directory.GetFiles(Program.CardSetPath, "*.cardset");
             foreach (string cardSet in cardSetFiles)
             {
                 // Try to Open Card Set
@@ -116,11 +138,6 @@ namespace JoePitt.Cards
         /// <returns>If the Card Set was installed.</returns>
         static public bool InstallCardSet(string cardSetFile)
         {
-            string path = Application.StartupPath + "\\Resources\\CardSets";
-            if (path.Contains("TESTWINDOW"))
-            {
-                path = "C:\\Users\\Public\\CardSets";
-            }
             bool installed = false;
             bool skipped = false;
             List<string[]> installedSets = GetCardSets();
@@ -246,9 +263,10 @@ namespace JoePitt.Cards
             {
                 if (MessageBox.Show(cardSetInfo.GetAttribute("Name") + " (" + cardSetInfo.GetAttribute("Version") + ") will be installed. Continue?", "Install Card Pack?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    if (File.Exists(path + "\\" + cardSetInfo.GetAttribute("Name").Replace(' ', '-') + "_" + cardSetInfo.GetAttribute("Version") + "_" + cardSetInfo.GetAttribute("GUID") + ".cardset"))
-                    { File.Delete(path + "\\" + cardSetInfo.GetAttribute("Name").Replace(' ', '-') + "_" + cardSetInfo.GetAttribute("Version") + "_" + cardSetInfo.GetAttribute("GUID") + ".cardset"); }
-                    File.Copy(cardSetFile, path + "\\" + cardSetInfo.GetAttribute("Name").Replace(' ', '-') + "_" + cardSetInfo.GetAttribute("Version") + "_" + cardSetInfo.GetAttribute("GUID") + ".cardset");
+                    if (!TestCardSetPath()) return installed;
+                    if (File.Exists(Program.CardSetPath + "\\" + cardSetInfo.GetAttribute("Name").Replace(' ', '-') + "_" + cardSetInfo.GetAttribute("Version") + "_" + cardSetInfo.GetAttribute("GUID") + ".cardset"))
+                    { File.Delete(Program.CardSetPath + "\\" + cardSetInfo.GetAttribute("Name").Replace(' ', '-') + "_" + cardSetInfo.GetAttribute("Version") + "_" + cardSetInfo.GetAttribute("GUID") + ".cardset"); }
+                    File.Copy(cardSetFile, Program.CardSetPath + "\\" + cardSetInfo.GetAttribute("Name").Replace(' ', '-') + "_" + cardSetInfo.GetAttribute("Version") + "_" + cardSetInfo.GetAttribute("GUID") + ".cardset");
                     installed = true;
                 }
             }
@@ -322,7 +340,6 @@ namespace JoePitt.Cards
             }
             return answers;
         }
-
 
         /// <summary>
         /// Deal the White Cards for players.

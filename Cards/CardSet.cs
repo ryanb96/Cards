@@ -19,7 +19,7 @@ namespace JoePitt.Cards
         /// <summary>
         /// The Globally Unique Identifier of the Card Set.
         /// </summary>
-        public Guid CardSetGuid { get; private set; }
+        public string CardSetGuid { get; private set; }
         /// <summary>
         /// The Display Name of the Card Set.
         /// </summary>
@@ -62,20 +62,20 @@ namespace JoePitt.Cards
         /// <exception cref="FileNotFoundException">Thrown if the card set cannot be found.</exception>
         /// <exception cref="XmlException">Thrown if the card set XML is corrupted.</exception>
         /// <exception cref="ApplicationException">Thrown if the card set is corrupted.</exception>
-        public CardSet(Guid cardSetGuid)
+        public CardSet(string cardSetGuid)
         {
-            if (cardSetGuid == null) { throw new ArgumentNullException("cardSetGuid"); }
-            string path = Application.StartupPath + "\\Resources\\CardSets";
-            string[] files = Directory.GetFiles(path, "*" + cardSetGuid.ToString() + ".cardset");
+            if (string.IsNullOrEmpty(cardSetGuid)) { throw new ArgumentNullException("cardSetGuid"); }
+            if (!Dealer.TestCardSetPath()) throw new IOException("Card Set Path does not exist, and could not be created.");
+            string[] files = Directory.GetFiles(Program.CardSetPath, "*" + cardSetGuid + ".cardset");
             if (files == null)
             {
-                throw new FileNotFoundException("Cannot find card set", path + "\\*" + cardSetGuid.ToString() + ".cardset");
+                throw new FileNotFoundException("Cannot find card set", Program.CardSetPath + "\\*" + cardSetGuid + ".cardset");
             }
             XmlDocument cardSetDoc = new XmlDocument();
             cardSetDoc.Load(files[0]);
             XmlElement cardSetInfo = (XmlElement)cardSetDoc.GetElementsByTagName("CardSet")[0];
             string[] setInfo = new string[5];
-            CardSetGuid = new Guid(cardSetInfo.GetAttribute("GUID"));
+            CardSetGuid = cardSetInfo.GetAttribute("GUID");
             Name = setInfo[1] = cardSetInfo.GetAttribute("Name");
             Version = setInfo[2] = cardSetInfo.GetAttribute("Version");
 
@@ -115,7 +115,7 @@ namespace JoePitt.Cards
             Cards = CardBlock[0].ChildNodes;
             foreach (XmlElement Card in Cards)
             {
-                string cardID = cardSetGuid.ToString() + "/" + Card.Attributes["ID"].Value;
+                string cardID = cardSetGuid + "/" + Card.Attributes["ID"].Value;
                 WhiteCards.Add(cardID, new Card(cardID, Card.InnerText));
                 WhiteCardCount++;
                 WhiteCardIndex.Add(WhiteCardCount, cardID);
@@ -132,19 +132,19 @@ namespace JoePitt.Cards
         /// <exception cref="FileNotFoundException">Thrown if the card set cannot be found.</exception>
         /// <exception cref="XmlException">Thrown if the card set XML is corrupted.</exception>
         /// <exception cref="ApplicationException">Thrown if the card set is corrupted.</exception>
-        public void Merge(List<Guid> cardSetGuids)
+        public void Merge(List<string> cardSetGuids)
         {
             if (cardSetGuids == null) { throw new ArgumentNullException("cardSetGuids"); }
-            CardSetGuid = new Guid();
+            CardSetGuid = new Guid().ToString();
             Name = "GameSet";
             Version = "0.0";
-            foreach (Guid guid in cardSetGuids)
+            foreach (string guid in cardSetGuids)
             {
-                string path = Application.StartupPath + "\\Resources\\CardSets";
-                string[] files = Directory.GetFiles(path, "*" + guid.ToString() + ".cardset");
+
+                string[] files = Directory.GetFiles(Program.CardSetPath, "*" + guid + ".cardset");
                 if (files == null)
                 {
-                    throw new FileNotFoundException("Cannot find card set", path + "\\*" + guid.ToString() + ".cardset");
+                    throw new FileNotFoundException("Cannot find card set", Program.CardSetPath + guid + ".cardset");
                 }
                 XmlDocument cardSetDoc = new XmlDocument();
                 cardSetDoc.Load(files[0]);
@@ -169,7 +169,7 @@ namespace JoePitt.Cards
                 XmlNodeList Cards = CardBlock[0].ChildNodes;
                 foreach (XmlElement Card in Cards)
                 {
-                    string cardID = guid.ToString() + "/" + Card.Attributes["ID"].Value;
+                    string cardID = guid + "/" + Card.Attributes["ID"].Value;
                     BlackCards.Add(cardID, new Card(cardID, Card.InnerText, Convert.ToInt32(Card.Attributes["Needs"].Value)));
                     BlackCardCount++;
                     BlackCardIndex.Add(BlackCardCount, cardID);
@@ -179,7 +179,7 @@ namespace JoePitt.Cards
                 Cards = CardBlock[0].ChildNodes;
                 foreach (XmlElement Card in Cards)
                 {
-                    string cardID = guid.ToString() + "/" + Card.Attributes["ID"].Value;
+                    string cardID = guid + "/" + Card.Attributes["ID"].Value;
                     WhiteCards.Add(cardID, new Card(cardID, Card.InnerText));
                     WhiteCardCount++;
                     WhiteCardIndex.Add(WhiteCardCount, cardID);

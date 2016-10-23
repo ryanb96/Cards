@@ -356,7 +356,7 @@ namespace JoePitt.Cards
         {
             CardSets = new List<CardSet>();
             int sets = 0;
-            List<Guid> MergeList = new List<Guid>();
+            List<string> MergeList = new List<string>();
             foreach (string[] set in Dealer.GetCardSets())
             {
                 // GUID, Name, Version, Path, Hash Status
@@ -365,15 +365,15 @@ namespace JoePitt.Cards
                     string enabledGuid = enabledSet.Substring(enabledSet.IndexOf('_') + 1);
                     if (set[0] == enabledGuid && set[4] == "OK")
                     {
-                        CardSets.Add(new CardSet(new Guid(set[0])));
+                        CardSets.Add(new CardSet(set[0]));
                         if (sets == 0)
                         {
-                            GameSet = new CardSet(new Guid(set[0]));
+                            GameSet = new CardSet(set[0]);
                             sets++;
                         }
                         else
                         {
-                            MergeList.Add(new Guid(set[0]));
+                            MergeList.Add(set[0]);
                         }
                         break;
                     }
@@ -539,7 +539,7 @@ namespace JoePitt.Cards
                 if (!found) CardUsed = false;
             }
         }
-        
+
         /// <summary>
         /// Converts the Submitted Answers to a byte array.
         /// </summary>
