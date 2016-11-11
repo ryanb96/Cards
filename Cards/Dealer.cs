@@ -1,9 +1,7 @@
 ﻿using JoePitt.Cards.Exceptions;
 using System;
 using System.Collections.Generic;
-using System.DirectoryServices.AccountManagement;
 using System.IO;
-using System.Linq;
 using System.Management;
 using System.Security.Cryptography;
 using System.Security.Principal;
@@ -20,14 +18,14 @@ namespace JoePitt.Cards
     {
         static public bool TestCardSetPath()
         {
-
             try
             {
                 if (!Directory.Exists(Program.CardSetPath))
                 {
-                    if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\JoePitt"))
+                    string joePittAppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\JoePitt";
+                    if (!Directory.Exists(joePittAppData))
                     {
-                        Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\JoePitt");
+                        Directory.CreateDirectory(joePittAppData);
                     }
                     Directory.CreateDirectory(Program.CardSetPath);
                     //Copy in Card Sets...

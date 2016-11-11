@@ -45,6 +45,8 @@ namespace JoePitt.Cards
         [STAThread]
         static void Main()
         {
+            CardSetPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\JoePitt\\Cards\\";
+
             AppDomain currentDomain = AppDomain.CurrentDomain;
             currentDomain.UnhandledException += CurrentDomain_UnhandledException;
 

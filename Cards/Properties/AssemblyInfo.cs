@@ -35,9 +35,9 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 
-[assembly: AssemblyVersion("2.2")]
+[assembly: AssemblyVersion("2.3")]
 [assembly: NeutralResourcesLanguage("en-GB")]
-[assembly: AssemblyFileVersion("2.2")]
+[assembly: AssemblyFileVersion("2.3")]
 [assembly: CLSCompliant(true)]
 
 [assembly: InternalsVisibleTo("UnitTests, PublicKey=" + 
