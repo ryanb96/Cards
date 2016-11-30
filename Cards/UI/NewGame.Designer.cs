@@ -178,7 +178,7 @@
             // 
             // txtAddPlayerLocal
             // 
-            this.txtAddPlayerLocal.AccessibleDescription = "Prefix with [Bot] to add a bot.";
+            this.txtAddPlayerLocal.AccessibleDescription = "Prefix with Bot, in square brackets, to add a bot.";
             this.txtAddPlayerLocal.AccessibleName = "Player Name";
             this.txtAddPlayerLocal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddPlayerLocal.Location = new System.Drawing.Point(9, 373);
@@ -681,7 +681,7 @@
             this.licenseToolStripMenuItem.Text = "License";
             this.licenseToolStripMenuItem.Click += new System.EventHandler(this.licenseToolStripMenuItem_Click);
             // 
-            // frmNew
+            // NewGame
             // 
             this.AcceptButton = this.btnStartLocal;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -695,7 +695,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmNew";
+            this.Name = "NewGame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New Game - Cards";
             this.Load += new System.EventHandler(this.frmNew_Load);
