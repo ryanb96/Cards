@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cards - Editor", "Cards - E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{4DA013E3-F830-43F4-94D4-74EF7FFB6FE9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JoePitt.Cards", "JoePitt.Cards\JoePitt.Cards.csproj", "{0E34336D-8018-40EF-A825-AC5E59E57CD0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,10 @@ Global
 		{4DA013E3-F830-43F4-94D4-74EF7FFB6FE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DA013E3-F830-43F4-94D4-74EF7FFB6FE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DA013E3-F830-43F4-94D4-74EF7FFB6FE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E34336D-8018-40EF-A825-AC5E59E57CD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E34336D-8018-40EF-A825-AC5E59E57CD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E34336D-8018-40EF-A825-AC5E59E57CD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E34336D-8018-40EF-A825-AC5E59E57CD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
